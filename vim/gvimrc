@@ -1,0 +1,10 @@
+set guifont=Menlo\ Regular:h14
+set guioptions=
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+set background=dark
+colorscheme nord
+
+:cabbrev q bd
