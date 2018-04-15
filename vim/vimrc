@@ -6,23 +6,18 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 Plugin 'vim-syntastic/syntastic'
-
 Plugin 'vim-airline/vim-airline' 
-
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
-
 Plugin 'valloric/youcompleteme'
-
 Plugin 'scrooloose/nerdTree'
-
 Plugin 'tpope/vim-fugitive'
-
 Plugin 'kien/ctrlp.vim'
 
 call vundle#end()            " required
-filetype plugin indent on    " required
+filetype plugin on    " required
+
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -53,13 +48,15 @@ set expandtab
 
 set splitbelow
 set splitright
+
 " ctrl+J instead of ctrl+W+J
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <silent> <C-M> :bn<CR>
+nnoremap <silent> <C-N> :bp<CR>
 
-:nmap <Space> i
 
 set nowrap
 set showmatch     " set show matching parenthesis
@@ -81,7 +78,6 @@ set ttimeoutlen=50
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-" unicode symbols
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
@@ -94,6 +90,11 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#left_sep = '▶'
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline_theme='powerlineish'
 
 
 """""""" INDENTLINE """""""""""
@@ -108,10 +109,9 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-
-""""""" NERDTREE 
-map <C-n> :NERDTreeToggle<CR>
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd'] 

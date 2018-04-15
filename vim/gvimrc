@@ -1,5 +1,6 @@
 set guifont=Menlo\ Regular:h14
 set guioptions=
+set linespace=2
 
 if (has("termguicolors"))
   set termguicolors
