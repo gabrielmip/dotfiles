@@ -1,36 +1,48 @@
 #!/bin/bash
 
+WORKDIR=$(pwd)
+
 aptinstall="sudo apt install -y"
 aptupdate="sudo apt update"
 aptrepo="sudo add-apt-repository"
 function debinstall {
+  echo $1
   sudo dpkg -i $1
-  aptinstall -f
-  sudo dpkg -i
+  sudo apt-get install -f
 }
 
-aptupdate
-aptinstall build-essential curl wget unzip
+function rmlink {
+  rm $2
+  ln -s $1 $2 
+}
 
-# ZSH
-aptinstall zsh git-core
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-chsh -s `which zsh`
-ln -s config/zsh/.zshrc ~/.zshrc
+$aptupdate
+$aptinstall build-essential curl wget unzip locate
 
 # HYPER
 wget -O hyperjs.deb https://releases.hyper.is/download/deb
 debinstall hyperjs.deb
 rm hyperjs.deb
-ln -s config/hyperjs/.hyper.js ~/.hyper.js
+rmlink $WORKDIR/config/hyperjs/.hyper.js ~/.hyper.js
 
 # ALBERT
-aptrepo ppa:nilarimogard/webupd8
-aptupdate
-aptinstall albert
-ln -s config/albert/albert.conf ~/.config/albert/albert.conf
+$aptrepo ppa:nilarimogard/webupd8
+$aptupdate
+$aptinstall albert
+rmlink $WORKDIR/config/albert/albert.conf ~/.config/albert/albert.conf
 
 # VIM
-aptinstall neovim
+$aptinstall neovim
+mkdir -p ~/.config/nvim
+rmlink $WORKDIR/config/vim/color ~/.config/nvim/color
+rmlink $WORKDIR/config/vim/.vimrc ~/.config/nvim/init.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+vim +BundleInstall +qall
+
+# ZSH
+$aptinstall zsh git-core
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+chsh -s $(which zsh)
+rmlink $WORKDIR/config/zsh/.zshrc ~/.zshrc
 
 
