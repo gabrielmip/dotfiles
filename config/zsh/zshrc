@@ -1,0 +1,46 @@
+
+HOME=/Users/gabriel
+export ZSH="${HOME}/.oh-my-zsh"
+
+ZSH_THEME="bora"
+CASE_SENSITIVE="true"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+plugins=(git brew sudo docker-compose)
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/oh-my-zsh.sh
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+alias sr="screen -r"
+alias sS="screen -S"
+alias ap="ansible-playbook"
+
+export PATH="${HOME}/mongo/bin"
+export PATH="${PATH}:/usr/local/opt/php@7.0/bin"
+export PATH="${PATH}:/usr/local/opt/php@7.0/sbin"
+export PATH="${PATH}:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="${PATH}:/Library/TeX/Distributions/Programs/texbin"
+export PATH="${PATH}:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin"
+export PATH="${PATH}:${HOME}/.cargo/bin"
+export PATH="${PATH}:${HOME}/Library/Python/2.7/lib/python/site-packages"
+export PATH="${PATH}:/usr/local/lib/python2.7/site-packages"
+export PATH="${PATH}:/usr/local/opt/mongodb@3.2/bin"
+export PATH="${PATH}:${HOME}/.local/bin"
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+mkcdir () {
+  mkdir -p -- "$1" && cd -P -- "$1"
+}
