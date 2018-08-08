@@ -54,8 +54,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-:nmap <Space> i
+nnoremap <silent> <C-M> :bn<CR>
+nnoremap <silent> <C-N> :bn<CR>
+:cabbrev q bd
 
 set nowrap
 set showmatch     " set show matching parenthesis
@@ -68,8 +69,7 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
-
-
+colorscheme dracula
 
 
 """""""" VIM-AIRLINE """"""
@@ -77,39 +77,11 @@ set ttimeoutlen=50
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = '▶'
-let g:airline#extensions#tabline#right_sep = '◀'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='powerlineish'
+"let g:airline_theme='powerlineish'
 
 """""""" INDENTLINE """""""""""
 let g:indentLine_char = '⎸'
 let g:indentLine_color_term = 239
-
-
-"""""""" SYNTASTIC
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-

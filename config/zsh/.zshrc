@@ -15,6 +15,8 @@ export LANG=en_US.UTF-8
 alias sr="screen -r"
 alias sS="screen -S"
 alias ap="ansible-playbook"
+alias start-climas="cd ~/waycarbon/build-scripts/dockerfiles && docker-compose -f docker-compose-buildserver.yml up"
+alias gpoh="git push origin HEAD"
 
 export PATH="${HOME}/mongo/bin"
 export PATH="${PATH}:/usr/local/opt/php@7.0/bin"
@@ -35,11 +37,8 @@ else
   export EDITOR='mvim'
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 mkcdir () {
   mkdir -p -- "$1" && cd -P -- "$1"
 }
+source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

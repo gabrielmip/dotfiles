@@ -1,0 +1,40 @@
+[global_config]
+  always_split_with_profile = True
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  title_font = Menlo for Powerline 9
+  title_receive_bg_color = "#fcaf3e"
+  title_transmit_bg_color = "#3465a4"
+  title_use_system_font = False
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 6fb57265-088b-4517-a0ef-d119645d2925
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1920, 1026
+      title = gabriel@gabriel-linucao: ~
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = Dracula
+      type = Terminal
+      uuid = 6fb57265-088b-4517-a0ef-d119645d2925
+[plugins]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = Menlo for Powerline 10
+    use_system_font = False
+  [[Dracula]]
+    background_color = "#1e1f29"
+    cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 13
+    foreground_color = "#f8f8f2"
+    palette = "#44475a:#ff5555:#50fa7b:#f1fa8c:#8be9fd:#bd93f9:#ff79c6:#94a3a5:#000000:#ff5555:#50fa7b:#f1fa8c:#8be9fd:#bd93f9:#ff79c6:#ffffff"
+    use_system_font = False
