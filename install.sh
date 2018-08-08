@@ -20,9 +20,12 @@ aptinstall="sudo apt install -y"
 aptupdate="sudo apt update"
 aptrepo="sudo add-apt-repository"
 ZSH_PLUGINS="${HOME}/.config/zsh_plugins"
+CONFIGS_FOLDER="${PWD}"
+
+
 
 $aptupdate
-$aptinstall build-essential curl wget unzip locate python3-venv
+$aptinstall build-essential curl wget unzip locate python3-venv python-dev python3-dev cmake
 
 log "TERMINATOR"
 $aptrepo ppa:gnome-terminator 
@@ -43,6 +46,9 @@ rmlink $PWD/config/vim/colors ~/.config/nvim/colors
 rmlink $PWD/config/vim/.vimrc ~/.config/nvim/init.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 vim +BundleInstall +qall
+cd ~/.config/nvim/bundle/youcompleteme
+./install.py
+cd $CONFIGS_FOLDER
 
 log "ZSH"
 $aptinstall zsh git-core
