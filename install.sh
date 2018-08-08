@@ -55,14 +55,6 @@ mkdir $ZSH_PLUGINS/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting/
 echo "source ${ZSH_PLUGINS}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
-log "DOCKER"
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-$aptrepo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) test"
-$aptupdate
-$aptinstall docker-ce
-sudo usermod -aG docker ${USER}
-su - ${USER}
-
 log "FZF"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
@@ -74,4 +66,11 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 $aptupdate
 $aptinstall code fonts-firacode
 
-
+# deve ser o último
+log "DOCKER"
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$aptrepo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) test"
+$aptupdate
+$aptinstall docker-ce
+sudo usermod -aG docker ${USER}
+su - ${USER}

@@ -42,3 +42,6 @@ mkcdir () {
 }
 source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
