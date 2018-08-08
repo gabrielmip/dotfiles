@@ -17,6 +17,7 @@ alias sS="screen -S"
 alias ap="ansible-playbook"
 alias start-climas="cd ~/waycarbon/build-scripts/dockerfiles && docker-compose -f docker-compose-buildserver.yml up"
 alias gpoh="git push origin HEAD"
+alias open=xdg-open
 
 export PATH="${HOME}/mongo/bin"
 export PATH="${PATH}:/usr/local/opt/php@7.0/bin"
@@ -40,8 +41,9 @@ fi
 mkcdir () {
   mkdir -p -- "$1" && cd -P -- "$1"
 }
-source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fpath=($fpath "${HOME}/.zfunctions")
+FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"
+
+source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

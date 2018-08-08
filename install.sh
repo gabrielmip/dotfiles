@@ -53,11 +53,15 @@ rmlink $PWD/config/zsh/.zshrc ~/.zshrc
 log "ZSH SYNTAX HIGHLIGHTING"
 mkdir $ZSH_PLUGINS/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting/
-echo "source ${ZSH_PLUGINS}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
 log "FZF"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+log "RIPGREP"
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.9.0/ripgrep_0.9.0_amd64.deb
+sudo dpkg -i ripgrep_0.9.0_amd64.deb
+rm ripgrep_0.9.0_amd64.deb
 
 log "VS CODE"
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
