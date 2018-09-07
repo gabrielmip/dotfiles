@@ -29,12 +29,12 @@
 [profiles]
   [[default]]
     cursor_color = "#aaaaaa"
-    font = Menlo for Powerline 10
+    font = Liga Meslo LG S 10
     use_system_font = False
   [[Dracula]]
     background_color = "#1e1f29"
     cursor_color = "#aaaaaa"
-    font = Ubuntu Mono 13
+    font = Hack 11
     foreground_color = "#f8f8f2"
     palette = "#44475a:#ff5555:#50fa7b:#f1fa8c:#8be9fd:#bd93f9:#ff79c6:#94a3a5:#000000:#ff5555:#50fa7b:#f1fa8c:#8be9fd:#bd93f9:#ff79c6:#ffffff"
     use_system_font = False

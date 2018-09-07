@@ -18,14 +18,18 @@ function log {
 
 aptinstall="sudo apt install -y"
 aptupdate="sudo apt update"
+aptupdate="sudo apt upgrade"
 aptrepo="sudo add-apt-repository"
 ZSH_PLUGINS="${HOME}/.config/zsh_plugins"
 CONFIGS_FOLDER="${PWD}"
 
 
-
 $aptupdate
-$aptinstall build-essential curl wget unzip locate python3-venv python-dev python3-dev cmake
+$aptupgrade
+$aptinstall build-essential curl wget unzip locate
+$aptinstall python3-venv python-dev python3-dev cmake
+$aptinstall meld wdiff
+
 
 log "TERMINATOR"
 $aptrepo ppa:gnome-terminator 
@@ -76,11 +80,17 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 $aptupdate
 $aptinstall code fonts-firacode
 
-# deve ser o último
 log "DOCKER"
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 $aptrepo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) test"
 $aptupdate
 $aptinstall docker-ce
-sudo usermod -aG docker ${USER}
-su - ${USER}
+sudo groupadd docker
+sudo gpasswd -a $USER docker
+newgrp docker
+
+log "CHROME"
+$aptinstall libxss1 libappindicator1 libindicator7
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+debinstall google-chrome*.deb
+

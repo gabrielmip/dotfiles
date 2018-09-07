@@ -56,7 +56,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <silent> <C-M> :bn<CR>
 nnoremap <silent> <C-N> :bn<CR>
-:cabbrev q bd
 
 set nowrap
 set showmatch     " set show matching parenthesis
