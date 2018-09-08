@@ -54,10 +54,6 @@ cd ~/.config/nvim/bundle/youcompleteme
 ./install.py
 cd $CONFIGS_FOLDER
 
-log "Xmodmap"
-rmlink $PWD/config/xmodmap/.xmodmap ~/.xmodmap
-xmodmap ~/.xmodmap
-
 log "ZSH"
 $aptinstall zsh git-core
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
