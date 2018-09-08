@@ -42,6 +42,10 @@ mkcdir () {
   mkdir -p -- "$1" && cd -P -- "$1"
 }
 
+getin () {
+  docker exec -it climas-$1 bash
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fpath=($fpath "${HOME}/.zfunctions")
 FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"

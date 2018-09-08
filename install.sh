@@ -28,7 +28,7 @@ $aptupdate
 $aptupgrade
 $aptinstall build-essential curl wget unzip locate
 $aptinstall python3-venv python-dev python3-dev cmake
-$aptinstall meld wdiff
+$aptinstall meld wdiff ctags
 
 
 log "TERMINATOR"
@@ -80,6 +80,11 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 $aptupdate
 $aptinstall code fonts-firacode
 
+log "CHROME"
+$aptinstall libxss1 libappindicator1 libindicator7
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+debinstall google-chrome*.deb
+
 log "DOCKER"
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 $aptrepo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) test"
@@ -88,9 +93,3 @@ $aptinstall docker-ce
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 newgrp docker
-
-log "CHROME"
-$aptinstall libxss1 libappindicator1 libindicator7
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-debinstall google-chrome*.deb
-

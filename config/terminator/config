@@ -34,7 +34,7 @@
   [[Dracula]]
     background_color = "#1e1f29"
     cursor_color = "#aaaaaa"
-    font = Hack 11
+    font = Ubuntu Mono 12
     foreground_color = "#f8f8f2"
     palette = "#44475a:#ff5555:#50fa7b:#f1fa8c:#8be9fd:#bd93f9:#ff79c6:#94a3a5:#000000:#ff5555:#50fa7b:#f1fa8c:#8be9fd:#bd93f9:#ff79c6:#ffffff"
     use_system_font = False
