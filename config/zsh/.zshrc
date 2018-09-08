@@ -2,7 +2,7 @@
 HOME=/home/gabriel
 export ZSH="${HOME}/.oh-my-zsh"
 
-ZSH_THEME="bira"
+ZSH_THEME="muse" # my other favorites: bira, mh
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
