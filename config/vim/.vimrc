@@ -59,7 +59,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <silent> <C-M> :bn<CR>
 nnoremap <silent> <C-N> :bp<CR>
-:cabbrev q bd
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme='deus'
