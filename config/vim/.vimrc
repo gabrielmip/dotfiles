@@ -3,7 +3,7 @@ filetype off
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin('~/.config/nvim/bundle/')
 Plugin 'VundleVim/Vundle.vim'  " required
-Plugin 'vim-syntastic/syntastic'
+Plugin 'mhinz/vim-startify'
 Plugin 'vim-airline/vim-airline' 
 Plugin 'vim-airline/vim-airline-themes' 
 Plugin 'Yggdroot/indentLine'
@@ -13,6 +13,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'zivyangll/git-blame.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'vim-syntastic/syntastic'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -44,7 +46,9 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set title
 set visualbell
 set noerrorbells
-colorscheme Tomorrow-Night-Eighties
+
+autocmd ColorScheme janah highlight Normal ctermbg=235
+colorscheme janah
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set splitbelow
