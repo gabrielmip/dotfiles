@@ -7,7 +7,7 @@ function debinstall {
 }
 
 function rmlink {
-  rm $2
+  rm -R $2
   ln -s $1 $2 
 }
 
@@ -79,6 +79,7 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 $aptupdate
 $aptinstall code fonts-firacode
+rmlink $PWD/config/Code/User ~/.config/Code/
 
 log "CHROME"
 $aptinstall libxss1 libappindicator1 libindicator7
