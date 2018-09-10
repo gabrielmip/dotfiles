@@ -2,26 +2,31 @@ set nocompatible
 filetype off
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin('~/.config/nvim/bundle/')
-Plugin 'VundleVim/Vundle.vim'  " required
+Plugin  'VundleVim/Vundle.vim'
+
 Plugin 'mhinz/vim-startify'
 Plugin 'vim-airline/vim-airline' 
 Plugin 'vim-airline/vim-airline-themes' 
-Plugin 'Yggdroot/indentLine'
-Plugin 'valloric/youcompleteme'
-Plugin 'scrooloose/nerdTree'
+
 Plugin 'tpope/vim-fugitive'
 Plugin 'zivyangll/git-blame.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'maxbrunsfeld/vim-yankstack'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'mhinz/vim-signify'
-call vundle#end()            " required
-filetype plugin indent on    " required
 
-"set runtimepath^=~/.config/nvim/bundle/vim-fugitive.vim
-"set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
+Plugin 'vim-syntastic/syntastic'
 
+Plugin 'valloric/youcompleteme'
+Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Yggdroot/indentLine'
+
+Plugin 'scrooloose/nerdTree'
+Plugin 'majutsushi/tagbar'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+call vundle#end()
+filetype plugin indent on
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 set backspace=indent,eol,start
@@ -37,10 +42,10 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set nowrap
-set showmatch     " set show matching parenthesis
-set smartcase     " ignore case if search pattern is all lowercase, case-sensitive otherwise
-set hlsearch      " highlight search terms
-set incsearch     " show search matches as you type
+set showmatch
+set smartcase
+set hlsearch
+set incsearch
 set history=1000
 set undolevels=1000
 set wildignore=*.swp,*.bak,*.pyc,*.class
@@ -58,8 +63,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <silent> <C-M> :bn<CR>
 nnoremap <silent> <C-N> :bp<CR>
+nnoremap <silent> <C-M> :bn<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme='deus'
@@ -88,16 +93,6 @@ let g:indentLine_char = '⎸'
 let g:indentLine_color_term = 239
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -111,4 +106,49 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint', ]
 let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10split enew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+nnoremap <silent> <C-T> :BTags<CR>
+nnoremap <silent> <C-P> :GFiles<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:multi_cursor_start_word_key      = '<C-d>'
+let g:multi_cursor_select_all_word_key = '<A-d>'
+let g:multi_cursor_start_key           = 'g<C-d>'
+let g:multi_cursor_select_all_key      = 'g<A-d>'
+let g:multi_cursor_next_key            = '<C-d>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
