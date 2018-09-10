@@ -35,7 +35,7 @@ log "TERMINATOR"
 $aptrepo ppa:gnome-terminator 
 $aptupdate
 $aptinstall terminator
-rmlink $PWD/config/terminator/config ~/.config/terminator/config
+rmlink $PWD/terminator/config ~/.config/terminator/config
 
 log "ALBERT"
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
@@ -43,13 +43,13 @@ wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu
 sudo apt-key add - < Release.key
 $aptupdate
 $aptinstall albert
-rmlink $PWD/config/albert/albert.conf ~/.config/albert/albert.conf
+rmlink $PWD/albert/albert.conf ~/.config/albert/albert.conf
 
 log "VIM"
 $aptinstall neovim
 mkdir -p ~/.config/nvim
-rmlink $PWD/config/vim/colors ~/.config/nvim/colors
-rmlink $PWD/config/vim/.vimrc ~/.config/nvim/init.vim
+rmlink $PWD/vim/colors ~/.config/nvim/colors
+rmlink $PWD/vim/.vimrc ~/.config/nvim/init.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 vim +BundleInstall +qall
 cd ~/.config/nvim/bundle/youcompleteme
@@ -60,7 +60,7 @@ log "ZSH"
 $aptinstall zsh git-core
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 chsh -s $(which zsh)
-rmlink $PWD/config/zsh/.zshrc ~/.zshrc
+rmlink $PWD/zsh/.zshrc ~/.zshrc
 
 log "ZSH SYNTAX HIGHLIGHTING"
 mkdir $ZSH_PLUGINS/zsh-syntax-highlighting
@@ -81,7 +81,7 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 $aptupdate
 $aptinstall code fonts-firacode
-rmlink $PWD/config/Code/User ~/.config/Code/
+rmlink $PWD/Code/User ~/.config/Code/
 
 log "CHROME"
 $aptinstall libxss1 libappindicator1 libindicator7
