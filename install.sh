@@ -41,6 +41,7 @@ log "ALBERT"
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
 wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_18.04/Release.key -O Release.key
 sudo apt-key add - < Release.key
+rm Release.key
 $aptupdate
 $aptinstall albert
 rmlink $PWD/albert/albert.conf ~/.config/albert/albert.conf
@@ -87,6 +88,7 @@ log "CHROME"
 $aptinstall libxss1 libappindicator1 libindicator7
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 debinstall google-chrome*.deb
+rm google-chrome*
 
 log "DOCKER"
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
