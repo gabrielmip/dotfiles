@@ -50,6 +50,6 @@ getin () {
 fpath=($fpath "${HOME}/.zfunctions")
 FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"
 
-setxkbmap -option "caps:swapescape"
+setxkbmap -option "caps:escape"
 
 source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
