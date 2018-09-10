@@ -138,6 +138,8 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+let g:fzf_tags_command = 'ctags -R --exclude={assets,node_modules,bower_components,test,lib,vendor,plugins,tmp,bin,.transpiled,.git}'
+
 nnoremap <silent> <C-T> :BTags<CR>
 nnoremap <silent> <C-P> :GFiles<CR>
 
