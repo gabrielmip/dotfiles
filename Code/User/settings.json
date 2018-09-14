@@ -3,7 +3,10 @@
     "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "editor.fontSize": 15.5,
-    "workbench.colorTheme": "Dracula Soft",
     "explorer.confirmDragAndDrop": false,
-    "typescript.updateImportsOnFileMove.enabled": "always"
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "workbench.colorTheme": "Dracula Soft",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.lineNumbers": "relative"
 }

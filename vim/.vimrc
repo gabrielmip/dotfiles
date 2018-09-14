@@ -12,7 +12,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'zivyangll/git-blame.vim'
 Plugin 'mhinz/vim-signify'
 
-Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 
 Plugin 'valloric/youcompleteme'
 Plugin 'maxbrunsfeld/vim-yankstack'
@@ -88,6 +88,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#ale#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_char = '⎸'
@@ -97,16 +98,9 @@ let g:indentLine_color_term = 239
 nmap <F8> :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint', ]
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-
+let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This is the default extra key bindings
 let g:fzf_action = {
