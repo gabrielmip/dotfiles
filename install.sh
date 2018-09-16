@@ -49,9 +49,7 @@ rmlink $PWD/albert/albert.conf ~/.config/albert/albert.conf
 log "VIM"
 $aptinstall neovim
 mkdir -p ~/.config/nvim
-rmlink $PWD/vim/colors ~/.config/nvim/colors
-rmlink $PWD/vim/ftplugin ~/.config/nvim/ftplugin
-rmlink $PWD/vim/.vimrc ~/.config/nvim/init.vim
+rmlink $PWD/vim ~/.config/nvim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 vim +BundleInstall +qall
 cd ~/.config/nvim/bundle/youcompleteme
