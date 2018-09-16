@@ -1,4 +1,5 @@
 " vim: et sw=2 sts=2
+
 " Plugin:      https://github.com/mhinz/vim-janah
 " Description: A 256 colors colorscheme for Vim.
 " Maintainer:  Marco Hinz <http://github.com/mhinz>
@@ -50,6 +51,7 @@ highlight StatusLineNC guifg=#808080 ctermfg=244 guibg=#3a3a3a ctermbg=237 gui=N
 
 " Number column {{{1
 
+" highlight CursorLineNr guifg=#ffff00 ctermfg=184 guibg=#3a3a3a ctermbg=237 gui=bold cterm=bold
 highlight CursorLineNr guifg=#878787 ctermfg=102 guibg=#3a3a3a ctermbg=237 gui=NONE cterm=NONE
 highlight LineNr guifg=#878787 ctermfg=102 guibg=#3a3a3a ctermbg=237 gui=NONE cterm=NONE
 
@@ -139,4 +141,18 @@ highlight StartifySpecial guifg=#585858 ctermfg=240 guibg=NONE ctermbg=NONE gui=
 highlight TermCursor ctermfg=NONE guibg=#ff00af ctermbg=199 gui=NONE cterm=NONE
 highlight TermCursorNC ctermfg=NONE guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 
-let g:colors_name = 'janah'
+" PHP
+highlight phpVarSelector guifg=#eeeeee ctermfg=255 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE 
+highlight phpIdentifier guifg=#eeeeee ctermfg=255 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE 
+highlight phpParent guifg=#eeeeee ctermfg=255 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE 
+highlight phpDefine guifg=#ffaf87 ctermfg=216 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+highlight phpFunctions guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+highlight phpSpecialFunction guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+highlight phpMethods guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+highlight phpMethodsVar guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+
+" Javascript
+
+
+
+let g:colors_name = 'hannah'
