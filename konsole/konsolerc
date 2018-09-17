@@ -2,7 +2,7 @@
 DefaultProfile=Gabriel.profile
 
 [Favorite Profiles]
-Favorites=
+Favorites=Gabriel.profile
 
 [MainWindow]
 Height 1080=733

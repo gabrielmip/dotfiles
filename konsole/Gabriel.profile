@@ -1,8 +1,8 @@
 [Appearance]
 AntiAliasFonts=true
 BoldIntense=true
-ColorScheme=DarkPastels
-Font=Ubuntu Mono,13,-1,5,50,0,0,0,0,0,Regular
+ColorScheme=Breeze
+Font=Ubuntu Mono,12,-1,5,50,0,0,0,0,0,Regular
 LineSpacing=1
 UseFontLineChararacters=false
 
