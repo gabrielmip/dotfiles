@@ -1,4 +1,5 @@
 " vim: et sw=2 sts=2
+
 " Plugin:      https://github.com/mhinz/vim-janah
 " Description: A 256 colors colorscheme for Vim.
 " Maintainer:  Marco Hinz <http://github.com/mhinz>
@@ -138,5 +139,20 @@ highlight StartifySpecial guifg=#585858 ctermfg=240 guibg=NONE ctermbg=NONE gui=
 
 highlight TermCursor ctermfg=NONE guibg=#ff00af ctermbg=199 gui=NONE cterm=NONE
 highlight TermCursorNC ctermfg=NONE guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+
+" HTML {{{1
+
+highlight link htmlTagN htmlTagName
+
+" PHP {{{1
+
+highlight link phpVarSelector Normal
+highlight link phpIdentifier Normal
+highlight link phpParent Normal
+highlight phpDefine guifg=#ffaf87 ctermfg=216 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+highlight phpFunctions guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+highlight phpSpecialFunction guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+highlight phpMethods guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+highlight phpMethodsVar guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 
 let g:colors_name = 'janah'

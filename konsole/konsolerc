@@ -1,0 +1,15 @@
+[Desktop Entry]
+DefaultProfile=Gabriel.profile
+
+[Favorite Profiles]
+Favorites=
+
+[MainWindow]
+Height 1080=733
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPoAAAABAAAAAQAAAAIAAAACPwAAAAA
+ToolBarsMovable=Disabled
+Width 1920=841
+Window-Maximized 1080x1920=true
+
+[TabBar]
+TabBarPosition=Top

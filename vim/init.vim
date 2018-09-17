@@ -26,8 +26,9 @@ set noerrorbells
 set splitbelow
 set splitright
 
-autocmd ColorScheme hannah highlight Normal ctermbg=235
-colorscheme hannah
+autocmd ColorScheme janah highlight Normal ctermbg=235
+autocmd ColorScheme janah-old highlight Normal ctermbg=235
+colorscheme janah-old
 
 " make the 101st column stand out
 highlight ColorColumn ctermbg=red

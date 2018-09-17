@@ -30,6 +30,12 @@ $aptinstall build-essential curl wget unzip locate
 $aptinstall python3-venv python-dev python3-dev cmake
 $aptinstall meld wdiff ctags
 
+log "KONSOLE"
+$aptinstall konsole
+rmlink $PWD/konsole/Gabriel.profile ~/.local/share/konsole/Gabriel.profile
+rmlink $PWD/konsole/konsolerc ~/.config/konsolerc
+rmlink $PWD/fonts ~/.fonts
+fc-cache -f -v
 
 log "TERMINATOR"
 $aptrepo ppa:gnome-terminator 

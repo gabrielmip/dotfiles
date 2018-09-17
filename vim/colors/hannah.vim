@@ -142,17 +142,19 @@ highlight TermCursor ctermfg=NONE guibg=#ff00af ctermbg=199 gui=NONE cterm=NONE
 highlight TermCursorNC ctermfg=NONE guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 
 " PHP
-highlight phpVarSelector guifg=#eeeeee ctermfg=255 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE 
-highlight phpIdentifier guifg=#eeeeee ctermfg=255 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE 
-highlight phpParent guifg=#eeeeee ctermfg=255 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE 
-highlight phpDefine guifg=#ffaf87 ctermfg=216 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+
+highlight link phpVarSelector Normal
+highlight link phpIdentifier Normal
+highlight link phpParent Normal
+highlight link phpDefine Identifier
 highlight phpFunctions guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 highlight phpSpecialFunction guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 highlight phpMethods guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 highlight phpMethodsVar guifg=#ffdfaf ctermfg=223 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 
-" Javascript
+" HTML
 
+highlight link htmlTagN htmlTagName
 
 
 let g:colors_name = 'hannah'
