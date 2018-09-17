@@ -8,7 +8,7 @@ UseFontLineChararacters=false
 
 [Cursor Options]
 CursorShape=0
-CustomCursorColor=83,83,83
+CustomCursorColor=186,186,186
 UseCustomCursorColor=true
 
 [General]
