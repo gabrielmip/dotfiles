@@ -18,6 +18,9 @@ alias ap="ansible-playbook"
 alias start-climas="cd ~/waycarbon/build-scripts/dockerfiles && docker-compose -f docker-compose-buildserver.yml up"
 alias gpoh="git push origin HEAD"
 alias open=xdg-open
+alias mysql="rlwrap mysql"
+alias mongo="rlwrap mongo"
+alias scheme="rlwrap scheme"
 
 export PATH="${HOME}/mongo/bin"
 export PATH="${PATH}:/usr/local/opt/php@7.0/bin"
@@ -35,7 +38,7 @@ export PATH="${PATH}:${HOME}/.local/bin"
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
 
 mkcdir () {

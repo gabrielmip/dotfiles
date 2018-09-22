@@ -5,10 +5,11 @@ DefaultProfile=Gabriel.profile
 Favorites=Gabriel.profile
 
 [MainWindow]
-Height 1080=733
-State=AAAA/wAAAAD9AAAAAAAAB4AAAAPoAAAABAAAAAQAAAAIAAAACPwAAAAA
+Height 1080=1023
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAP/AAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
-Width 1920=841
+Width 1920=1920
 Window-Maximized 1080x1920=true
 
 [TabBar]
