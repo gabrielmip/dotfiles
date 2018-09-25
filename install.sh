@@ -32,6 +32,8 @@ $aptinstall meld wdiff ctags
 
 log "KONSOLE"
 $aptinstall konsole
+mkdir -p ~/.local/share/konsole
+mkdir -p ~/.config
 rmlink $PWD/konsole/Gabriel.profile ~/.local/share/konsole/Gabriel.profile
 rmlink $PWD/konsole/Breeze.colorscheme ~/.local/share/konsole/Breeze.colorscheme
 rmlink $PWD/konsole/konsolerc ~/.config/konsolerc
@@ -56,7 +58,10 @@ rmlink $PWD/albert/albert.conf ~/.config/albert/albert.conf
 log "VIM"
 $aptinstall neovim
 mkdir -p ~/.config/nvim
-rmlink $PWD/vim ~/.config/nvim
+rmlink $PWD/vim/init.vim ~/.config/nvim/init.vim
+rmlink $PWD/vim/mappings.vim ~/.config/nvim/mappings.vim
+rmlink $PWD/vim/plugins.vim ~/.config/nvim/plugins.vim
+rmlink $PWD/vim/colors ~/.config/nvim/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 vim +BundleInstall +qall
 cd ~/.config/nvim/bundle/youcompleteme
