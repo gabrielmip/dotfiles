@@ -61,7 +61,7 @@ mkdir -p ~/.config/nvim
 rmlink $PWD/vim/init.vim ~/.config/nvim/init.vim
 rmlink $PWD/vim/mappings.vim ~/.config/nvim/mappings.vim
 rmlink $PWD/vim/plugins.vim ~/.config/nvim/plugins.vim
-rmlink $PWD/vim/colors ~/.config/nvim/
+rmlink $PWD/vim/colors ~/.config/nvim/colors
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 vim +BundleInstall +qall
 cd ~/.config/nvim/bundle/youcompleteme
