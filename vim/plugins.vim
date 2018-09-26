@@ -16,7 +16,7 @@ Plugin 'zivyangll/git-blame.vim'
 Plugin 'mhinz/vim-signify'
 
 Plugin 'w0rp/ale'
-Plugin 'Shougo/deoplete.nvim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 
@@ -67,8 +67,7 @@ let g:indentLine_color_term = 239
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 
-"------------[ Deoplete ]------------
-let g:deoplete#enable_at_startup = 1
+"------------[ YouCompleteME ]------------
 
 "------------[ FZF ]------------
 let g:fzf_layout = { 'down': '~40%' }
