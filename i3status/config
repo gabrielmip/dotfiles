@@ -1,0 +1,52 @@
+# ß
+general {
+  colors = true
+  color_good = "#96e055"
+  color_degraded = "#ef997f"
+  color_bad = "#bf616a"
+}
+
+
+order += "wireless wlo1"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "volume master"
+order += "tztime local"
+
+wireless wlo1 {
+  format_up = " %essid: %quality (%ip) "
+  format_down = " Wi-Fi down  "
+}
+
+run_watch DHCP {
+  pidfile = "/var/run/dhclient*.pid"
+}
+
+run_watch VPN {
+  pidfile = "/var/run/openvpn-client/*.pid"
+}
+
+tztime local {
+  format = "  %d.%m.%Y | %H:%M  "
+}
+
+cpu_usage {
+  max_threshold = 95
+    degraded_threshold = 80
+    format = "  CPU: %usage "
+}
+
+cpu_temperature 0 {
+  format = "  T: %degrees °C  "
+  max_threshold = 60
+  format_above_threshold = "  WARNING T: %degrees °C  "
+}
+
+volume master {
+  format = "  Vol: %volume "
+    format_muted = "  Vol: -- "
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+

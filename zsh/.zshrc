@@ -54,5 +54,6 @@ fpath=($fpath "${HOME}/.zfunctions")
 FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"
 
 setxkbmap -option "caps:escape"
+setxkbmap -layout us -variant intl
 
 source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
