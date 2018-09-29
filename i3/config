@@ -39,7 +39,7 @@ client.urgent             $based3   $magenta  $base3   $based3  $magenta
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Inconsolata, Icons 12
+font pango:Inconsolata, Icons 11.5
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -223,3 +223,4 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 exec --no-startup-id compton
+exec --no-startup-id nm-applet
