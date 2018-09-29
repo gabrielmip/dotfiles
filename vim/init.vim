@@ -25,6 +25,7 @@ set visualbell
 set noerrorbells
 set splitbelow
 set splitright
+set hid
 
 autocmd ColorScheme janah highlight Normal ctermbg=235
 colorscheme janah
