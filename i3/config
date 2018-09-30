@@ -186,7 +186,7 @@ bar {
   position bottom
     status_command i3status
     strip_workspace_numbers yes
-    height 35
+    height 30
     colors {
       statusline #c6c6c6
       background #1f1f1f
