@@ -13,33 +13,16 @@ set $mod Mod1
 
 focus_follows_mouse  no
 
-set $based3    #002b36
-set $based2    #073642
-set $based1    #586e75
-set $based0    #a4cad8
-#657b83
-set $base0     #839496
-set $base1     #93a1a1
-set $base2     #eee8d5
-set $base3     #fdf6e3
-set $yellow    #b58900
-set $orange    #cb4b16
-set $red       #dc322f
-set $magenta   #d33682
-set $violet    #6c71c4
-set $blue      #268bd2
-set $cyan      #2aa198
-set $green     #859900
-
-
-client.focused            $based3   $based2   $base3   $based3  $based2
-client.focused_inactive   $based3   $based3   $base0   $based3  $based3
-client.unfocused          $based3   $based3   $base0   $based3  $based3
-client.urgent             $based3   $magenta  $base3   $based3  $magenta
+client.background	    #1f1f1f
+client.focused		    #c6c6c6 #1f1f1f #c6c6c6 #c6c6c6 #c6c6c6
+client.unfocused	    #c6c6c6 #1f1f1f #c6c6c6 #c6c6c6 #c6c6c6
+client.focused_inactive	    #c6c6c6 #1f1f1f #c6c6c6 #c6c6c6 #c6c6c6
+client.urgent		    #c6c6c6 #1f1f1f #c6c6c6 #c6c6c6 #c6c6c6
+client.placeholder	    #c6c6c6 #1f1f1f #c6c6c6 #c6c6c6 #c6c6c6
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Inconsolata, Icons 11.5
+font pango:Ubuntu Mono, Awesome 11.5
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -54,6 +37,13 @@ font pango:Inconsolata, Icons 11.5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+gaps inner 10
+gaps outer 3
+smart_borders on
+for_window [class="^.*"] border pixel 0
+new_window pixel 1
+new_float pixel 1
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -123,8 +113,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $ws1 "1:term"
-set $ws2 "2:web"
-set $ws3 "3"
+set $ws2 "2:vim"
+set $ws3 "3:web"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -192,18 +182,19 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-
 bar {
   position bottom
     status_command i3status
     strip_workspace_numbers yes
+    height 35
     colors {
-      statusline $based0
-      background $based3
-      focused_workspace $based3 $based3 $base3
-      inactive_workspace $based3 $based2 $base0
-      active_workspace $based3 $based2 $base3
-      urgent_workspace $based3 $magenta $base2
+      statusline #c6c6c6
+      background #1f1f1f
+      #                  border  background text
+      focused_workspace  #1c1c22 #c6c6c6 #1f1f1f
+      inactive_workspace  #1c1c22 #1f1f1f #c6c6c6
+      active_workspace #1c1c22 #193a48 #6b7443
+      urgent_workspace #1c1c22 #193a48 #162025
     }
 }
 
@@ -228,5 +219,6 @@ bindsym $mod+Shift+Tab workspace prev
 
 exec --no-startup-id compton --config ~/Repos/dotfiles/compton/compton.conf
 exec --no-startup-id nm-applet
+exec --no-startup-id systemctl --user start xfce4-notifyd
 exec albert
-exec --no-startup-id feh --bg-fill --randomize ~/Repos/dotfiles/wallpapers/*
+exec --no-startup-id feh --bg-fill ~/Repos/dotfiles/wallpapers/wallhaven-689094.jpg
