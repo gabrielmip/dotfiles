@@ -42,4 +42,4 @@ make install
 # install misc. i3 packages
 apt-get install -q -y	-o Dpkg::Options::="--force-confdef" \
 						-o Dpkg::Options::="--force-confold" \
-i3lock i3status lxappearence compton ranger feh imagemagick fonts-font-awesome
+i3lock i3status lxappearance compton ranger feh imagemagick fonts-font-awesome
