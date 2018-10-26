@@ -49,6 +49,10 @@ getin () {
   docker exec -it climas-$1 bash
 }
 
+setupstream () {
+  git branch --set-upstream-to=origin/$(git_current_branch) $(git_current_branch)
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fpath=($fpath "${HOME}/.zfunctions")
 FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"
