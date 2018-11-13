@@ -38,8 +38,8 @@ font pango:Ubuntu Mono, Awesome 11.5
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-gaps inner 10
-gaps outer 3
+# gaps inner 10
+# gaps outer 3
 smart_borders on
 for_window [class="^.*"] border pixel 0
 new_window pixel 1
