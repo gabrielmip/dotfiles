@@ -9,13 +9,13 @@ general {
 
 order += "wireless wlo1"
 order += "cpu_usage"
-order += "cpu_temperature 0"
+order += "cpu_temperature 1"
 order += "volume master"
 order += "tztime local"
 
 wireless wlo1 {
-  format_up = "  %quality "
-  format_down = "  -- "
+  format_up = "   %quality "
+  format_down = "   -- "
 }
 
 run_watch DHCP {
@@ -27,24 +27,24 @@ run_watch VPN {
 }
 
 tztime local {
-  format = "   %d/%m/%y %H:%M "
+  format = "     %d/%m/%y    %H:%M "
 }
 
 cpu_usage {
   max_threshold = 95
     degraded_threshold = 80
-    format = "   %usage "
+    format = "    %usage "
 }
 
-cpu_temperature 0 {
-  format = "   %degrees°C "
-  max_threshold = 60
-  format_above_threshold = " WARNING   %degrees°C "
+cpu_temperature 1 {
+  format = "    %degrees°C "
+  max_threshold = 75
+  format_above_threshold = "    %degrees°C "
 }
 
 volume master {
-  format = "   %volume "
-    format_muted = "   -- "
+  format = "    %volume "
+    format_muted = "    -- "
     device = "default"
     mixer = "Master"
     mixer_idx = 0
