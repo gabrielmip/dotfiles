@@ -1,13 +1,14 @@
 
 HOME=/home/gabriel
-export ZSH="${HOME}/.oh-my-zsh"
+autoload -Uz compinit promptinit
+compinit
+promptinit
 
 ZSH_THEME="muse" # my other favorites: bira, mh
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git brew sudo docker-compose)
-source $ZSH/oh-my-zsh.sh
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -21,6 +22,7 @@ alias open=xdg-open
 alias mysql="rlwrap mysql"
 alias mongo="rlwrap mongo"
 alias scheme="rlwrap scheme"
+alias vim="nvim"
 
 export PATH="${HOME}/mongo/bin"
 export PATH="${PATH}:/usr/local/opt/php@7.0/bin"
