@@ -1,7 +1,7 @@
 [Appearance]
 AntiAliasFonts=true
 BoldIntense=true
-ColorScheme=Breeze
+ColorScheme=One Dark
 Font=Ubuntu Mono,12,-1,5,50,0,0,0,0,0,Regular
 LineSpacing=1
 UseFontLineChararacters=false

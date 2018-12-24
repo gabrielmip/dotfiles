@@ -3,16 +3,13 @@ HOME=/home/gabriel
 
 export ZSH="/home/gabriel/.oh-my-zsh"
 
-ZSH_THEME="agnoster" # my other favorites: bira, mh, muse
+ZSH_THEME="bira" # my other favorites: bira, mh, muse
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git sudo docker-compose)
 
 source $ZSH/oh-my-zsh.sh
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 
 alias sr="screen -r"
 alias sS="screen -S"

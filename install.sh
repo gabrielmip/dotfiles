@@ -25,6 +25,7 @@ sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar \
     chromium \
     ctags \
     screen \
+    nautilus \
     meld
 
 
