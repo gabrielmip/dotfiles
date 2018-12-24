@@ -1,9 +1,8 @@
+#!/bin/bash
+
 
 function rmlink {
-  if [[ -e $2 ]]; then
-    rm -R $2
-  fi
-  ln -s $1 $2 
+  ln -sfn $1 $2
 }
 
 function log {
@@ -25,12 +24,12 @@ sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar \
     emacs \
     chromium \
     ctags \
+    screen \
     meld
 
 
 yay -S --needed --noconfirm --quiet --noprogressbar \
     albert \
-    oh-my-zsh-git \
     visual-studio-code-bin
 
 
@@ -40,7 +39,10 @@ rmlink $PWD/vim/init.vim ~/.config/nvim/init.vim
 rmlink $PWD/vim/mappings.vim ~/.config/nvim/mappings.vim
 rmlink $PWD/vim/plugins.vim ~/.config/nvim/plugins.vim
 rmlink $PWD/vim/colors ~/.config/nvim/colors
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+
+if [ ! -e ~/.config/nvim/bundle/Vundle.vim ]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+fi
 nvim +BundleInstall +qall
 cd ~/.config/nvim/bundle/youcompleteme
 ./install.py
@@ -53,24 +55,39 @@ mkdir -p ~/.config
 rmlink $PWD/konsole/Gabriel.profile ~/.local/share/konsole/Gabriel.profile
 rmlink $PWD/konsole/Breeze.colorscheme ~/.local/share/konsole/Breeze.colorscheme
 rmlink $PWD/konsole/konsolerc ~/.config/konsolerc
+rm -rf ~/.fonts
 rmlink $PWD/fonts ~/.fonts
 fc-cache -f -v
 
 
 log "ALBERT"
+mkdir -p ~/.config/albert
 rmlink $PWD/albert/albert.conf ~/.config/albert/albert.conf
 
 
 log "ZSH"
-curl -L http://install.ohmyz.sh | sh
+if [ ! -d ~/.oh-my-zsh ]; then
+  sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+fi
 rmlink $PWD/zsh/.zshrc ~/.zshrc
-chsh -s $(which zsh)
-mkdir -p $ZSH_PLUGINS/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting/
+sudo chsh -s $(which zsh)
+if [ ! -d $ZSH_PLUGINS/zsh-syntax-highlighting ]; then
+  mkdir -p $ZSH_PLUGINS/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting/
+fi
 
 
 log "VS CODE"
+mkdir -p ~/.config/Code
 rmlink $PWD/Code/User ~/.config/Code/
+
+
+log "SPACEMACS"
+if [ ! -d ~/.emacs.d ]; then
+  git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+fi
+rmlink $PWD/spacemacs/spacemacs ~/.spacemacs
+
 log "DOCKER"
 sudo groupadd docker
 sudo gpasswd -a $USER docker

@@ -1,14 +1,15 @@
 
 HOME=/home/gabriel
-autoload -Uz compinit promptinit
-compinit
-promptinit
 
-ZSH_THEME="muse" # my other favorites: bira, mh
+export ZSH="/home/gabriel/.oh-my-zsh"
+
+ZSH_THEME="agnoster" # my other favorites: bira, mh, muse
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git brew sudo docker-compose)
+plugins=(git sudo docker-compose)
+
+source $ZSH/oh-my-zsh.sh
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
