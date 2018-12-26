@@ -26,6 +26,8 @@ sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar \
     ctags \
     screen \
     nautilus \
+    rlwrap \
+    mysql \
     meld
 
 
