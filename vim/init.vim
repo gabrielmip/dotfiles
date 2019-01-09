@@ -28,13 +28,13 @@ set splitright
 set hid
 
 " autocmd ColorScheme janah highlight Normal ctermbg=235
-colorscheme janah
+colorscheme flatlandia
 
 " make the 101st column stand out
 highlight ColorColumn ctermbg=red
 call matchadd('ColorColumn', '\%101v', 100)
 
-" Always turn on syntax highlighting for diffs 
+" Always turn on syntax highlighting for diffs
 " EITHER select by the file-suffix directly...
 augroup PatchDiffHighlight
   autocmd!
@@ -83,6 +83,12 @@ function! SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+
+function! TrimWhiteSpace()
+  %s/\s\+$//e
+endfunction
+autocmd BufWritePre * :call TrimWhiteSpace()
 
 
 source $HOME/.config/nvim/mappings.vim
