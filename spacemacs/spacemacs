@@ -355,17 +355,6 @@ Version 2017-03-12"
           'face (list :background (match-string-no-properties 0)))))))
   (font-lock-flush))
 
-(defun climas/visit-pull-request-url ()
-  "Open the PR page for the current branch on shitbucket"
-  (interactive)
-  (browse-url
-   (let* ((remote-url (magit-get "remote" (magit-get-push-remote) "url"))
-          (bizarre-regex "\\`.+bitbucket\\.org:\\(.+\\)\\.git\\'") ;; strip @git, remote name, colons, etc
-          (current-project-name (replace-regexp-in-string bizarre-regex "\\1" remote-url)))  ;; ex. 'climas/climas'
-     (format "https://bitbucket.org/%s/pull-requests/new?source=%s&target=development"
-             current-project-name
-             (magit-get-current-branch)))))
-
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
