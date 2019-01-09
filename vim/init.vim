@@ -28,7 +28,7 @@ set splitright
 set hid
 
 " autocmd ColorScheme janah highlight Normal ctermbg=235
-colorscheme janah
+colorscheme flatlandia
 
 " make the 101st column stand out
 highlight ColorColumn ctermbg=red
