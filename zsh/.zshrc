@@ -53,8 +53,8 @@ setupstream () {
   git branch --set-upstream-to=origin/$(git_current_branch) $(git_current_branch)
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-fpath=($fpath "${HOME}/.zfunctions")
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"
 
 setxkbmap -option "caps:escape"
