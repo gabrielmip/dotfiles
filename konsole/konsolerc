@@ -9,12 +9,12 @@ Width 1920=700
 Favorites=
 
 [MainWindow]
-Height 1080=507
+Height 1080=1080
 MenuBar=Enabled
-State=AAAA/wAAAAD9AAAAAAAAB4AAAAP+AAAABAAAAAQAAAAIAAAACPwAAAAA
+State=AAAA/wAAAAD9AAAAAAAAA6sAAAQGAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
-Width 1920=939
-Window-Maximized 1080x1920=false
+Width 1920=1920
+Window-Maximized 1080x1920=true
 Window-Maximized 720x1280=true
 Window-Maximized 900x1600=true
 

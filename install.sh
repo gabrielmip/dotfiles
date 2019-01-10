@@ -28,11 +28,18 @@ sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar \
     nautilus \
     rlwrap \
     mysql \
-    meld
+    meld \
+    feh \
+    scrot \
+    i3-gaps \
+    i3lock \
+    i3status \
+    compton
 
 
 yay -S --needed --noconfirm --quiet --noprogressbar \
     albert \
+    ttf-font-awesome-4 \
     visual-studio-code-bin
 
 
@@ -47,9 +54,16 @@ if [ ! -e ~/.config/nvim/bundle/Vundle.vim ]; then
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 fi
 nvim +BundleInstall +qall
-cd ~/.config/nvim/bundle/youcompleteme
-./install.py
+cd ~/.config/nvim/bundle/YouCompleteMe
+python3 install.py
 cd $CONFIGS_FOLDER
+
+
+log "i3-gaps"
+mkdir -p ~/.config/compton
+rmlink $PWD/i3/config ~/.config/i3/config
+rmlink $PWD/i3status/config ~/.config/i3status/config
+rmlink $PWD/compton/compton.conf ~/.config/compton/compton.conf
 
 
 log "KONSOLE"
