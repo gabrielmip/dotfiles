@@ -70,7 +70,7 @@ log "KONSOLE"
 mkdir -p ~/.local/share/konsole
 mkdir -p ~/.config
 rmlink $PWD/konsole/Gabriel.profile ~/.local/share/konsole/Gabriel.profile
-rmlink $PWD/konsole/Breeze.colorscheme ~/.local/share/konsole/Breeze.colorscheme
+rmlink $PWD/konsole/One\ Dark.colorscheme ~/.local/share/konsole/One\ Dark.colorscheme
 rmlink $PWD/konsole/konsolerc ~/.config/konsolerc
 rm -rf ~/.fonts
 rmlink $PWD/fonts ~/.fonts
