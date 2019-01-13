@@ -33,8 +33,7 @@ First of all, the `install.sh` script **DELETES YOUR DOTFILES** so it can create
 
 ## Thanks
 
-- [flumm/Themes](https://github.com/flumm/Themes): Color patterns, Polybar configs and inspiration
-- 
+[flumm/Themes](https://github.com/flumm/Themes): Color patterns, Polybar configs and inspiration
 
 ## Screenshots
 
