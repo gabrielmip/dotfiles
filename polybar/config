@@ -54,13 +54,13 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = Hack:fontformat=truetype:size=10;1
-font-1 = Hack:fontformat=truetype:size=10;1
+font-0 = DejaVu Mono:fontformat=truetype:size=10;1
+font-1 = DejaVu Mono:fontformat=truetype:size=10;1
 font-2 = FontAwesome:fontformat=truetype:size=10;1
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = musicinfo cpu memory
+modules-right = musicinfo pulseaudio cpu memory
 
 tray-position = right
 tray-padding = 9
@@ -117,22 +117,9 @@ wm-restack = i3
 [module/i3]
 type = internal/i3
 ;
-;strip-wsnumbers = true
-;
-;label-focused-padding = 3
-;label-unfocused-padding = 3
-;
-;label-focused-background = ${colors.background-alt}
+strip-wsnumbers = true
 label-unfocused-background = ${colors.my_background}
 label-unfocused-foreground = ${colors.my_foreground}
-;label-unfocused-underline = ${colors.my_foreground}
-;
-;label-mode-padding = 0
-;label-mode-background = ${colors.background-unf}
-;
-;label-visible-underline = ${colors.my_background}
-;label-visible-padding = 4
-
 
 ; Available tokens:
 ;   %mode%
@@ -147,8 +134,7 @@ label-mode-background = ${colors.my_color4}
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-focused = %index%
-;label-focused-foreground = ${colors.my_foreground}
+label-focused = %name%
 label-focused-foreground = ${colors.my_foreground}
 label-focused-background = ${colors.my_background}
 label-focused-underline = ${colors.my_color4}
@@ -159,7 +145,7 @@ label-focused-padding = 2
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = 2
 
 ; Available tokens:
@@ -188,22 +174,21 @@ type = internal/network
 interface = wlo1
 interval = 3.0
 
-;format-connected-background = ${colors.my_background}
-;format-connected = "<ramp-signal><label-connected>"
-;format-connected-underline = #9f78e1
-;label-connected =
-;
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-;
-;ramp-signal-0 = 1
-;ramp-signal-1 = 2
-;ramp-signal-2 = 3
-;ramp-signal-3 = 4
-;ramp-signal-4 = 5
-;ramp-signal-foreground = ${colors.my_foreground}
+format-connected = <ramp-signal> <label-connected>
+format-disconnected =
+
+label-connected = %essid:5%
+label-connected-foreground = #eefafafa
+
+label-disconnected =
+label-disconnected-foreground = #66ffffff
+
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
 
 
 [module/eth]
@@ -248,35 +233,62 @@ format-underline = ${colors.my_color5}
 
 label = %date% %time%
 
+[module/pulseaudio]
+type = internal/pulseaudio
 
-;[module/volume]
-;type = internal/volume
-;
-;format-muted-background = ${colors.my_color1}
-;format-volume-background = ${colors.my_color8}
-;format-volume = <label-volume> <bar-volume>
-;label-muted = SOUND MUTED
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+bar-volume-width = 8
+bar-volume-foreground-0 = ${colors.my_foreground}
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = —
+;bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = —
+;bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.my_foreground}
+
+[module/volume]
+type = internal/volume
+
+format-muted-background = ${colors.my_color1}
+format-volume-background = ${colors.my_color8}
+format-volume = <label-volume> <bar-volume>
+label-muted = SOUND MUTED
 
 ; Only applies if <ramp-volume> is used
-;bar-volume-width = 10
-#ramp-volume-0 = 
-#ramp-volume-1 = 
-#ramp-volume-2 = 
-;bar-volume-foreground-0 = ${colors.my_foreground}
-;bar-volume-foreground-1 = ${colors.my_foreground}
-;bar-volume-foreground-2 = ${colors.my_foreground}
-;bar-volume-foreground-3 = ${colors.my_foreground}
-;bar-volume-foreground-4 = ${colors.my_foreground}
-;bar-volume-foreground-5 = ${colors.my_foreground}
-;bar-volume-foreground-6 = ${colors.my_foreground}
-;bar-volume-gradient = false
-;bar-volume-indicator= |
-;bar-volume-indicator-font = 1
-;bar-volume-fill = ─
-;bar-volume-fill-font = 1
-;bar-volume-empty = ─
-;bar-volume-empty-font = 1
-;bar-volume-empty-foreground = ${colors.my_color1}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+bar-volume-width = 8
+bar-volume-foreground-0 = ${colors.my_foreground}
+bar-volume-foreground-1 = ${colors.my_foreground}
+bar-volume-foreground-2 = ${colors.my_foreground}
+bar-volume-foreground-3 = ${colors.my_foreground}
+bar-volume-foreground-4 = ${colors.my_foreground}
+bar-volume-foreground-5 = ${colors.my_foreground}
+bar-volume-foreground-6 = ${colors.my_foreground}
+bar-volume-gradient = false
+bar-volume-indicator= |
+bar-volume-indicator-font = 1
+bar-volume-fill = ─
+bar-volume-fill-font = 1
+bar-volume-empty = ─
+bar-volume-empty-font = 1
 
 [module/battery]
 type = internal/battery
@@ -321,25 +333,25 @@ animation-charging-foreground = ${colors.my_foreground}
 animation-charging-framerate = 750
 
 
-;[module/temperature]
-;type = internal/temperature
-;thermal-zone = 0
-;warn-temperature = 60
-;
-;format = <ramp> <label>
-;format-underline = #f50a4d
-;format-warn = <ramp> <label-warn>
-;format-warn-underline = ${self.format-underline}
-;
-;label = %temperature%
-;label-warn = %temperature%
-;label-warn-foreground = ${colors.secondary}
-;
-;ramp-0 = 
-;ramp-1 = 
-;ramp-2 = 
-;ramp-foreground = ${colors.foreground-alt}
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
 
+format = <ramp> <label>
+format-underline = ${colors.my_foreground}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+format-prefix = T:
+format-padding = 1
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.my_foreground}
+
+ramp-0 =
+ramp-1 =
+ramp-2 =
 
 ;[module/powermenu]
 ;type = custom/menu
@@ -438,23 +450,14 @@ margin-bottom = 5
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-padding= 1
-format-prefix = "C: "
-format-prefix-foreground = ${colors.my_foreground}
-format-prefix-background = ${colors.my_background}
-format-underline = ${colors.my_foreground}
-label = %percentage%%
+format-padding = 2
+label = CPU %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 2
 format-padding= 1
-format-prefix = "M: "
-format-prefix-foreground = ${colors.my_foreground}
-format-underline = ${colors.my_foreground}
-label = %percentage_used%%
-
-; vim:ft=dosini
+label = MEM %percentage_used%%
 
 [module/xwindow]
 type = internal/xwindow

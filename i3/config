@@ -23,6 +23,7 @@ for_window [class="^.*"] border pixel 0
 new_window pixel 0
 new_float pixel 0
 
+
 # start a terminal
 bindsym $mod+Return exec konsole
 
