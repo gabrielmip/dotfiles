@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 function rmlink {
   ln -sfn $1 $2
 }
@@ -13,8 +12,9 @@ function log {
 CONFIGS_FOLDER="${PWD}"
 ZSH_PLUGINS="${HOME}/.config/zsh_plugins"
 
-sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar \
-    yay \
+sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay
+
+sudo yay -Sy --needed --noconfirm --quiet --noprogressbar \
     neovim \
     konsole \
     zsh \
@@ -29,6 +29,9 @@ sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar \
     rlwrap \
     mysql \
     meld \
+    albert \
+    ttf-font-awesome-4 \
+    visual-studio-code-bin \
     feh \
     scrot \
     i3-gaps \
@@ -40,26 +43,31 @@ sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar \
     compton
 
 
-yay -S --needed --noconfirm --quiet --noprogressbar \
-    albert \
-    ttf-font-awesome-4 \
-    visual-studio-code-bin
-
-
 log "VIM"
 mkdir -p ~/.config/nvim
 rmlink $PWD/vim/init.vim ~/.config/nvim/init.vim
 rmlink $PWD/vim/mappings.vim ~/.config/nvim/mappings.vim
 rmlink $PWD/vim/plugins.vim ~/.config/nvim/plugins.vim
 rmlink $PWD/vim/colors ~/.config/nvim/colors
-
 if [ ! -e ~/.config/nvim/bundle/Vundle.vim ]; then
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 fi
 nvim +BundleInstall +qall
 cd ~/.config/nvim/bundle/YouCompleteMe
-python3 install.py
+python3 install.py --all
 cd $CONFIGS_FOLDER
+
+
+log "VS CODE"
+mkdir -p ~/.config/Code
+rmlink $PWD/Code/User ~/.config/Code/
+
+
+log "SPACEMACS"
+if [ ! -d ~/.emacs.d ]; then
+  git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+fi
+rmlink $PWD/spacemacs/spacemacs ~/.spacemacs
 
 
 log "i3-gaps"
@@ -100,17 +108,6 @@ if [ ! -d $ZSH_PLUGINS/zsh-syntax-highlighting ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting/
 fi
 
-
-log "VS CODE"
-mkdir -p ~/.config/Code
-rmlink $PWD/Code/User ~/.config/Code/
-
-
-log "SPACEMACS"
-if [ ! -d ~/.emacs.d ]; then
-  git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-fi
-rmlink $PWD/spacemacs/spacemacs ~/.spacemacs
 
 log "DOCKER"
 sudo groupadd docker

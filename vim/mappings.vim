@@ -14,5 +14,10 @@ nnoremap ; :
 " FZF
 nnoremap <silent> <C-T> :BTags<CR>
 nnoremap <silent> <C-P> :GFiles<CR>
+nnoremap <silent> <Space>bb :Buffers<CR>
 
 nmap <F8> :TagbarToggle<CR>
+
+nnoremap <silent> <Esc> :noh<CR>
+
+let mapleader=" "

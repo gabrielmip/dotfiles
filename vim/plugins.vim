@@ -7,8 +7,8 @@ call vundle#begin('~/.config/nvim/bundle/')
 Plugin  'VundleVim/Vundle.vim'
 
 Plugin 'mhinz/vim-startify'
-Plugin 'vim-airline/vim-airline' 
-Plugin 'vim-airline/vim-airline-themes' 
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 
 Plugin 'tpope/vim-fugitive'
@@ -17,13 +17,9 @@ Plugin 'mhinz/vim-signify'
 
 Plugin 'w0rp/ale'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
 
-Plugin 'maxbrunsfeld/vim-yankstack'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Yggdroot/indentLine'
-Plugin 'ap/vim-css-color' 
+Plugin 'ap/vim-css-color'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 

@@ -16,8 +16,8 @@ font pango:SF Compact Text, Awesome 11
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-gaps inner 12
-gaps outer 3
+gaps inner 15
+gaps outer 2
 smart_borders on
 for_window [class="^.*"] border pixel 0
 new_window pixel 0
@@ -95,7 +95,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10:MUSIC"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -176,7 +176,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
-exec --no-startup-id feh --randomize --bg-fill /usr/share/antergos/wallpapers
+exec --no-startup-id feh --bg-fill ~/Repos/dotfiles/wallpapers/people-and-mountain.jpg
 exec --no-startup-id compton --config ~/Repos/dotfiles/compton/compton.conf
 exec albert
 
