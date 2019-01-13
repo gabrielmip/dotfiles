@@ -34,6 +34,9 @@ sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar \
     i3-gaps \
     i3lock \
     i3status \
+    ttf-hack \
+    playerctl \
+    rofi \
     compton
 
 
@@ -64,6 +67,10 @@ mkdir -p ~/.config/compton
 rmlink $PWD/i3/config ~/.config/i3/config
 rmlink $PWD/i3status/config ~/.config/i3status/config
 rmlink $PWD/compton/compton.conf ~/.config/compton/compton.conf
+
+
+log "POLYBAR"
+rmlink $PWD/polybar ~/.config/polybar
 
 
 log "KONSOLE"
