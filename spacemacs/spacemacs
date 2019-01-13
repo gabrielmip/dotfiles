@@ -140,8 +140,8 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(zerodark
-                         spacemacs-light
-                         spacemacs-dark)
+                         spacemacs-dark
+                         spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -378,12 +378,14 @@ you should place your code here."
   (add-hook 'js2-mode-hook #'js2-mode-use-eslint-indent)
   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
 
+  (spacemacs/toggle-truncate-lines-on)
+
   (add-hook 'helm-major-mode-hook
    (lambda ()
     (setq auto-composition-mode nil)))
 
+  (setq tab-width 2)
   (tabbar-mode)
-  (spacemacs/toggle-truncate-lines-off)
   (load "~/.emacs.d/tabbar-config.el")
 
  )
@@ -412,7 +414,8 @@ you should place your code here."
  '(json-reformat:indent-width 2)
  '(package-selected-packages
    (quote
-    (ample-zen-theme flycheck-flow vimrc-mode dactyl-mode badwolf-theme zones yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic gandalf-theme sql-indent csv-mode tabbar-ruler tabbar zerodark-theme monokai-theme company-php php-refactor-mode ripgrep angular-snippets company-flow espresso-theme gotham-theme avk-emacs-themes select-themes color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow sublime-themes dark-mint-theme one-themes airline-themes yasnippet-classic-snippets gruvbox-theme tide typescript-mode dracula-theme color-theme-solarized discover-js2-refactor dictionary unfill smeargle orgit mwim magit-gitflow helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub treepy let-alist graphql with-editor company-web web-completion-data company-tern dash-functional tern company-statistics company auto-yasnippet auto-dictionary ac-ispell auto-complete editorconfig mmm-mode markdown-toc markdown-mode gh-md doom-dracula-theme doom-themes web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline paradox spinner exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu evil undo-tree adaptive-wrap restart-emacs request rainbow-delimiters popwin persp-mode pcre2el org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag goto-chg google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-escape eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line)))
+    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic zerodark-theme parent-mode projectile pkg-info epl flx highlight f s dash packed helm avy helm-core async popup angular-snippets company-flow espresso-theme gotham-theme avk-emacs-themes select-themes color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow sublime-themes dark-mint-theme one-themes airline-themes yasnippet-classic-snippets gruvbox-theme tide typescript-mode dracula-theme color-theme-solarized discover-js2-refactor dictionary unfill smeargle orgit mwim magit-gitflow helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub treepy let-alist graphql with-editor company-web web-completion-data company-tern dash-functional tern company-statistics company auto-yasnippet auto-dictionary ac-ispell auto-complete editorconfig mmm-mode markdown-toc markdown-mode gh-md doom-dracula-theme doom-themes web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline paradox spinner exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu evil undo-tree adaptive-wrap restart-emacs request rainbow-delimiters popwin persp-mode pcre2el org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag goto-chg google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-escape eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line)))
+ '(standard-indent 2)
  '(tab-always-indent t)
  '(tabbar-background-color "gray18")
  '(tabbar-separator (quote (0)))

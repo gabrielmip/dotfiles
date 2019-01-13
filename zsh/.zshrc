@@ -1,16 +1,15 @@
 
 HOME=/home/gabriel
-export ZSH="${HOME}/.oh-my-zsh"
 
-ZSH_THEME="muse" # my other favorites: bira, mh
+export ZSH="/home/gabriel/.oh-my-zsh"
+
+ZSH_THEME="bira" # my other favorites: bira, mh, muse
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git brew sudo docker-compose)
-source $ZSH/oh-my-zsh.sh
+plugins=(git sudo docker-compose)
 
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+source $ZSH/oh-my-zsh.sh
 
 alias sr="screen -r"
 alias sS="screen -S"
@@ -21,6 +20,7 @@ alias open=xdg-open
 alias mysql="rlwrap mysql"
 alias mongo="rlwrap mongo"
 alias scheme="rlwrap scheme"
+alias vim="nvim"
 
 export PATH="${HOME}/mongo/bin"
 export PATH="${PATH}:/usr/local/opt/php@7.0/bin"
@@ -53,8 +53,8 @@ setupstream () {
   git branch --set-upstream-to=origin/$(git_current_branch) $(git_current_branch)
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-fpath=($fpath "${HOME}/.zfunctions")
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"
 
 setxkbmap -option "caps:escape"
