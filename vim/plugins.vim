@@ -28,6 +28,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
+Plugin 'leafgarland/typescript-vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -62,8 +64,28 @@ let g:indentLine_color_term = 239
 "------------[ ALE - Linter ]------------
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
+let b:ale_fixers = {'javascript': ['eslint']}
+let b:ale_linters = ['eslint']
 
-"------------[ YouCompleteME ]------------
+"------------[ TagBar ]------------
+let g:tagbar_type_typescript = {
+  \ 'ctagsbin' : 'tstags',
+  \ 'ctagsargs' : '-f-',
+  \ 'kinds': [
+    \ 'e:enums:0:1',
+    \ 'f:function:0:1',
+    \ 't:typealias:0:1',
+    \ 'M:Module:0:1',
+    \ 'I:import:0:1',
+    \ 'i:interface:0:1',
+    \ 'C:class:0:1',
+    \ 'm:method:0:1',
+    \ 'p:property:0:1',
+    \ 'v:variable:0:1',
+    \ 'c:const:0:1',
+  \ ],
+  \ 'sort' : 0
+\ }
 
 "------------[ FZF ]------------
 let g:fzf_layout = { 'down': '~40%' }

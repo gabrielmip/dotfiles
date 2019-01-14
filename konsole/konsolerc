@@ -11,12 +11,15 @@ Favorites=
 [MainWindow]
 Height 1080=1080
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAAnIAAAP8AAAABAAAAAQAAAAIAAAACPwAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB2AAAAP8AAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 Width 1920=1920
 Window-Maximized 1080x1920=true
 Window-Maximized 720x1280=true
 Window-Maximized 900x1600=true
+
+[Notification Messages]
+ShowPasteHugeTextWarning=false
 
 [TabBar]
 TabBarPosition=Top

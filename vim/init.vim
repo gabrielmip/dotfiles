@@ -90,6 +90,11 @@ function! TrimWhiteSpace()
 endfunction
 autocmd BufWritePre * :call TrimWhiteSpace()
 
+" Kills all buffers but reopens the current one
+function! KillBuffs()
+  %bd|e#
+endfunction
+
 
 source $HOME/.config/nvim/mappings.vim
 source $HOME/.config/nvim/plugins.vim
