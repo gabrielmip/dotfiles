@@ -1,14 +1,167 @@
 {
-    "window.zoomLevel": 0,
-    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 15.5,
-    "explorer.confirmDragAndDrop": false,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "workbench.colorTheme": "Dracula Soft",
-    "editor.minimap.enabled": false,
-    "editor.renderWhitespace": "none",
-    "editor.lineNumbers": "relative",
-    "vim.enableNeovim": true,
-    "vim.neovimPath": "/usr/bin/nvim"
+  "editor.fontLigatures": true,
+  "vim.hlsearch": true,
+  "keyboard.dispatch": "keyCode",
+  "editor.minimap.enabled": false,
+  "git.enableSmartCommit": true,
+  "breadcrumbs.enabled": true,
+  "vim.camelCaseMotion.enable": true,
+  "python.jediEnabled": false,
+  "python.linting.pylintArgs": ["--enable=W0614"],
+  "editor.fontFamily": "'Fira Code', monospace, 'Droid Sans Fallback'",
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "liveshare.audio.joinCallBehavior": "accept",
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "files.trimTrailingWhitespace": true,
+  "workbench.iconTheme": "vs-nomo-dark",
+  "explorer.confirmDelete": false,
+  "window.menuBarVisibility": "toggle",
+  "explorer.compactFolders": false,
+  "workbench.editor.labelFormat": "short",
+  "kite.showWelcomeNotificationOnStartup": false,
+  "[javascriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "bracket-pair-colorizer-2.excludedLanguages": [
+    "php",
+    "javascript",
+    "typescript",
+    "html",
+    "markdown",
+    "python"
+  ],
+  "gitlens.codeLens.enabled": false,
+  "vim.handleKeys": {
+    "<C-f>": false,
+    "<C-h>": false,
+    "<C-n>": false,
+    "<C-k>": false
+  },
+  "editor.cursorBlinking": "solid",
+  "python.linting.mypyArgs": [],
+  "editor.parameterHints.cycle": true,
+  "explorer.confirmDragAndDrop": false,
+  "markdown.extension.list.indentationSize": "inherit",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "window.zoomLevel": 0,
+  "editor.parameterHints.enabled": false,
+  "editor.semanticHighlighting.enabled": false,
+  "workbench.activityBar.visible": true,
+  "markdown.styles": [],
+  "eslint.packageManager": "yarn",
+  "[plaintext]": {
+    "editor.wordWrap": "on"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": false,
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[html]": {
+    "editor.formatOnSave": false
+  },
+  "liveshare.allowGuestDebugControl": true,
+  "workbench.colorTheme": "Gatito Theme",
+  "editor.tokenColorCustomizations": {
+    "[Gatito Theme]": {
+      "textMateRules": [
+        {
+          "scope": "markup.heading",
+          "settings": {
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": "markup.bold",
+          "settings": {
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": "markup.italic",
+          "settings": {
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "scope": "markup.inline.raw",
+          "settings": {
+            "foreground": "#99C794"
+          }
+        },
+        {
+          "scope": "markup.quote",
+          "settings": {
+            "foreground": "#99C794",
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "scope": "storage",
+          "settings": {
+            "foreground": "#C594C5"
+          }
+        },
+        // {
+        //   "scope": "constant",
+        //   "settings": {
+        //     "foreground": "#e4a871"
+        //   }
+        // }
+      ]
+    }
+  },
+  "workbench.colorCustomizations": {
+    "[Gatito Theme]": {
+      "editorLineNumber.foreground": "#7F7F7F"
+    }
+  },
+  "python.languageServer": "Pylance",
+  "python.showStartPage": false,
+  "eslint.run": "onSave",
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.lineNumbers": "relative",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[clojure]": {
+    "editor.renderIndentGuides": false
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "extensions.ignoreRecommendations": true,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "todo-tree.highlights.enabled": false
 }

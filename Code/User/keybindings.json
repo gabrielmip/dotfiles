@@ -1,8 +1,33 @@
-// Place your key bindings in this file to overwrite the defaults
+// Place your key bindings in this file to override the defaults
 [
-    {   
-        "key": "capslock",
-        "command": "extension.vim_escape",
-        "when": "editorTextFocus && vim.active && !inDebugRepl"
-    }
+    {
+        "key": "ctrl+e",
+        "command": "clojureVSCode.eval"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "clojureVSCode.evalAndShowResult"
+    },
+    {
+        "key": "ctrl+k c",
+        "command": "workbench.action.toggleCenteredLayout"
+    },
+    {
+        "key": "ctrl+m m",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": {
+            "langId": "markdown",
+            "name": "Insert metadata"
+        }
+    },
+    {
+        "key": "ctrl+m n",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": {
+            "langId": "markdown",
+            "name": "Journal prefix"
+        }
+    },
 ]
