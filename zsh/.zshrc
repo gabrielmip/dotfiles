@@ -1,26 +1,35 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 
 HOME=/home/gabriel
 
 export ZSH="/home/gabriel/.oh-my-zsh"
 
-ZSH_THEME="bira" # my other favorites: bira, mh, muse
+ZSH_THEME="mortalscumbag" # my other favorites: bira, mh, muse
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git sudo docker-compose)
+plugins=(git sudo docker-compose fzf-zsh)
 
 source $ZSH/oh-my-zsh.sh
 
 alias sr="screen -r"
 alias sS="screen -S"
 alias ap="ansible-playbook"
-alias start-climas="cd ~/waycarbon/build-scripts/dockerfiles && docker-compose -f docker-compose-buildserver.yml up"
+alias start-climas="docker start climas-mongo climas-mysql && cd ~/WayCarbon/projetos && bash start.sh"
+alias stop-climas="cd ~/WayCarbon/projetos && bash stop.sh && docker stop climas-mongo climas-mysql"
 alias gpoh="git push origin HEAD"
 alias open=xdg-open
-alias mysql="rlwrap mysql"
-alias mongo="rlwrap mongo"
 alias scheme="rlwrap scheme"
 alias vim="nvim"
+alias way="cd ~/WayCarbon/projetos"
+alias containers='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
+# alias rs="way && bash restart-service.sh"
 
 export PATH="${HOME}/mongo/bin"
 export PATH="${PATH}:/usr/local/opt/php@7.0/bin"
@@ -33,6 +42,15 @@ export PATH="${PATH}:${HOME}/Library/Python/2.7/lib/python/site-packages"
 export PATH="${PATH}:/usr/local/lib/python2.7/site-packages"
 export PATH="${PATH}:/usr/local/opt/mongodb@3.2/bin"
 export PATH="${PATH}:${HOME}/.local/bin"
+export PATH="${PATH}:${HOME}/.yarn/bin"
+export PATH="${PATH}:/usr/local/apps/liquibase"
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export ANDROID_HOME="${HOME}/Android/Sdk"
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export HD=/run/media/gabriel/Geral
+
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -53,11 +71,23 @@ setupstream () {
   git branch --set-upstream-to=origin/$(git_current_branch) $(git_current_branch)
 }
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+# restart service in waycarbon's climas dev infrastructure
+rs () {
+  CURRENT=$PWD
+  way
+  bash restart-service.sh $1
+  cd $CURRENT
+  unset CURRENT
+}
+
 FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"
 
 setxkbmap -option "caps:escape"
 setxkbmap -layout us -variant intl
 
 source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source /usr/share/nvm/init-nvm.sh

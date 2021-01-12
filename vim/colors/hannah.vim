@@ -36,7 +36,7 @@ highlight WildMenu guifg=#df005f ctermfg=161 guibg=#3a3a3a ctermbg=237 gui=bold 
 " Cursor lines {{{1
 
 highlight CursorColumn ctermfg=NONE guibg=#303030 ctermbg=236 gui=NONE cterm=NONE
-highlight CursorLine ctermfg=NONE guibg=#303030 ctermbg=236 gui=NONE cterm=NONE
+highlight CursorLine ctermfg=NONE guibg=#595959 ctermbg=236 gui=NONE cterm=NONE
 
 " Tabline {{{1
 
@@ -51,8 +51,7 @@ highlight StatusLineNC guifg=#808080 ctermfg=244 guibg=#3a3a3a ctermbg=237 gui=N
 
 " Number column {{{1
 
-" highlight CursorLineNr guifg=#ffff00 ctermfg=184 guibg=#3a3a3a ctermbg=237 gui=bold cterm=bold
-highlight CursorLineNr guifg=#878787 ctermfg=102 guibg=#3a3a3a ctermbg=237 gui=NONE cterm=NONE
+highlight CursorLineNr guifg=#ffff00 ctermfg=184 guibg=#3a3a3a ctermbg=237 gui=bold cterm=bold
 highlight LineNr guifg=#878787 ctermfg=102 guibg=#3a3a3a ctermbg=237 gui=NONE cterm=NONE
 
 " Color column {{{1
@@ -88,6 +87,7 @@ highlight WarningMsg guifg=#c0c0c0 ctermfg=7 guibg=#005fdf ctermbg=26 gui=NONE c
 
 " Visual {{{1
 
+" highlight Visual guifg=#c0c0c0 ctermfg=7 guibg=#005f87 ctermbg=24 gui=NONE cterm=NONE
 highlight Visual guifg=#c0c0c0 ctermfg=7 guibg=#005f87 ctermbg=24 gui=NONE cterm=NONE
 highlight VisualNOS guifg=#c0c0c0 ctermfg=7 guibg=#5f5f87 ctermbg=60 gui=NONE cterm=NONE
 
@@ -135,6 +135,9 @@ highlight StartifySection guifg=#dfafaf ctermfg=181 guibg=NONE ctermbg=NONE gui=
 highlight StartifySelect guifg=#5fdfff ctermfg=81 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 highlight StartifySlash guifg=#585858 ctermfg=240 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 highlight StartifySpecial guifg=#585858 ctermfg=240 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+
+" Plugin: vim-illuminate
+highlight illuminatedWord ctermfg=NONE guibg=NONE ctermbg=242 gui=NONE cterm=NONE
 
 " Neovim {{{1
 

@@ -15,32 +15,33 @@ ZSH_PLUGINS="${HOME}/.config/zsh_plugins"
 sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay
 
 sudo yay -Sy --needed --noconfirm --quiet --noprogressbar \
-    neovim \
-    konsole \
-    zsh \
+#    neovim \
+#    konsole \
+#    zsh \
     zsh-completions \
     fzf \
     ripgrep \
-    emacs \
-    chromium \
+#    emacs \
+#    chromium \
     ctags \
     screen \
-    nautilus \
-    rlwrap \
-    mysql \
+#    nautilus \
+#    rlwrap \
+#    mysql \
     meld \
-    albert \
-    ttf-font-awesome-4 \
-    visual-studio-code-bin \
-    feh \
-    scrot \
-    i3-gaps \
-    i3lock \
-    i3status \
-    ttf-hack \
-    playerctl \
-    rofi \
-    compton
+    docker
+#    albert \
+#    ttf-font-awesome-4 \
+#    visual-studio-code-bin \
+#    feh \
+#    scrot \
+#    i3-gaps \
+#    i3lock \
+#    i3status \
+#    ttf-hack \
+#    playerctl \
+#    rofi \
+#    compton
 
 
 log "VIM"
@@ -63,38 +64,38 @@ mkdir -p ~/.config/Code
 rmlink $PWD/Code/User ~/.config/Code/
 
 
-log "SPACEMACS"
-if [ ! -d ~/.emacs.d ]; then
-  git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-fi
-rmlink $PWD/spacemacs/spacemacs ~/.spacemacs
+#log "SPACEMACS"
+#if [ ! -d ~/.emacs.d ]; then
+#  git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+#fi
+#rmlink $PWD/spacemacs/spacemacs ~/.spacemacs
 
 
-log "i3-gaps"
-mkdir -p ~/.config/compton
-rmlink $PWD/i3/config ~/.config/i3/config
-rmlink $PWD/i3status/config ~/.config/i3status/config
-rmlink $PWD/compton/compton.conf ~/.config/compton/compton.conf
+#log "i3-gaps"
+#mkdir -p ~/.config/compton
+#rmlink $PWD/i3/config ~/.config/i3/config
+#rmlink $PWD/i3status/config ~/.config/i3status/config
+#rmlink $PWD/compton/compton.conf ~/.config/compton/compton.conf
+#
+#
+#log "POLYBAR"
+#rmlink $PWD/polybar ~/.config/polybar
+#
+#
+#log "KONSOLE"
+#mkdir -p ~/.local/share/konsole
+#mkdir -p ~/.config
+#rmlink $PWD/konsole/Gabriel.profile ~/.local/share/konsole/Gabriel.profile
+#rmlink $PWD/konsole/One\ Dark.colorscheme ~/.local/share/konsole/One\ Dark.colorscheme
+#rmlink $PWD/konsole/konsolerc ~/.config/konsolerc
+#rm -rf ~/.fonts
+#rmlink $PWD/fonts ~/.fonts
+#fc-cache -f -v
 
 
-log "POLYBAR"
-rmlink $PWD/polybar ~/.config/polybar
-
-
-log "KONSOLE"
-mkdir -p ~/.local/share/konsole
-mkdir -p ~/.config
-rmlink $PWD/konsole/Gabriel.profile ~/.local/share/konsole/Gabriel.profile
-rmlink $PWD/konsole/One\ Dark.colorscheme ~/.local/share/konsole/One\ Dark.colorscheme
-rmlink $PWD/konsole/konsolerc ~/.config/konsolerc
-rm -rf ~/.fonts
-rmlink $PWD/fonts ~/.fonts
-fc-cache -f -v
-
-
-log "ALBERT"
-mkdir -p ~/.config/albert
-rmlink $PWD/albert/albert.conf ~/.config/albert/albert.conf
+#log "ALBERT"
+#mkdir -p ~/.config/albert
+#rmlink $PWD/albert/albert.conf ~/.config/albert/albert.conf
 
 
 log "ZSH"

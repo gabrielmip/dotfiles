@@ -27,12 +27,8 @@ set splitbelow
 set splitright
 set hid
 
-autocmd ColorScheme hannah highlight Normal ctermbg=235
-colorscheme hannah
-
-" make the 101st column stand out
-highlight ColorColumn ctermbg=red
-call matchadd('ColorColumn', '\%101v', 100)
+" " fix syntax highlighting
+" autocmd FileType javascript syn sync ccomment javaScriptComment
 
 " Always turn on syntax highlighting for diffs
 " EITHER select by the file-suffix directly...
@@ -82,7 +78,7 @@ function! SynStack()
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+endfunction
 
 
 function! TrimWhiteSpace()
@@ -98,3 +94,7 @@ endfunction
 
 source $HOME/.config/nvim/mappings.vim
 source $HOME/.config/nvim/plugins.vim
+
+" It looks like this setting is being overwritten by a plugin or something.
+" set conceallevel=0
+let g:vim_json_syntax_conceal = 0

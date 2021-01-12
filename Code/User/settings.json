@@ -8,5 +8,7 @@
     "workbench.colorTheme": "Dracula Soft",
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim"
 }
