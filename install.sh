@@ -19,6 +19,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
     zsh \
     zsh-completions \
     fzf \
+    fzf-extras \
     ripgrep \
     ctags \
     screen \
