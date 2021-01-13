@@ -11,4 +11,4 @@ Configuration files for my desktop.
 
 ## Disclaimer
 
-First of all, the `install.sh` script **DELETES YOUR DOTFILES** so it can create symbolic links after. Back them up first if you want to use the installation script.
+The `install.sh` script **DELETES YOUR DOTFILES** so it can create symbolic links after. Back them up first if you want to use this installation script.
