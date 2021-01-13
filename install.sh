@@ -25,6 +25,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
     screen \
     docker \
     visual-studio-code-bin \
+    dropbox \
     ttf-firacode
 
 
@@ -58,8 +59,10 @@ if [ ! -d $ZSH_PLUGINS/zsh-syntax-highlighting ]; then
 fi
 
 
+log "DROPBOX"
+dropbox # it opens the browser to log in and etc
+
 log "DOCKER"
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 newgrp docker
-
