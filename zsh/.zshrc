@@ -5,7 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
 HOME=/home/gabriel
 
 export ZSH="/home/gabriel/.oh-my-zsh"
@@ -21,26 +20,14 @@ source $ZSH/oh-my-zsh.sh
 alias sr="screen -r"
 alias sS="screen -S"
 alias ap="ansible-playbook"
-alias start-climas="docker start climas-mongo climas-mysql && cd ~/WayCarbon/projetos && bash start.sh"
-alias stop-climas="cd ~/WayCarbon/projetos && bash stop.sh && docker stop climas-mongo climas-mysql"
 alias gpoh="git push origin HEAD"
 alias open=xdg-open
 alias scheme="rlwrap scheme"
 alias vim="nvim"
-alias way="cd ~/WayCarbon/projetos"
 alias containers='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
-# alias rs="way && bash restart-service.sh"
 
-export PATH="${HOME}/mongo/bin"
-export PATH="${PATH}:/usr/local/opt/php@7.0/bin"
-export PATH="${PATH}:/usr/local/opt/php@7.0/sbin"
 export PATH="${PATH}:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="${PATH}:/Library/TeX/Distributions/Programs/texbin"
-export PATH="${PATH}:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin"
-export PATH="${PATH}:${HOME}/.cargo/bin"
-export PATH="${PATH}:${HOME}/Library/Python/2.7/lib/python/site-packages"
-export PATH="${PATH}:/usr/local/lib/python2.7/site-packages"
-export PATH="${PATH}:/usr/local/opt/mongodb@3.2/bin"
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${HOME}/.yarn/bin"
 export PATH="${PATH}:/usr/local/apps/liquibase"
@@ -50,7 +37,6 @@ export ANDROID_HOME="${HOME}/Android/Sdk"
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export HD=/run/media/gabriel/Geral
-
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -63,31 +49,18 @@ mkcdir () {
   mkdir -p -- "$1" && cd -P -- "$1"
 }
 
-getin () {
-  docker exec -it climas-$1 bash
-}
-
 setupstream () {
   git branch --set-upstream-to=origin/$(git_current_branch) $(git_current_branch)
-}
-
-# restart service in waycarbon's climas dev infrastructure
-rs () {
-  CURRENT=$PWD
-  way
-  bash restart-service.sh $1
-  cd $CURRENT
-  unset CURRENT
 }
 
 FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"
 
 setxkbmap -option "caps:escape"
-setxkbmap -layout us -variant intl
 
 source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/fzf/fzf-extras.zsh
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
