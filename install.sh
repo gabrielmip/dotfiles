@@ -18,6 +18,8 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
     neovim \
     zsh \
     zsh-completions \
+    ranger \
+    bat \
     fzf \
     fzf-extras \
     ripgrep \
