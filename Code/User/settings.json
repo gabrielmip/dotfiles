@@ -150,7 +150,7 @@
   },
   "editor.lineNumbers": "relative",
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[clojure]": {
     "editor.renderIndentGuides": false

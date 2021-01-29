@@ -18,17 +18,21 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
     neovim \
     zsh \
     zsh-completions \
-    ranger \
-    bat \
+    ranger \ # terminal file browser with vim-like shortcuts
+    bat \ # alternative to cat
     fzf \
     fzf-extras \
     ripgrep \
-    ctags \
+    ctags \ # for vim tags
     screen \
     docker \
     visual-studio-code-bin \
     dropbox \
-    ttf-firacode
+    ttf-firacode \
+    i3-gaps \ # window manager
+    feh \ # set background images
+    wmctrl
+
 
 
 log "VIM"
