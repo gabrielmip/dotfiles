@@ -60,7 +60,11 @@ source /home/gabriel/.config/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-high
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
-source $HOME/.alude-aliases
+
+if [[ -e $HOME/.alude-aliases ]]
+then
+  source $HOME/.alude-aliases
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
