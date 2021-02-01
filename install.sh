@@ -52,6 +52,11 @@ mkdir -p ~/.config/Code
 rmlink $PWD/Code/User ~/.config/Code/
 
 
+log "I3"
+mkdir -p ~/.config/i3
+rmlink $PWD/i3/config ~/.config/i3/config
+rmlink $PWD/xsessions/plasma-i3.desktop /usr/share/xsessions/plasma-i3.desktop # probably needs sudo
+
 
 log "ZSH"
 if [ ! -d ~/.oh-my-zsh ]; then
