@@ -144,7 +144,6 @@
   },
   "python.languageServer": "Pylance",
   "python.showStartPage": false,
-  "eslint.run": "onSave",
   "[svelte]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
