@@ -25,9 +25,6 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
     fzf-extras \
     ripgrep \
     ctags \ # for vim tags
-    nautilus \
-    sushi \ # nautilus quick preview
-    nautilus-dropbox \
     screen \
     docker \
     meld \ # difftool
