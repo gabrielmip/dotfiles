@@ -16,6 +16,7 @@ sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay
 
 yay -Sy --needed --noconfirm --quiet --noprogressbar \
     neovim \
+    konsole \
     zsh \
     zsh-completions \
     ranger \ # terminal file browser with vim-like shortcuts
@@ -24,8 +25,15 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
     fzf-extras \
     ripgrep \
     ctags \ # for vim tags
+    nautilus \
+    sushi \ # nautilus quick preview
+    nautilus-dropbox \
     screen \
     docker \
+    meld \ # difftool
+    gimp \
+    inkscape \
+    gwenview \ # simpler image edition/preview
     visual-studio-code-bin \
     dropbox \
     ttf-firacode \

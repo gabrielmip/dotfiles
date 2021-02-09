@@ -157,5 +157,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "extensions.ignoreRecommendations": true,
   "workbench.editorAssociations": [],
-  "todo-tree.highlights.enabled": false
+  "todo-tree.highlights.enabled": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }

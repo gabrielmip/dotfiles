@@ -60,17 +60,15 @@ bindsym $mod+Shift+q kill
 # exec_always --no-startup-id picom -bcC
 
 # wallpaper
-# exec_always --no-startup-id feh --bg-scale /home/gabriel/Imagens/Papéis\ de\ parede/wallhaven-xl32ql.jpg
+exec --no-startup-id xsetroot -solid "#15434c"
 
-########################## i3-gaps ##########################
-gaps inner 6
+# i3-gaps
+gaps inner 15
 gaps outer 2
 smart_gaps on
 smart_borders on
-# for_window [class="^.*"] border pixel 2
 new_window pixel 2
 new_float pixel 0
-####################################################
 
 # Plasma compatibility improvements
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
