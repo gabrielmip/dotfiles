@@ -5,10 +5,6 @@
         "command": "clojureVSCode.eval"
     },
     {
-        "key": "ctrl+shift+e",
-        "command": "clojureVSCode.evalAndShowResult"
-    },
-    {
         "key": "ctrl+k c",
         "command": "workbench.action.toggleCenteredLayout"
     },
