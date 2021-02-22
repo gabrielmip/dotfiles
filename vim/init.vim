@@ -103,7 +103,6 @@ function! WriteMode()
     set linebreak
     set nolist
     set textwidth=80
-    echo "Write on."
   else
     nunmap j
     nunmap k
@@ -113,6 +112,8 @@ function! WriteMode()
     set textwidth=0
   endif
 endfunction
+
+command -nargs=0 WriteMode call WriteMode()
 
 source $HOME/.config/nvim/mappings.vim
 source $HOME/.config/nvim/plugins.vim

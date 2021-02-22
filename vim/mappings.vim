@@ -39,3 +39,6 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " saving with control + s
 nnoremap <C-S> :w<CR>
+
+" write mode
+map <silent> <Space>z :WriteMode<CR>

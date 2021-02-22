@@ -25,7 +25,6 @@ alias open=xdg-open
 alias vim="nvim"
 alias containers='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
 alias compose="docker-compose"
-alias regs="cd ~/Dropbox/Registros && vim"
 
 export PATH="${PATH}:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="${PATH}:/Library/TeX/Distributions/Programs/texbin"
@@ -52,6 +51,14 @@ mkcdir () {
 
 setupstream () {
   git branch --set-upstream-to=origin/$(git_current_branch) $(git_current_branch)
+}
+
+regs () {
+  CURRENT=$PWD
+  cd ~/Dropbox/Registros
+  vim
+  cd $CURRENT
+  unset CURRENT
 }
 
 FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"
