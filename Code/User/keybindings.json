@@ -26,4 +26,16 @@
             "name": "Journal prefix"
         }
     },
+    {
+        "key": "ctrl+k b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+k a",
+        "command": "workbench.action.toggleActivityBarVisibility"
+    },
 ]

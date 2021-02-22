@@ -27,9 +27,6 @@ set splitbelow
 set splitright
 set hid
 
-" " fix syntax highlighting
-" autocmd FileType javascript syn sync ccomment javaScriptComment
-
 " Always turn on syntax highlighting for diffs
 " EITHER select by the file-suffix directly...
 augroup PatchDiffHighlight
@@ -80,7 +77,6 @@ function! SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
 
-
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
@@ -91,6 +87,32 @@ function! KillBuffs()
   %bd|e#
 endfunction
 
+function! WriteMode()
+  if !exists('g:write_mode_active')
+    let g:write_mode_active = 1
+  else
+    let g:write_mode_active = !g:write_mode_active
+  endif
+
+  if g:write_mode_active == 1
+    map j gj
+    map k gk
+    map $ g$
+    map 0 g0
+    set wrap
+    set linebreak
+    set nolist
+    set textwidth=80
+    echo "Write on."
+  else
+    nunmap j
+    nunmap k
+    nunmap $
+    nunmap 0
+    set nowrap
+    set textwidth=0
+  endif
+endfunction
 
 source $HOME/.config/nvim/mappings.vim
 source $HOME/.config/nvim/plugins.vim
@@ -98,3 +120,4 @@ source $HOME/.config/nvim/plugins.vim
 " It looks like this setting is being overwritten by a plugin or something.
 " set conceallevel=0
 let g:vim_json_syntax_conceal = 0
+

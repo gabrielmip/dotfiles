@@ -7,9 +7,7 @@ Plugin  'VundleVim/Vundle.vim'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'rakr/vim-two-firewatch'
 Plugin 'ajmwagar/vim-deus'
-Plugin 'arthurxavierx/vim-notebook'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -28,7 +26,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 
-
 Plugin 'scrooloose/nerdTree'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -36,13 +33,14 @@ Plugin 'junegunn/fzf.vim'
 call vundle#end()
 filetype plugin indent on
 
+colorscheme deus
+
 "------------[ vim-airline ]------------
 let g:airline_theme='deus'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_symbols.branch = '⎇'
-" let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#ale#enabled = 1
 
@@ -125,10 +123,6 @@ if (empty($TMUX))
     let g:deus_termcolors=256
   endif
 endif
-
-" set background=dark
-colorscheme deus
-
 
 "------------[ Markdown ]------------
 let g:vim_markdown_conceal = 0

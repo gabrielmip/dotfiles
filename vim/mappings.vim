@@ -22,11 +22,8 @@ nnoremap <silent> <Space>c :Commands<CR>
 nnoremap <Space>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <silent> <Space>s :Rg <C-r><C-w><CR>
 
-" go to definition of functions, vars, etc
-nnoremap <silent> <Space>d :ALEGoToDefinition<CR>zz
-
 " go to latest opened buffer
-nnoremap <silent> <Space><Tab> :e #<CR>
+noremap <silent> <Space><Tab> :e #<CR>
 
 " when in normal mode, stop highlighting search results
 nnoremap <silent> <Esc> :noh<CR>
@@ -39,3 +36,6 @@ inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 " deoplete completion on tab
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" saving with control + s
+nnoremap <C-S> :w<CR>

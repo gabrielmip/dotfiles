@@ -6,8 +6,9 @@
   "git.enableSmartCommit": true,
   "breadcrumbs.enabled": true,
   "vim.camelCaseMotion.enable": true,
-  "python.jediEnabled": false,
-  "python.linting.pylintArgs": ["--enable=W0614"],
+  "python.linting.pylintArgs": [
+    "--enable=W0614"
+  ],
   "editor.fontFamily": "'Fira Code', monospace, 'Droid Sans Fallback'",
   "emmet.syntaxProfiles": {
     "javascript": "jsx"
@@ -25,7 +26,6 @@
   "window.menuBarVisibility": "toggle",
   "explorer.compactFolders": false,
   "workbench.editor.labelFormat": "short",
-  "kite.showWelcomeNotificationOnStartup": false,
   "[javascriptreact]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
@@ -40,8 +40,7 @@
   "[typescript]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
   },
   "[typescriptreact]": {
     "editor.codeActionsOnSave": {
@@ -69,10 +68,8 @@
   "explorer.confirmDragAndDrop": false,
   "markdown.extension.list.indentationSize": "inherit",
   "diffEditor.ignoreTrimWhitespace": false,
-  "window.zoomLevel": 0,
   "editor.parameterHints.enabled": false,
   "editor.semanticHighlighting.enabled": false,
-  "workbench.activityBar.visible": true,
   "markdown.styles": [],
   "eslint.packageManager": "yarn",
   "[plaintext]": {
@@ -81,7 +78,7 @@
   "[markdown]": {
     "editor.wordWrap": "on",
     "editor.quickSuggestions": false,
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
   },
   "[html]": {
     "editor.formatOnSave": false
@@ -127,13 +124,7 @@
           "settings": {
             "foreground": "#C594C5"
           }
-        },
-        // {
-        //   "scope": "constant",
-        //   "settings": {
-        //     "foreground": "#e4a871"
-        //   }
-        // }
+        }
       ]
     }
   },
@@ -144,9 +135,6 @@
   },
   "python.languageServer": "Pylance",
   "python.showStartPage": false,
-  "[svelte]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "editor.lineNumbers": "relative",
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -157,7 +145,8 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "extensions.ignoreRecommendations": true,
   "workbench.editorAssociations": [],
-  "todo-tree.highlights.enabled": false,
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+  "rewrap.autoWrap.enabled": true,
+  "rewrap.wrappingColumn": 100,
+  "workbench.activityBar.visible": false
 }
