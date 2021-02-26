@@ -55,7 +55,6 @@
     "markdown",
     "python"
   ],
-  "gitlens.codeLens.enabled": false,
   "vim.handleKeys": {
     "<C-f>": false,
     "<C-h>": false,
@@ -84,7 +83,7 @@
     "editor.formatOnSave": false
   },
   "liveshare.allowGuestDebugControl": true,
-  "workbench.colorTheme": "Gatito Theme",
+  "workbench.colorTheme": "Dracula",
   "editor.tokenColorCustomizations": {
     "[Gatito Theme]": {
       "textMateRules": [
@@ -148,5 +147,7 @@
   "editor.suggestSelection": "first",
   "rewrap.autoWrap.enabled": true,
   "rewrap.wrappingColumn": 100,
-  "workbench.activityBar.visible": false
+  "workbench.activityBar.visible": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.enabled": false
 }

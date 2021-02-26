@@ -103,6 +103,7 @@ function! WriteMode()
     set linebreak
     set nolist
     set textwidth=80
+    echo 'WriteMode enabled.'
   else
     nunmap j
     nunmap k
@@ -110,10 +111,26 @@ function! WriteMode()
     nunmap 0
     set nowrap
     set textwidth=0
+    echo 'WriteMode disabled.'
   endif
 endfunction
 
-command -nargs=0 WriteMode call WriteMode()
+function! ListFiles()
+  if isdirectory(expand(getcwd() . '/.git'))
+    :GFiles
+  else
+    :Files
+  endif
+endfunction
+
+if !exists(':WriteMode')
+  command -nargs=0 WriteMode call WriteMode()
+endif
+
+if !exists(':ListFiles')
+  command -nargs=0 ListFiles call ListFiles()
+endif
+
 
 source $HOME/.config/nvim/mappings.vim
 source $HOME/.config/nvim/plugins.vim
@@ -121,4 +138,5 @@ source $HOME/.config/nvim/plugins.vim
 " It looks like this setting is being overwritten by a plugin or something.
 " set conceallevel=0
 let g:vim_json_syntax_conceal = 0
+autocmd FileType json set foldmethod=syntax
 

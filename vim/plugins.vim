@@ -46,7 +46,7 @@ let g:airline#extensions#ale#enabled = 1
 
 "------------[ IndentLine ]------------
 let g:indentLine_char = '▏'
-" let g:indentLine_color_term = 239
+let g:indentLine_color_term = 229
 autocmd Filetype json :IndentLinesDisable
 
 "------------[ ALE - Linter ]------------
