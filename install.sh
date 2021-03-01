@@ -35,12 +35,21 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
     dropbox \
     ttf-firacode \
     i3-gaps \ # window manager
-    feh \ # set background images
-    wmctrl
-
+    feh # set background images
 
 
 log "VIM"
+# nvim autocomplete and language server things
+# I might have to install pip, but I am not sure
+pip install --user msgpack
+pip install --user neovim
+pip install --user pynvim
+pip install --user 'python-language-server[all]'
+pip install --user pyls-mypy
+yay -Sy --noconfirm yarn
+yarn global add typescript
+
+# configs and plugin install
 mkdir -p ~/.config/nvim
 rmlink $PWD/vim/init.vim ~/.config/nvim/init.vim
 rmlink $PWD/vim/mappings.vim ~/.config/nvim/mappings.vim

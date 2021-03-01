@@ -27,6 +27,10 @@ set splitbelow
 set splitright
 set hid
 
+" Omnicompletion
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
 " Always turn on syntax highlighting for diffs
 " EITHER select by the file-suffix directly...
 augroup PatchDiffHighlight
@@ -103,6 +107,7 @@ function! WriteMode()
     set linebreak
     set nolist
     set textwidth=80
+    set spell spelllang=pt_br
     echo 'WriteMode enabled.'
   else
     nunmap j
@@ -111,6 +116,7 @@ function! WriteMode()
     nunmap 0
     set nowrap
     set textwidth=0
+    set nospell
     echo 'WriteMode disabled.'
   endif
 endfunction

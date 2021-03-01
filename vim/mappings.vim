@@ -8,6 +8,7 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <silent> <C-N> :bp<CR>
 nnoremap <silent> <C-M> :bn<CR>
 
+
 " Damian Conway's suggestion. Why not?
 nnoremap ; :
 
@@ -29,10 +30,6 @@ noremap <silent> <Space><Tab> :e #<CR>
 nnoremap <silent> <Esc> :noh<CR>
 
 let leader=" "
-
-" to fix failed syntax highlighting
-noremap <F12> <Esc>:syntax sync fromstart<CR>
-inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 " deoplete completion on tab
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"

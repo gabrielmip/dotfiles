@@ -12,9 +12,13 @@ Plugin 'ajmwagar/vim-deus'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'w0rp/ale'
-Plugin 'Shougo/deoplete.nvim'
 Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'dense-analysis/ale'
+Plugin 'Shougo/deoplete.nvim'
+
+" requirements for deoplete
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
 
 Plugin 'sheerun/vim-polyglot'
 Plugin 'plasticboy/vim-markdown'
@@ -51,22 +55,32 @@ autocmd Filetype json :IndentLinesDisable
 
 "------------[ ALE - Linter ]------------
 let g:ale_sign_column_always = 0
+let g:ale_completion_enabled = 0
+let g:ale_completion_autoimport = 1
 let g:ale_linters_explicit = 1
-let g:ale_fixers = {'javascript': ['eslint']}
+let g:ale_fix_on_save = 1
+let g:ale_floating_preview = 1
+let g:ale_set_balloons = 1
+
+
+let g:ale_fixers = {
+  \ 'javascript': ['eslint', 'tsserver'],
+\}
 let g:ale_linters = {
   \ 'javascript': ['eslint'],
-  \ 'python': ['flake8', 'pylint'],
-  \ 'php': ['langserver', 'phpmd'],
-  \ 'vim': ['vint'],
-  \ 'typescript': ['tslint']
+  \ 'python': ['pyls'],
+  \ 'typescript': ['tsserver']
 \}
 
-nmap <silent> <F20> <Plug>(ale_previous_wrap)
-nmap <silent> <F8> <Plug>(ale_next_wrap)
+
+" nmap <silent> <F20> <Plug>(ale_previous_wrap)
+" nmap <silent> <F8> <Plug>(ale_next_wrap)
 
 "------------[ Deoplete ]------------
 let g:deoplete#enable_at_startup = 1
-let g:python3_host_prog = "/usr/bin/python3"
+call deoplete#custom#option('sources', {
+\ '*': ['ale', 'tag', 'buffer'],
+\})
 
 "------------[ FZF ]------------
 let g:fzf_layout = { 'down': '~40%' }
@@ -123,6 +137,9 @@ if (empty($TMUX))
     let g:deus_termcolors=256
   endif
 endif
+
+let g:indentLine_color_term = 241
+let g:indentLine_color_gui = '#665c54'
 
 "------------[ Markdown ]------------
 let g:vim_markdown_conceal = 0
