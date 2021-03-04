@@ -27,6 +27,9 @@ set splitbelow
 set splitright
 set hid
 
+set wildmenu
+set path+=**
+
 " Omnicompletion
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
@@ -53,6 +56,7 @@ function! Mirror(dict)
   return a:dict
 endfunction
 
+" function used in SwapWords
 function! S(number)
   return submatch(a:number)
 endfunction
@@ -135,6 +139,10 @@ endif
 
 if !exists(':ListFiles')
   command -nargs=0 ListFiles call ListFiles()
+endif
+
+if !exists(':KillBuffs')
+  command -nargs=0 KillBuffs call KillBuffs()
 endif
 
 

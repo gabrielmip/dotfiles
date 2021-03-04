@@ -1,13 +1,12 @@
 "navigation on a window
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
 " switching between buffers
-nnoremap <silent> <C-N> :bp<CR>
-nnoremap <silent> <C-M> :bn<CR>
-
+" nnoremap <silent> <C-N> :bp<CR>
+" nnoremap <silent> <C-M> :bn<CR>
 
 " Damian Conway's suggestion. Why not?
 nnoremap ; :
@@ -36,6 +35,10 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " saving with control + s
 nnoremap <C-S> :w<CR>
+
+" ALE linting navigation
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " write mode
 map <silent> <Space>z :WriteMode<CR>

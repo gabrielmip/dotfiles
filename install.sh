@@ -15,37 +15,34 @@ ZSH_PLUGINS="${HOME}/.config/zsh_plugins"
 sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay
 
 yay -Sy --needed --noconfirm --quiet --noprogressbar \
-    neovim \
-    konsole \
-    zsh \
-    zsh-completions \
-    ranger \ # terminal file browser with vim-like shortcuts
-    bat \ # alternative to cat
-    fzf \
-    fzf-extras \
-    ripgrep \
-    ctags \ # for vim tags
-    screen \
-    docker \
-    meld \ # difftool
-    gimp \
-    inkscape \
-    gwenview \ # simpler image edition/preview
-    visual-studio-code-bin \
-    dropbox \
-    ttf-firacode \
-    i3-gaps \ # window manager
-    feh # set background images
+  neovim \
+  xclip \
+  konsole \
+  zsh \
+  zsh-completions \
+  ranger \ # terminal file browser with vim-like shortcuts
+  bat \ # alternative to cat
+  fzf \
+  fzf-extras \
+  ripgrep \
+  ctags \ # for vim tags
+  screen \
+  docker \
+  meld \ # difftool
+  gimp \
+  inkscape \
+  gwenview \ # simpler image edition/preview
+  visual-studio-code-bin \
+  dropbox \
+  ttf-firacode \
+  i3-gaps \ # window manager
+  feh # set background images
 
 
 log "VIM"
 # nvim autocomplete and language server things
 # I might have to install pip, but I am not sure
-pip install --user msgpack
-pip install --user neovim
-pip install --user pynvim
-pip install --user 'python-language-server[all]'
-pip install --user pyls-mypy
+pip install --user msgpack neovim pynvim 'python-language-server[all]' pyls-mypy
 yay -Sy --noconfirm yarn
 yarn global add typescript
 
@@ -76,7 +73,7 @@ log "ZSH"
 if [ ! -d ~/.oh-my-zsh ]; then
   sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 fi
-rmlink $PWD/zsh/.zshrc ~/.zshrc
+rmlink $PWD/zsh/zshrc ~/.zshrc
 sudo chsh -s $(which zsh)
 if [ ! -d $ZSH_PLUGINS/zsh-syntax-highlighting ]; then
   mkdir -p $ZSH_PLUGINS/zsh-syntax-highlighting

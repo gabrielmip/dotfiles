@@ -29,12 +29,14 @@ Plugin 'ap/vim-css-color'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'arthurxavierx/vim-caser'
 
 Plugin 'scrooloose/nerdTree'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
+
 filetype plugin indent on
 
 colorscheme deus
@@ -42,11 +44,22 @@ colorscheme deus
 "------------[ vim-airline ]------------
 let g:airline_theme='deus'
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 let g:airline_symbols.branch = '⎇'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#ale#enabled = 1
+
+if has('autocmd')
+  augroup airline_init
+    autocmd!
+    autocmd User AirlineAfterInit call s:airline_init()
+  augroup END
+endif
+function! s:airline_init()
+  let g:airline_section_b = fnamemodify(getcwd(), ':t')
+  let g:airline_section_y = airline#section#create(['hunks'])
+endfunction
 
 "------------[ IndentLine ]------------
 let g:indentLine_char = '▏'
@@ -61,20 +74,15 @@ let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 let g:ale_floating_preview = 1
 let g:ale_set_balloons = 1
-
-
 let g:ale_fixers = {
-  \ 'javascript': ['eslint', 'tsserver'],
+  \ 'javascript': ['eslint'],
+  \ 'typescript': ['eslint']
 \}
 let g:ale_linters = {
-  \ 'javascript': ['eslint'],
+  \ 'javascript': ['eslint', 'tsserver'],
   \ 'python': ['pyls'],
-  \ 'typescript': ['tsserver']
+  \ 'typescript': ['eslint', 'tsserver']
 \}
-
-
-" nmap <silent> <F20> <Plug>(ale_previous_wrap)
-" nmap <silent> <F8> <Plug>(ale_next_wrap)
 
 "------------[ Deoplete ]------------
 let g:deoplete#enable_at_startup = 1
@@ -143,4 +151,3 @@ let g:indentLine_color_gui = '#665c54'
 
 "------------[ Markdown ]------------
 let g:vim_markdown_conceal = 0
-

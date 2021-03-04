@@ -9,7 +9,7 @@ HOME=/home/gabriel
 
 export ZSH="/home/gabriel/.oh-my-zsh"
 
-ZSH_THEME="mortalscumbag" # my other favorites: bira, mh, muse
+# ZSH_THEME="mortalscumbag" # my other favorites: bira, mh, muse
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
@@ -21,10 +21,11 @@ alias sr="screen -r"
 alias sS="screen -S"
 alias ap="ansible-playbook"
 alias gpoh="git push origin HEAD"
-alias open=xdg-open
+alias open="xdg-open"
 alias vim="nvim"
 alias containers='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
 alias compose="docker-compose"
+alias gd="fzfdiff"
 
 export PATH="${PATH}:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="${PATH}:/Library/TeX/Distributions/Programs/texbin"
@@ -53,12 +54,18 @@ setupstream () {
   git branch --set-upstream-to=origin/$(git_current_branch) $(git_current_branch)
 }
 
+# opens vim in my notes folder
 regs () {
   CURRENT=$PWD
   cd ~/Dropbox/Registros
   vim
   cd $CURRENT
   unset CURRENT
+}
+
+fzfdiff () {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf -m --ansi --preview "$preview"
 }
 
 FZF_CTRL_T_COMMAND="rg --files --no-messages --hidden --glob '!.git/'"
