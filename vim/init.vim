@@ -26,6 +26,7 @@ set noerrorbells
 set splitbelow
 set splitright
 set hid
+set colorcolumn=81
 
 set wildmenu
 set path+=**
