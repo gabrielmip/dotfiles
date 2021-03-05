@@ -151,3 +151,6 @@ let g:indentLine_color_gui = '#665c54'
 
 "------------[ Markdown ]------------
 let g:vim_markdown_conceal = 0
+
+"------------[ AutoPairs ]-----------
+let g:AutoPairsShortcutToggle = ''

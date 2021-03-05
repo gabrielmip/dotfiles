@@ -63,9 +63,9 @@ bindsym $mod+Shift+q kill
 exec --no-startup-id xsetroot -solid "#15434c"
 
 # i3-gaps
-gaps inner 15
-gaps outer 2
-smart_gaps on
+# gaps inner 8
+# gaps outer 2
+# smart_gaps on
 smart_borders on
 new_window pixel 2
 new_float pixel 0

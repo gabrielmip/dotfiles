@@ -25,7 +25,6 @@ alias open="xdg-open"
 alias vim="nvim"
 alias containers='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
 alias compose="docker-compose"
-alias gd="fzfdiff"
 
 export PATH="${PATH}:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="${PATH}:/Library/TeX/Distributions/Programs/texbin"
