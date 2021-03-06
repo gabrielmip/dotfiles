@@ -94,6 +94,21 @@ call deoplete#custom#option('sources', {
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_tags_command = 'ctags -R --exclude={tags,assets,node_modules,bower_components,test,lib,vendor,plugins,tmp,bin,.transpiled,.git}'
 
+" An action can be a reference to a function that processes selected lines
+function! s:build_quickfix_list(lines)
+  call setqflist([], ' ', { 'title': 'Seleção do FZF', 'items': map(copy(a:lines), '{ "filename": v:val }') })
+  " call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+\  'ctrl-q': function('s:build_quickfix_list'),
+\  'ctrl-t': 'tab split',
+\  'ctrl-x': 'split',
+\  'ctrl-v': 'vsplit',
+\  }
+
 "------------[ Gutentags ]------------
 function! CtagsGenerator()
 python3 << EOF
