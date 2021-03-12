@@ -8,6 +8,7 @@ Plugin  'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ajmwagar/vim-deus'
+Plugin 'morhetz/gruvbox'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -69,11 +70,11 @@ autocmd Filetype json :IndentLinesDisable
 "------------[ ALE - Linter ]------------
 let g:ale_sign_column_always = 0
 let g:ale_completion_enabled = 0
-let g:ale_completion_autoimport = 1
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 let g:ale_floating_preview = 1
 let g:ale_set_balloons = 1
+let g:ale_hover_cursor = 1
 let g:ale_fixers = {
   \ 'javascript': ['eslint'],
   \ 'typescript': ['eslint']
@@ -86,6 +87,7 @@ let g:ale_linters = {
 
 "------------[ Deoplete ]------------
 let g:deoplete#enable_at_startup = 1
+autocmd CompleteDone * silent! pclose!
 call deoplete#custom#option('sources', {
 \ '*': ['ale', 'tag', 'buffer'],
 \})
@@ -96,8 +98,11 @@ let g:fzf_tags_command = 'ctags -R --exclude={tags,assets,node_modules,bower_com
 
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
-  call setqflist([], ' ', { 'title': 'Seleção do FZF', 'items': map(copy(a:lines), '{ "filename": v:val }') })
-  " call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  call setqflist([], ' ', {
+  \   'title': 'Seleção do FZF',
+  \   'items': map(copy(a:lines),
+  \   '{ "filename": v:val }')
+  \   })
   copen
   cc
 endfunction
@@ -169,3 +174,8 @@ let g:vim_markdown_conceal = 0
 
 "------------[ AutoPairs ]-----------
 let g:AutoPairsShortcutToggle = ''
+
+"------------[ GUIs ]-----------
+let g:neovide_cursor_animation_length=0.03
+let g:neovide_cursor_trail_length=0
+set guifont=Fira\ Code:h14

@@ -27,6 +27,7 @@ set splitbelow
 set splitright
 set hid
 set colorcolumn=81
+set mouse=a
 
 set wildmenu
 set path+=**
