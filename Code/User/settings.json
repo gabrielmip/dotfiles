@@ -9,7 +9,7 @@
   "python.linting.pylintArgs": [
     "--enable=W0614"
   ],
-  "editor.fontFamily": "'Fira Code', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
   "emmet.syntaxProfiles": {
     "javascript": "jsx"
   },
@@ -83,7 +83,6 @@
     "editor.formatOnSave": false
   },
   "liveshare.allowGuestDebugControl": true,
-  "workbench.colorTheme": "Dracula",
   "editor.tokenColorCustomizations": {
     "[Gatito Theme]": {
       "textMateRules": [
@@ -143,11 +142,17 @@
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "extensions.ignoreRecommendations": true,
-  "workbench.editorAssociations": [],
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
   "editor.suggestSelection": "first",
   "rewrap.autoWrap.enabled": true,
   "rewrap.wrappingColumn": 100,
   "workbench.activityBar.visible": false,
   "gitlens.hovers.currentLine.over": "line",
-  "gitlens.codeLens.enabled": false
+  "gitlens.codeLens.enabled": false,
+  "workbench.colorTheme": "Gatito Theme"
 }
