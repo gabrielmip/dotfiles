@@ -78,12 +78,16 @@ let g:ale_set_balloons = 1
 let g:ale_hover_cursor = 1
 let g:ale_fixers = {
   \ 'javascript': ['eslint'],
-  \ 'typescript': ['eslint']
+  \ 'javascriptreact': ['eslint'],
+  \ 'typescript': ['eslint'],
+  \ 'typescriptreact': ['eslint']
 \}
 let g:ale_linters = {
   \ 'javascript': ['eslint', 'tsserver'],
+  \ 'javascriptreact': ['eslint', 'tsserver'],
   \ 'python': ['pyls'],
-  \ 'typescript': ['eslint', 'tsserver']
+  \ 'typescript': ['eslint', 'tsserver'],
+  \ 'typescriptreact': ['eslint', 'tsserver']
 \}
 
 "------------[ Deoplete ]------------

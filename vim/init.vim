@@ -16,7 +16,7 @@ set showmatch
 set smartcase
 set hlsearch
 set incsearch
-set inccommand=nosplit
+set inccommand=nosplit " live preview in replace results
 set history=1000
 set undolevels=1000
 set wildignore=*.swp,*.bak,*.pyc,*.class
@@ -33,7 +33,7 @@ set wildmenu
 set path+=**
 
 " Omnicompletion
-filetype plugin on
+" filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 " Always turn on syntax highlighting for diffs
@@ -113,7 +113,7 @@ function! WriteMode()
     set linebreak
     set nolist
     set textwidth=80
-    set spell spelllang=pt_br
+    " set spell spelllang=pt_br
     echo 'WriteMode enabled.'
   else
     nunmap j
@@ -148,11 +148,12 @@ if !exists(':KillBuffs')
 endif
 
 
+let g:vim_markdown_conceal = 0
 source $HOME/.config/nvim/mappings.vim
 source $HOME/.config/nvim/plugins.vim
+let g:vim_markdown_conceal = 0
 
 " It looks like this setting is being overwritten by a plugin or something.
-" set conceallevel=0
 let g:vim_json_syntax_conceal = 0
 autocmd FileType json set foldmethod=syntax
 
