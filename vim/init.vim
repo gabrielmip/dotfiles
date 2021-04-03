@@ -97,36 +97,6 @@ function! KillBuffs()
   %bd|e#
 endfunction
 
-function! WriteMode()
-  if !exists('g:write_mode_active')
-    let g:write_mode_active = 1
-  else
-    let g:write_mode_active = !g:write_mode_active
-  endif
-
-  if g:write_mode_active == 1
-    map j gj
-    map k gk
-    map $ g$
-    map 0 g0
-    set wrap
-    set linebreak
-    set nolist
-    set textwidth=80
-    " set spell spelllang=pt_br
-    echo 'WriteMode enabled.'
-  else
-    nunmap j
-    nunmap k
-    nunmap $
-    nunmap 0
-    set nowrap
-    set textwidth=0
-    set nospell
-    echo 'WriteMode disabled.'
-  endif
-endfunction
-
 function! ListFiles()
   if isdirectory(expand(getcwd() . '/.git'))
     :GFiles
@@ -134,10 +104,6 @@ function! ListFiles()
     :Files
   endif
 endfunction
-
-if !exists(':WriteMode')
-  command -nargs=0 WriteMode call WriteMode()
-endif
 
 if !exists(':ListFiles')
   command -nargs=0 ListFiles call ListFiles()
@@ -147,13 +113,19 @@ if !exists(':KillBuffs')
   command -nargs=0 KillBuffs call KillBuffs()
 endif
 
+function LocalWriteMode()
+  setlocal wrap
+  setlocal linebreak
+  setlocal nolist
+  setlocal textwidth=80
+endfunction
 
-let g:vim_markdown_conceal = 0
 source $HOME/.config/nvim/mappings.vim
 source $HOME/.config/nvim/plugins.vim
-let g:vim_markdown_conceal = 0
 
 " It looks like this setting is being overwritten by a plugin or something.
 let g:vim_json_syntax_conceal = 0
 autocmd FileType json set foldmethod=syntax
 
+" Automatically setting wrap on text and markdown files
+autocmd FileType markdown,textfile call LocalWriteMode()

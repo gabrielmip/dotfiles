@@ -9,6 +9,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ajmwagar/vim-deus'
 Plugin 'morhetz/gruvbox'
+Plugin 'sainnhe/sonokai'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'

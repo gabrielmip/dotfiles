@@ -39,6 +39,3 @@ nnoremap <C-S> :w<CR>
 " ALE linting navigation
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-" write mode
-map <silent> <Space>z :WriteMode<CR>
