@@ -56,7 +56,7 @@ setupstream () {
 # opens vim in my notes folder
 regs () {
   CURRENT=$PWD
-  cd ~/Sync/Registros
+  cd ~/Sync/Notas
   vim
   cd $CURRENT
   unset CURRENT
