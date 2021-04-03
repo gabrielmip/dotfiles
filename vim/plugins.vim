@@ -41,10 +41,10 @@ call vundle#end()
 
 filetype plugin indent on
 
-colorscheme deus
+colorscheme sonokai
 
 "------------[ vim-airline ]------------
-let g:airline_theme='deus'
+let g:airline_theme='sonokai'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -66,7 +66,6 @@ endfunction
 
 "------------[ IndentLine ]------------
 let g:indentLine_char = '▏'
-let g:indentLine_color_term = 229
 autocmd Filetype json :IndentLinesDisable
 
 "------------[ ALE - Linter ]------------
@@ -171,9 +170,6 @@ if (empty($TMUX))
     let g:deus_termcolors=256
   endif
 endif
-
-let g:indentLine_color_term = 241
-let g:indentLine_color_gui = '#665c54'
 
 "------------[ Markdown ]------------
 let g:vim_markdown_conceal = 0
