@@ -12,7 +12,6 @@
 nnoremap ; :
 
 " FZF
-nnoremap <silent> <Space>T :NERDTreeToggle<CR>
 nnoremap <silent> <Space>t :BTags<CR>
 nnoremap <silent> <Space>f :ListFiles<CR>
 nnoremap <silent> <Space>F :Files<CR>
