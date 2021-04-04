@@ -92,7 +92,7 @@ function! TrimWhiteSpace()
 endfunction
 autocmd BufWritePre * :call TrimWhiteSpace()
 
-" Kills all buffers but reopens the current one
+" Kills all buffers then reopens the current one
 function! KillBuffs()
   %bd|e#
 endfunction
@@ -126,6 +126,7 @@ source $HOME/.config/nvim/plugins.vim
 " It looks like this setting is being overwritten by a plugin or something.
 let g:vim_json_syntax_conceal = 0
 autocmd FileType json set foldmethod=syntax
+autocmd FileType vim set foldmethod=marker
 
 " Automatically setting wrap on text and markdown files
 autocmd FileType markdown,textfile call LocalWriteMode()

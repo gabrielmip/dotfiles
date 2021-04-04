@@ -19,7 +19,7 @@ nnoremap <silent> <Space>F :Files<CR>
 nnoremap <silent> <Space>b :Buffers<CR>
 nnoremap <silent> <Space>h :History<CR>
 nnoremap <silent> <Space>c :Commands<CR>
-nnoremap <Space>r :%s/\<<C-r><C-w>\>//g<Left><Left>
+" nnoremap <Space>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <silent> <Space>s :Rg <C-r><C-w><CR>
 
 " go to latest opened buffer

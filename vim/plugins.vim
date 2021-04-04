@@ -5,43 +5,44 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin('~/.config/nvim/bundle/')
 Plugin  'VundleVim/Vundle.vim'
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ajmwagar/vim-deus'
-Plugin 'morhetz/gruvbox'
-Plugin 'sainnhe/sonokai'
+Plugin 'vim-airline/vim-airline' " statusline
+Plugin 'vim-airline/vim-airline-themes' " statusline colorscheme
+Plugin 'ajmwagar/vim-deus' " colorscheme
+Plugin 'morhetz/gruvbox' " colorscheme
+Plugin 'sainnhe/sonokai' " colorscheme
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter' " git edit signs on the left column
+Plugin 'tpope/vim-fugitive' " git helpers
 
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'dense-analysis/ale'
-Plugin 'Shougo/deoplete.nvim'
+Plugin 'ludovicchabant/vim-gutentags' " manages my tags
+Plugin 'dense-analysis/ale'  " linting
+Plugin 'Shougo/deoplete.nvim'  " auto complete
+Plugin 'prabirshrestha/vim-lsp'  " lsp client
+Plugin 'mattn/vim-lsp-settings'  " lsp auto install
+Plugin 'lighttiger2505/deoplete-vim-lsp'  " lsp source for deoplete
 
-" requirements for deoplete
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
+Plugin 'roxma/nvim-yarp' " requirements for deoplete
+Plugin 'roxma/vim-hug-neovim-rpc' " requirements for deoplete
 
-Plugin 'sheerun/vim-polyglot'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'Olical/conjure' " repl connection for lisps
 
-Plugin 'Yggdroot/indentLine'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'ap/vim-css-color'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'arthurxavierx/vim-caser'
+Plugin 'sheerun/vim-polyglot' " bundle for language syntax
+Plugin 'plasticboy/vim-markdown' " TOC, Header increase for markdown, so on
 
-Plugin 'scrooloose/nerdTree'
+Plugin 'Yggdroot/indentLine' " adds character to mark indentation
+Plugin 'editorconfig/editorconfig-vim' " uses .editorconfig to override
+                                       " editor configs
+Plugin 'ap/vim-css-color' " adds the color html colors to
+Plugin 'tpope/vim-commentary' " bindings to comment blocks and motions
+Plugin 'tpope/vim-surround' " bindings to edit surrounding brackets, parenthesis
+Plugin 'jiangmiao/auto-pairs' " adds closing parenthesis
+
 Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf.vim' " fuzzy search for navigation (tags, files, buffers)
 
 call vundle#end()
 
 filetype plugin indent on
-
-colorscheme sonokai
 
 "------------[ vim-airline ]------------
 let g:airline_theme='sonokai'
@@ -66,35 +67,65 @@ endfunction
 
 "------------[ IndentLine ]------------
 let g:indentLine_char = '▏'
-autocmd Filetype json :IndentLinesDisable
+autocmd Filetype json,clojure :IndentLinesDisable
 
 "------------[ ALE - Linter ]------------
+let g:ale_disable_lsp = 1
 let g:ale_sign_column_always = 0
 let g:ale_completion_enabled = 0
-let g:ale_linters_explicit = 1
-let g:ale_fix_on_save = 1
-let g:ale_floating_preview = 1
-let g:ale_set_balloons = 1
-let g:ale_hover_cursor = 1
-let g:ale_fixers = {
-  \ 'javascript': ['eslint'],
-  \ 'javascriptreact': ['eslint'],
-  \ 'typescript': ['eslint'],
-  \ 'typescriptreact': ['eslint']
-\}
-let g:ale_linters = {
-  \ 'javascript': ['eslint', 'tsserver'],
-  \ 'javascriptreact': ['eslint', 'tsserver'],
-  \ 'python': ['pyls'],
-  \ 'typescript': ['eslint', 'tsserver'],
-  \ 'typescriptreact': ['eslint', 'tsserver']
-\}
+" let g:ale_linters_explicit = 1
+" let g:ale_fix_on_save = 1
+" let g:ale_floating_preview = 1
+" let g:ale_set_balloons = 1
+" let g:ale_hover_cursor = 1
+" let g:ale_fixers = {
+"   \ 'javascript': ['eslint'],
+"   \ 'javascriptreact': ['eslint'],
+"   \ 'typescript': ['eslint'],
+"   \ 'typescriptreact': ['eslint']
+" \}
+" let g:ale_linters = {
+"   \ 'javascript': ['eslint', 'tsserver'],
+"   \ 'javascriptreact': ['eslint', 'tsserver'],
+"   \ 'python': ['pyls'],
+"   \ 'typescript': ['eslint', 'tsserver'],
+"   \ 'typescriptreact': ['eslint', 'tsserver']
+" \}
+
+"------------[ vim-lsp ]------------
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gs <plug>(lsp-document-symbol-search)
+  nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+  nmap <buffer> gr <plug>(lsp-references)
+  nmap <buffer> gi <plug>(lsp-implementation)
+  nmap <buffer> gt <plug>(lsp-type-definition)
+  nmap <buffer> <leader>rn <plug>(lsp-rename)
+  nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+  nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+  nmap <buffer> K <plug>(lsp-hover)
+  inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+  inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+  let g:lsp_format_sync_timeout = 1000
+  autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+endfunction
+
+augroup lsp_install
+  au!
+  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 "------------[ Deoplete ]------------
 let g:deoplete#enable_at_startup = 1
-autocmd CompleteDone * silent! pclose!
+autocmd CompleteDone * silent! pclose!  " closes preview when completion is done
+" set completeopt+=preview
 call deoplete#custom#option('sources', {
-\ '*': ['ale', 'tag', 'buffer'],
+\ '*': ['vim-lsp', 'tag', 'buffer'],
 \})
 
 "------------[ FZF ]------------
@@ -170,6 +201,10 @@ if (empty($TMUX))
     let g:deus_termcolors=256
   endif
 endif
+
+colorscheme sonokai
+highlight Visual     guifg=None guibg=#545760
+highlight MatchParen guifg=NONE guibg=#6c707a
 
 "------------[ Markdown ]------------
 let g:vim_markdown_conceal = 0
