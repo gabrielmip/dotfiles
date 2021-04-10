@@ -154,5 +154,5 @@
   "workbench.activityBar.visible": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.codeLens.enabled": false,
-  "workbench.colorTheme": "Gatito Theme"
+  "workbench.colorTheme": "Dracula"
 }

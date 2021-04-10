@@ -20,6 +20,7 @@ Plugin 'Shougo/deoplete.nvim'  " auto complete
 Plugin 'prabirshrestha/vim-lsp'  " lsp client
 Plugin 'mattn/vim-lsp-settings'  " lsp auto install
 Plugin 'lighttiger2505/deoplete-vim-lsp'  " lsp source for deoplete
+Plugin 'deathlyfrantic/deoplete-spell' " spell source for deoplete
 
 Plugin 'roxma/nvim-yarp' " requirements for deoplete
 Plugin 'roxma/vim-hug-neovim-rpc' " requirements for deoplete
@@ -44,7 +45,7 @@ call vundle#end()
 
 filetype plugin indent on
 
-"------------[ vim-airline ]------------
+" vim-airline {{{
 let g:airline_theme='sonokai'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -64,6 +65,7 @@ function! s:airline_init()
   let g:airline_section_b = fnamemodify(getcwd(), ':t')
   let g:airline_section_y = airline#section#create(['hunks'])
 endfunction
+" }}}
 
 "------------[ IndentLine ]------------
 let g:indentLine_char = '▏'
@@ -73,26 +75,29 @@ autocmd Filetype json,clojure :IndentLinesDisable
 let g:ale_disable_lsp = 1
 let g:ale_sign_column_always = 0
 let g:ale_completion_enabled = 0
-" let g:ale_linters_explicit = 1
-" let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
 " let g:ale_floating_preview = 1
 " let g:ale_set_balloons = 1
 " let g:ale_hover_cursor = 1
-" let g:ale_fixers = {
-"   \ 'javascript': ['eslint'],
-"   \ 'javascriptreact': ['eslint'],
-"   \ 'typescript': ['eslint'],
-"   \ 'typescriptreact': ['eslint']
-" \}
-" let g:ale_linters = {
-"   \ 'javascript': ['eslint', 'tsserver'],
-"   \ 'javascriptreact': ['eslint', 'tsserver'],
-"   \ 'python': ['pyls'],
-"   \ 'typescript': ['eslint', 'tsserver'],
-"   \ 'typescriptreact': ['eslint', 'tsserver']
-" \}
+let g:ale_fixers = {
+  \ 'javascript': ['eslint'],
+  \ 'javascriptreact': ['eslint'],
+  \ 'typescript': ['eslint'],
+  \ 'typescriptreact': ['eslint']
+\}
+let g:ale_linters = {
+  \ 'javascript': ['eslint', 'tsserver'],
+  \ 'javascriptreact': ['eslint', 'tsserver'],
+  \ 'python': ['pylint'],
+  \ 'typescript': ['eslint', 'tsserver'],
+  \ 'typescriptreact': ['eslint', 'tsserver']
+\}
 
 "------------[ vim-lsp ]------------
+
+let g:lsp_diagnostics_enabled = 0
+
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
@@ -107,8 +112,6 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> [g <plug>(lsp-previous-diagnostic)
   nmap <buffer> ]g <plug>(lsp-next-diagnostic)
   nmap <buffer> K <plug>(lsp-hover)
-  inoremap <buffer> <expr><c-f> lsp#scroll(+4)
-  inoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
   let g:lsp_format_sync_timeout = 1000
   autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
@@ -123,9 +126,10 @@ augroup END
 "------------[ Deoplete ]------------
 let g:deoplete#enable_at_startup = 1
 autocmd CompleteDone * silent! pclose!  " closes preview when completion is done
-" set completeopt+=preview
+set completeopt+=preview
+call deoplete#custom#option('max_list', 15) " limit number of suggestions shown
 call deoplete#custom#option('sources', {
-\ '*': ['vim-lsp', 'tag', 'buffer'],
+\ '*': ['vim-lsp', 'tag', 'spell','buffer'],
 \})
 
 "------------[ FZF ]------------
@@ -205,6 +209,9 @@ endif
 colorscheme sonokai
 highlight Visual     guifg=None guibg=#545760
 highlight MatchParen guifg=NONE guibg=#6c707a
+let g:indentLine_color_gui = '#666a75'
+" let g:indentLine_color_term = '237'
+" highlight lspReference guifg=None guibg=#545760
 
 "------------[ Markdown ]------------
 let g:vim_markdown_conceal = 0
