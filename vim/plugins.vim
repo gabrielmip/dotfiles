@@ -67,11 +67,12 @@ function! s:airline_init()
 endfunction
 " }}}
 
-"------------[ IndentLine ]------------
+" IndentLine {{{
 let g:indentLine_char = '▏'
 autocmd Filetype json,clojure :IndentLinesDisable
+" }}}
 
-"------------[ ALE - Linter ]------------
+" ALE - Linter {{{
 let g:ale_disable_lsp = 1
 let g:ale_sign_column_always = 0
 let g:ale_completion_enabled = 0
@@ -80,21 +81,43 @@ let g:ale_fix_on_save = 1
 " let g:ale_floating_preview = 1
 " let g:ale_set_balloons = 1
 " let g:ale_hover_cursor = 1
+
+let g:ale_javascript_prettier_options = '--prose-wrap always'
 let g:ale_fixers = {
   \ 'javascript': ['eslint'],
   \ 'javascriptreact': ['eslint'],
+  \ 'markdown': ['prettier'],
+  \ 'json': ['prettier'],
+  \ 'html': ['prettier'],
+  \ 'css': ['prettier'],
   \ 'typescript': ['eslint'],
-  \ 'typescriptreact': ['eslint']
+  \ 'typescriptreact': ['eslint'],
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 let g:ale_linters = {
   \ 'javascript': ['eslint', 'tsserver'],
   \ 'javascriptreact': ['eslint', 'tsserver'],
+  \ 'markdown': ['proselint'],
   \ 'python': ['pylint'],
   \ 'typescript': ['eslint', 'tsserver'],
   \ 'typescriptreact': ['eslint', 'tsserver']
 \}
+" }}}
 
-"------------[ vim-lsp ]------------
+" vim-lsp-settings {{{
+" adding the src/ folder to what is said to be the defaults in the
+" documentation
+let g:lsp_settings_root_markers = [
+\   'src/',
+\   '.git',
+\   '.git/',
+\   '.svn',
+\   '.hg',
+\   '.bzr'
+\ ]
+" }}}
+
+" vim-lsp {{{
 
 let g:lsp_diagnostics_enabled = 0
 
@@ -122,8 +145,9 @@ augroup lsp_install
   " call s:on_lsp_buffer_enabled only for languages that has the server registered.
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+" }}}
 
-"------------[ Deoplete ]------------
+" Deoplete {{{
 let g:deoplete#enable_at_startup = 1
 autocmd CompleteDone * silent! pclose!  " closes preview when completion is done
 set completeopt+=preview
@@ -131,8 +155,9 @@ call deoplete#custom#option('max_list', 15) " limit number of suggestions shown
 call deoplete#custom#option('sources', {
 \ '*': ['vim-lsp', 'tag', 'spell','buffer'],
 \})
+" }}}
 
-"------------[ FZF ]------------
+" FZF {{{
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_tags_command = 'ctags -R --exclude={tags,assets,node_modules,bower_components,test,lib,vendor,plugins,tmp,bin,.transpiled,.git}'
 
@@ -153,8 +178,9 @@ let g:fzf_action = {
 \  'ctrl-x': 'split',
 \  'ctrl-v': 'vsplit',
 \  }
+" }}}
 
-"------------[ Gutentags ]------------
+" Gutentags {{{
 function! CtagsGenerator()
 python3 << EOF
 
@@ -187,8 +213,9 @@ command! GenerateTags call CtagsGenerator()
 let g:gutentags_ctags_tagfile = '.git/tags'
 let g:gutentags_file_list_command = "rg --files --no-messages --glob='!{**/*.min.*,.git/*,**/*.html, **/*.map.*}'"
 set tags+=./.git/tags
+" }}}
 
-"------------[ colorscheme ]------------
+" colorscheme {{{
 if (empty($TMUX))
   if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -212,14 +239,18 @@ highlight MatchParen guifg=NONE guibg=#6c707a
 let g:indentLine_color_gui = '#666a75'
 " let g:indentLine_color_term = '237'
 " highlight lspReference guifg=None guibg=#545760
+" }}}
 
-"------------[ Markdown ]------------
+" Markdown {{{
 let g:vim_markdown_conceal = 0
+" }}}
 
-"------------[ AutoPairs ]-----------
+" AutoPairs {{{
 let g:AutoPairsShortcutToggle = ''
+" }}}
 
-"------------[ GUIs ]-----------
+" GUIs {{{
 let g:neovide_cursor_animation_length=0.03
 let g:neovide_cursor_trail_length=0
 set guifont=Fira\ Code:h14
+" }}}

@@ -151,8 +151,9 @@
   "editor.suggestSelection": "first",
   "rewrap.autoWrap.enabled": true,
   "rewrap.wrappingColumn": 100,
-  "workbench.activityBar.visible": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.codeLens.enabled": false,
-  "workbench.colorTheme": "Dracula"
+  "workbench.colorTheme": "Dracula",
+  "eslint.format.enable": true,
+  "workbench.activityBar.visible": false
 }
