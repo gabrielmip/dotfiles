@@ -28,7 +28,7 @@ noremap <silent> <Space><Tab> :e #<CR>
 nnoremap <silent> <Esc> :noh<CR>
 
 let leader=" "
-let mapleader="\\" " this is for buffer-specific mappings (i.e. Conjure)
+let maplocalleader=" " " this is for buffer-specific mappings (i.e. Conjure)
 
 " deoplete completion on tab
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"

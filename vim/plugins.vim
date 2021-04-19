@@ -99,6 +99,7 @@ let g:ale_linters = {
   \ 'javascriptreact': ['eslint', 'tsserver'],
   \ 'markdown': ['proselint'],
   \ 'python': ['pylint'],
+  \ 'clojure': ['clj-kondo'],
   \ 'typescript': ['eslint', 'tsserver'],
   \ 'typescriptreact': ['eslint', 'tsserver']
 \}
