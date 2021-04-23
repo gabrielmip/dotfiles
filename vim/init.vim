@@ -127,6 +127,8 @@ source $HOME/.config/nvim/plugins.vim
 let g:vim_json_syntax_conceal = 0
 autocmd FileType json set foldmethod=syntax
 autocmd FileType vim set foldmethod=marker
+autocmd FileType markdown set conceallevel=0
+
 
 " Automatically setting wrap on text and markdown files
 autocmd FileType markdown,textfile call LocalWriteMode()

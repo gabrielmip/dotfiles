@@ -1,3 +1,7 @@
+" Markdown {{{
+let g:vim_markdown_conceal = 0
+" }}}
+
 set nocompatible
 filetype off
 
@@ -28,7 +32,6 @@ Plugin 'roxma/vim-hug-neovim-rpc' " requirements for deoplete
 Plugin 'Olical/conjure' " repl connection for lisps
 
 Plugin 'sheerun/vim-polyglot' " bundle for language syntax
-Plugin 'plasticboy/vim-markdown' " TOC, Header increase for markdown, so on
 
 Plugin 'Yggdroot/indentLine' " adds character to mark indentation
 Plugin 'editorconfig/editorconfig-vim' " uses .editorconfig to override
@@ -132,7 +135,7 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> gr <plug>(lsp-references)
   nmap <buffer> gi <plug>(lsp-implementation)
   nmap <buffer> gt <plug>(lsp-type-definition)
-  nmap <buffer> <leader>rn <plug>(lsp-rename)
+  nmap <buffer> gn <plug>(lsp-rename)
   nmap <buffer> [g <plug>(lsp-previous-diagnostic)
   nmap <buffer> ]g <plug>(lsp-next-diagnostic)
   nmap <buffer> K <plug>(lsp-hover)
@@ -242,9 +245,6 @@ let g:indentLine_color_gui = '#666a75'
 " highlight lspReference guifg=None guibg=#545760
 " }}}
 
-" Markdown {{{
-let g:vim_markdown_conceal = 0
-" }}}
 
 " AutoPairs {{{
 let g:AutoPairsShortcutToggle = ''
