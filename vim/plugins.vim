@@ -100,7 +100,6 @@ let g:ale_fixers = {
 let g:ale_linters = {
   \ 'javascript': ['eslint', 'tsserver'],
   \ 'javascriptreact': ['eslint', 'tsserver'],
-  \ 'markdown': ['proselint'],
   \ 'python': ['pylint'],
   \ 'clojure': ['clj-kondo'],
   \ 'typescript': ['eslint', 'tsserver'],
