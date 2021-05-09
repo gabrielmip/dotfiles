@@ -37,6 +37,9 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " saving with control + s
 nnoremap <C-S> :w<CR>
 
+" open my configuration file
+nnoremap <silent> <Space>vcf :e ~/.config/nvim/init.vim<CR>
+
 " ALE linting navigation
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)

@@ -129,6 +129,11 @@ autocmd FileType json set foldmethod=syntax
 autocmd FileType vim set foldmethod=marker
 autocmd FileType markdown set conceallevel=0
 
+highlight! link TSFunctionMacro Red
+highlight! link TSFuncBuiltin Red
+highlight! link TSVariableBuiltin White
+highlight! link TSParameter Orange
+highlight! link TSFunction White
 
 " Automatically setting wrap on text and markdown files
 autocmd FileType markdown,textfile call LocalWriteMode()

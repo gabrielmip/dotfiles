@@ -2,49 +2,46 @@
 let g:vim_markdown_conceal = 0
 " }}}
 
-set nocompatible
-filetype off
+" Installed plugins {{{
+call plug#begin('~/.config/nvim/bundle/')
 
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle/')
-Plugin  'VundleVim/Vundle.vim'
+Plug 'vim-airline/vim-airline' " statusline
+Plug 'vim-airline/vim-airline-themes' " statusline colorscheme
+Plug 'ajmwagar/vim-deus' " colorscheme
+Plug 'morhetz/gruvbox' " colorscheme
+Plug 'sainnhe/sonokai' " colorscheme
+Plug 'christianchiarulli/nvcode-color-schemes.vim' " colorschemes
+Plug 'romgrk/doom-one.vim'
 
-Plugin 'vim-airline/vim-airline' " statusline
-Plugin 'vim-airline/vim-airline-themes' " statusline colorscheme
-Plugin 'ajmwagar/vim-deus' " colorscheme
-Plugin 'morhetz/gruvbox' " colorscheme
-Plugin 'sainnhe/sonokai' " colorscheme
+Plug 'airblade/vim-gitgutter' " git edit signs on the left column
+Plug 'tpope/vim-fugitive' " git helpers
 
-Plugin 'airblade/vim-gitgutter' " git edit signs on the left column
-Plugin 'tpope/vim-fugitive' " git helpers
+Plug 'ludovicchabant/vim-gutentags' " manages my tags
+Plug 'dense-analysis/ale'  " linters and fixers
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Better syntax highlighting
+Plug 'nvim-treesitter/playground'
+Plug 'neovim/nvim-lspconfig' " auto configuration for lsp servers
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'hrsh7th/nvim-compe'
 
-Plugin 'ludovicchabant/vim-gutentags' " manages my tags
-Plugin 'dense-analysis/ale'  " linting
-Plugin 'Shougo/deoplete.nvim'  " auto complete
-Plugin 'prabirshrestha/vim-lsp'  " lsp client
-Plugin 'mattn/vim-lsp-settings'  " lsp auto install
-Plugin 'lighttiger2505/deoplete-vim-lsp'  " lsp source for deoplete
-Plugin 'deathlyfrantic/deoplete-spell' " spell source for deoplete
+Plug 'Olical/conjure' " repl connection for lisps
 
-Plugin 'roxma/nvim-yarp' " requirements for deoplete
-Plugin 'roxma/vim-hug-neovim-rpc' " requirements for deoplete
+Plug 'sheerun/vim-polyglot' " bundle for language syntax
 
-Plugin 'Olical/conjure' " repl connection for lisps
-
-Plugin 'sheerun/vim-polyglot' " bundle for language syntax
-
-Plugin 'Yggdroot/indentLine' " adds character to mark indentation
-Plugin 'editorconfig/editorconfig-vim' " uses .editorconfig to override
+Plug 'Yggdroot/indentLine' " adds character to mark indentation
+Plug 'editorconfig/editorconfig-vim' " uses .editorconfig to override
                                        " editor configs
-Plugin 'ap/vim-css-color' " adds the color html colors to
-Plugin 'tpope/vim-commentary' " bindings to comment blocks and motions
-Plugin 'tpope/vim-surround' " bindings to edit surrounding brackets, parenthesis
-Plugin 'jiangmiao/auto-pairs' " adds closing parenthesis
+Plug 'ap/vim-css-color' " adds the color html colors to
+Plug 'tpope/vim-commentary' " bindings to comment blocks and motions
+Plug 'tpope/vim-surround' " bindings to edit surrounding brackets, parenthesis
+Plug 'jiangmiao/auto-pairs' " adds closing parenthesis
 
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim' " fuzzy search for navigation (tags, files, buffers)
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim' " fuzzy search for navigation (tags, files, buffers)
 
-call vundle#end()
+call plug#end()
+" }}}
 
 filetype plugin indent on
 
@@ -57,6 +54,7 @@ let g:airline_symbols.branch = '⎇'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#languageclient#enabled = 1
 
 if has('autocmd')
   augroup airline_init
@@ -98,66 +96,170 @@ let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 let g:ale_linters = {
-  \ 'javascript': ['eslint', 'tsserver'],
-  \ 'javascriptreact': ['eslint', 'tsserver'],
-  \ 'python': ['pylint'],
-  \ 'clojure': ['clj-kondo'],
-  \ 'typescript': ['eslint', 'tsserver'],
-  \ 'typescriptreact': ['eslint', 'tsserver']
-\}
+   \ 'javascript': ['eslint'],
+   \ 'javascriptreact': ['eslint'],
+   \ 'python': ['pylint'],
+   \ 'clojure': ['clj-kondo'],
+   \ 'typescript': ['eslint'],
+   \ 'typescriptreact': ['eslint']
+   \}
+"}}}
+
+" Treesitter {{{
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  },
+  playground = {
+    enable = true,
+  }
+}
+EOF
 " }}}
 
-" vim-lsp-settings {{{
-" adding the src/ folder to what is said to be the defaults in the
-" documentation
-let g:lsp_settings_root_markers = [
-\   'src/',
-\   '.git',
-\   '.git/',
-\   '.svn',
-\   '.hg',
-\   '.bzr'
-\ ]
+" Neovim LSP nvim-lspconfig {{{
+lua << EOF
+local nvim_lsp = require('lspconfig')
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>gca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', '<C-j>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+
+  -- highlight symbol on cursor hover
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=#545760
+      hi LspReferenceText cterm=bold ctermbg=red guibg=#545760
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=#545760
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]], false)
+  end
+end
+
+-- Neovim does not include built-in snippets. See:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#html
+-- Use a loop to conveniently both setup defined servers
+-- and map buffer local keybindings when the language server attaches
+local serversWithDefaultConfig = {
+  'pyls',
+  'svelte',
+  'tsserver',
+  'clojure_lsp',
+  'vimls',
+  'bashls',
+  'jsonls',
+  'html',
+  'cssls'
+}
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
+
+for _, lsp in ipairs(serversWithDefaultConfig) do
+  nvim_lsp[lsp].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
+end
+EOF
+
 " }}}
 
-" vim-lsp {{{
+" nvim-compe {{{
+set completeopt=menuone,noselect,noinsert
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.documentation = v:true
 
-let g:lsp_diagnostics_enabled = 0
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+" let g:compe.source.calc = v:true
+let g:compe.source.spell = v:true
+let g:compe.source.tags = v:true
+let g:compe.source.nvim_lsp = v:true
+" let g:compe.source.nvim_lua = v:true
+" let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
 
-function! s:on_lsp_buffer_enabled() abort
-  setlocal omnifunc=lsp#complete
-  setlocal signcolumn=yes
-  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-  nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> gs <plug>(lsp-document-symbol-search)
-  nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-  nmap <buffer> gr <plug>(lsp-references)
-  nmap <buffer> gi <plug>(lsp-implementation)
-  nmap <buffer> gt <plug>(lsp-type-definition)
-  nmap <buffer> gn <plug>(lsp-rename)
-  nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-  nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-  nmap <buffer> K <plug>(lsp-hover)
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+highlight link CompeDocumentation NormalFloat
 
-  let g:lsp_format_sync_timeout = 1000
-  autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-endfunction
+" meant to add Tab and Shift-tab for navigation in the completion menu {{{
+lua << EOF
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
-augroup lsp_install
-  au!
-  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        return true
+    else
+        return false
+    end
+end
+
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif vim.fn.call("vsnip#available", {1}) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
+  else
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+EOF
 " }}}
 
-" Deoplete {{{
-let g:deoplete#enable_at_startup = 1
-autocmd CompleteDone * silent! pclose!  " closes preview when completion is done
-set completeopt+=preview
-call deoplete#custom#option('max_list', 15) " limit number of suggestions shown
-call deoplete#custom#option('sources', {
-\ '*': ['vim-lsp', 'tag', 'spell','buffer'],
-\})
 " }}}
 
 " FZF {{{
@@ -240,10 +342,7 @@ colorscheme sonokai
 highlight Visual     guifg=None guibg=#545760
 highlight MatchParen guifg=NONE guibg=#6c707a
 let g:indentLine_color_gui = '#666a75'
-" let g:indentLine_color_term = '237'
-" highlight lspReference guifg=None guibg=#545760
 " }}}
-
 
 " AutoPairs {{{
 let g:AutoPairsShortcutToggle = ''
