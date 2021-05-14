@@ -153,7 +153,13 @@
   "rewrap.wrappingColumn": 100,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.codeLens.enabled": false,
-  "workbench.colorTheme": "Dracula",
   "eslint.format.enable": true,
-  "workbench.activityBar.visible": false
+  "calva.prettyPrintingOptions": {
+    "enabled": true,
+    "printEngine": "pprint",
+    "width": 120,
+    "maxLength": 50
+  },
+  "workbench.activityBar.visible": false,
+  "workbench.colorTheme": "Gatito Theme"
 }
