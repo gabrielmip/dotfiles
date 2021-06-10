@@ -29,7 +29,8 @@
   "[javascriptreact]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
-    }
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
     "editor.codeActionsOnSave": {
@@ -40,12 +41,14 @@
   "[typescript]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
-    }
+    },
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescriptreact]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
-    }
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "bracket-pair-colorizer-2.excludedLanguages": [
     "php",
@@ -133,7 +136,7 @@
   },
   "python.languageServer": "Pylance",
   "python.showStartPage": false,
-  "editor.lineNumbers": "relative",
+  "editor.lineNumbers": "on",
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -160,6 +163,19 @@
     "width": 120,
     "maxLength": 50
   },
+  "workbench.colorTheme": "Dracula",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnSave": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Gatito Theme"
+  "editor.tabSize": 8,
+  "editor.cursorStyle": "line",
+  "editor.insertSpaces": false,
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off"
 }

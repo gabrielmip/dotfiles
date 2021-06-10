@@ -192,7 +192,7 @@ EOF
 " nvim-compe {{{
 set completeopt=menuone,noselect,noinsert
 let g:compe = {}
-let g:compe.enabled = v:true
+let g:compe.enabled = v:false
 let g:compe.documentation = v:true
 
 let g:compe.source = {}
