@@ -15,7 +15,7 @@ ZSH_PLUGINS="${HOME}/.config/zsh_plugins"
 sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay
 
 yay -Sy --needed --noconfirm --quiet --noprogressbar \
-  neovim-nightly-bin \ # nightly until 0.5 comes (lsp support)
+  neovim-nightly-bin \ # nightly until 0.5 comes
   xclip \
   konsole \
   zsh \
