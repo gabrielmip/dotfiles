@@ -136,7 +136,7 @@
   },
   "python.languageServer": "Pylance",
   "python.showStartPage": false,
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "relative",
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -172,10 +172,10 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.activityBar.visible": false,
   "editor.tabSize": 8,
   "editor.cursorStyle": "line",
   "editor.insertSpaces": false,
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-  "editor.wordWrap": "off"
+  "editor.wordWrap": "off",
+  "workbench.activityBar.visible": false
 }

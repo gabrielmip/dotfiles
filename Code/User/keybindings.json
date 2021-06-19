@@ -1,41 +1,45 @@
 // Place your key bindings in this file to override the defaults
 [
-    {
-        "key": "ctrl+e",
-        "command": "clojureVSCode.eval"
-    },
-    {
-        "key": "ctrl+k c",
-        "command": "workbench.action.toggleCenteredLayout"
-    },
-    {
-        "key": "ctrl+m m",
-        "command": "editor.action.insertSnippet",
-        "when": "editorTextFocus",
-        "args": {
-            "langId": "markdown",
-            "name": "Insert metadata"
-        }
-    },
-    {
-        "key": "ctrl+m n",
-        "command": "editor.action.insertSnippet",
-        "when": "editorTextFocus",
-        "args": {
-            "langId": "markdown",
-            "name": "Journal prefix"
-        }
-    },
-    {
-        "key": "ctrl+k b",
-        "command": "workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+k a",
-        "command": "workbench.action.toggleActivityBarVisibility"
-    },
+  {
+    "key": "ctrl+e",
+    "command": "clojureVSCode.eval"
+  },
+  {
+    "key": "ctrl+k c",
+    "command": "workbench.action.toggleCenteredLayout"
+  },
+  {
+    "key": "ctrl+m m",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+      "langId": "markdown",
+      "name": "Insert metadata"
+    }
+  },
+  {
+    "key": "ctrl+m n",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+      "langId": "markdown",
+      "name": "Journal prefix"
+    }
+  },
+  {
+    "key": "ctrl+k b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+k a",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "clojureVSCode.evalAndShowResult"
+  }
 ]
