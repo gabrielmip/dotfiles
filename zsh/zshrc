@@ -63,7 +63,11 @@ regs () {
 }
 
 suggest () {
-  find . | shuf | head -n 1
+  find * -type f -exec echo \'{}\' \; | shuf | head -n 1
+}
+
+open-suggest () {
+  suggest | xargs xdg-open
 }
 
 fzfdiff () {
