@@ -7,10 +7,12 @@ call plug#begin('~/.config/nvim/bundle/')
 
 Plug 'vim-airline/vim-airline' " statusline
 Plug 'vim-airline/vim-airline-themes' " statusline colorscheme
-Plug 'ajmwagar/vim-deus' " colorscheme
-Plug 'morhetz/gruvbox' " colorscheme
-Plug 'sainnhe/sonokai' " colorscheme
-Plug 'christianchiarulli/nvcode-color-schemes.vim' " colorschemes
+
+" colorschemes
+Plug 'ajmwagar/vim-deus'
+Plug 'morhetz/gruvbox'
+Plug 'sainnhe/sonokai'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'romgrk/doom-one.vim'
 
 Plug 'airblade/vim-gitgutter' " git edit signs on the left column
@@ -21,9 +23,10 @@ Plug 'dense-analysis/ale'  " linters and fixers
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Better syntax highlighting
 Plug 'nvim-treesitter/playground'
 Plug 'neovim/nvim-lspconfig' " auto configuration for lsp servers
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/vim-vsnip' " snippet engine
+Plug 'hrsh7th/vim-vsnip-integ' " integration between snippets and completions
+Plug 'hrsh7th/nvim-compe' " completion engine
+Plug 'FateXii/emmet-compe' " sourcing emmet to nvim compe
 
 Plug 'Olical/conjure' " repl connection for lisps
 
@@ -32,10 +35,12 @@ Plug 'sheerun/vim-polyglot' " bundle for language syntax
 Plug 'Yggdroot/indentLine' " adds character to mark indentation
 Plug 'editorconfig/editorconfig-vim' " uses .editorconfig to override
                                        " editor configs
-Plug 'ap/vim-css-color' " adds the color html colors to
+Plug 'ap/vim-css-color' " sets background to the html color token
+Plug 'mattn/emmet-vim' " abbreviations for HTML insertion
 Plug 'tpope/vim-commentary' " bindings to comment blocks and motions
 Plug 'tpope/vim-surround' " bindings to edit surrounding brackets, parenthesis
 Plug 'jiangmiao/auto-pairs' " adds closing parenthesis
+Plug 'arthurxavierx/vim-caser' " convert word cases with motions
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim' " fuzzy search for navigation (tags, files, buffers)
@@ -75,24 +80,21 @@ autocmd Filetype json,clojure :IndentLinesDisable
 
 " ALE - Linter {{{
 let g:ale_disable_lsp = 1
-let g:ale_sign_column_always = 0
+let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
-" let g:ale_floating_preview = 1
-" let g:ale_set_balloons = 1
-" let g:ale_hover_cursor = 1
 
 let g:ale_javascript_prettier_options = '--prose-wrap always'
 let g:ale_fixers = {
-  \ 'javascript': ['eslint'],
-  \ 'javascriptreact': ['eslint'],
+  \ 'javascript': ['prettier'],
+  \ 'javascriptreact': ['prettier'],
   \ 'markdown': ['prettier'],
   \ 'json': ['prettier'],
   \ 'html': ['prettier'],
   \ 'css': ['prettier'],
-  \ 'typescript': ['eslint'],
-  \ 'typescriptreact': ['eslint'],
+  \ 'typescript': ['prettier'],
+  \ 'typescriptreact': ['prettier'],
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 let g:ale_linters = {
@@ -133,7 +135,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>gca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<C-j>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -192,19 +194,17 @@ EOF
 " nvim-compe {{{
 set completeopt=menuone,noselect,noinsert
 let g:compe = {}
-let g:compe.enabled = v:false
+let g:compe.enabled = v:true
 let g:compe.documentation = v:true
 
 let g:compe.source = {}
 let g:compe.source.path = v:true
 let g:compe.source.buffer = v:true
-" let g:compe.source.calc = v:true
 let g:compe.source.spell = v:true
 let g:compe.source.tags = v:true
 let g:compe.source.nvim_lsp = v:true
-" let g:compe.source.nvim_lua = v:true
-" let g:compe.source.vsnip = v:true
 let g:compe.source.ultisnips = v:true
+let g:compe.source.emmet = v:true
 
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
@@ -352,4 +352,18 @@ let g:AutoPairsShortcutToggle = ''
 let g:neovide_cursor_animation_length=0.03
 let g:neovide_cursor_trail_length=0
 set guifont=Fira\ Code:h14
+" }}}
+
+" Emmet {{{
+let g:user_emmet_settings = {
+\  'typescript' : {
+\      'extends' : 'jsx',
+\  },
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\  'less': {
+  \ 'extends' : 'css'
+  \}
+\}
 " }}}

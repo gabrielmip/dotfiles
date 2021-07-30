@@ -5,7 +5,6 @@
   "editor.minimap.enabled": false,
   "git.enableSmartCommit": true,
   "breadcrumbs.enabled": true,
-  "vim.camelCaseMotion.enable": true,
   "python.linting.pylintArgs": [
     "--enable=W0614"
   ],
@@ -42,7 +41,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     },
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
     "editor.codeActionsOnSave": {
@@ -70,7 +69,6 @@
   "explorer.confirmDragAndDrop": false,
   "markdown.extension.list.indentationSize": "inherit",
   "diffEditor.ignoreTrimWhitespace": false,
-  "editor.parameterHints.enabled": false,
   "editor.semanticHighlighting.enabled": false,
   "markdown.styles": [],
   "eslint.packageManager": "yarn",
@@ -145,12 +143,9 @@
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "extensions.ignoreRecommendations": true,
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
   "editor.suggestSelection": "first",
   "rewrap.autoWrap.enabled": true,
   "rewrap.wrappingColumn": 100,
@@ -177,5 +172,7 @@
   "editor.insertSpaces": false,
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.wordWrap": "off",
+  "vim.camelCaseMotion.enable": true,
+  "editor.parameterHints.enabled": false,
   "workbench.activityBar.visible": false
 }
