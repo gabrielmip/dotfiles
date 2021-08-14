@@ -144,7 +144,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "extensions.ignoreRecommendations": true,
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter-notebook"
   },
   "editor.suggestSelection": "first",
   "rewrap.autoWrap.enabled": true,
@@ -174,5 +174,10 @@
   "editor.wordWrap": "off",
   "vim.camelCaseMotion.enable": true,
   "editor.parameterHints.enabled": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "editor.selectionHighlight": false,
   "workbench.activityBar.visible": false
 }

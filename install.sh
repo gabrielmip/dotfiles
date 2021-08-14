@@ -32,6 +32,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   gimp \
   inkscape \
   gwenview \ # simpler image edition/preview
+  foliate \ # ebook reader
   visual-studio-code-bin \
   dropbox \
   ttf-firacode \
