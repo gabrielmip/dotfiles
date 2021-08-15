@@ -22,7 +22,6 @@
   "files.trimTrailingWhitespace": true,
   "workbench.iconTheme": "material-icon-theme",
   "explorer.confirmDelete": false,
-  "window.menuBarVisibility": "toggle",
   "explorer.compactFolders": false,
   "workbench.editor.labelFormat": "short",
   "[javascriptreact]": {
@@ -174,5 +173,15 @@
   "editor.wordWrap": "off",
   "vim.camelCaseMotion.enable": true,
   "editor.parameterHints.enabled": false,
-  "workbench.activityBar.visible": false
+  "window.menuBarVisibility": "toggle",
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)"
 }

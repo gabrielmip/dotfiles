@@ -33,7 +33,6 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   inkscape \
   gwenview \ # simpler image edition/preview
   visual-studio-code-bin \
-  dropbox \
   ttf-firacode \
   i3-gaps \ # window manager
   feh # set background images
@@ -61,10 +60,7 @@ rmlink $PWD/vim/mappings.vim ~/.config/nvim/mappings.vim
 rmlink $PWD/vim/plugins.vim ~/.config/nvim/plugins.vim
 rmlink $PWD/vim/colors ~/.config/nvim/colors
 rmlink $PWD/vim/autoload ~/.config/nvim/autoload
-if [ ! -e ~/.config/nvim/bundle/Vundle.vim ]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
-fi
-nvim +BundleInstall +qall
+nvim +PlugInstall +qall
 
 
 log "VS CODE"
@@ -88,10 +84,6 @@ if [ ! -d $ZSH_PLUGINS/zsh-syntax-highlighting ]; then
   mkdir -p $ZSH_PLUGINS/zsh-syntax-highlighting
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting/
 fi
-
-
-log "DROPBOX"
-dropbox # it opens the browser to log in and etc
 
 log "DOCKER"
 sudo groupadd docker
