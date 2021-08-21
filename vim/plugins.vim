@@ -85,6 +85,14 @@ let g:ale_completion_enabled = 0
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 
+function! JokerFormatter(buffer) abort
+    return {
+    \   'command': 'joker --format -'
+    \}
+endfunction
+
+execute ale#fix#registry#Add('joker-format', 'JokerFormatter', ['clojure'], 'joker fixer for clojure')
+
 let g:ale_javascript_prettier_options = '--prose-wrap always'
 let g:ale_fixers = {
   \ 'javascript': ['prettier'],
@@ -95,13 +103,14 @@ let g:ale_fixers = {
   \ 'css': ['prettier'],
   \ 'typescript': ['prettier'],
   \ 'typescriptreact': ['prettier'],
+  \ 'clojure': ['joker-format'],
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 let g:ale_linters = {
    \ 'javascript': ['eslint'],
    \ 'javascriptreact': ['eslint'],
    \ 'python': ['pylint'],
-   \ 'clojure': ['clj-kondo'],
+   \ 'clojure': ['clj-kondo', 'joker'],
    \ 'typescript': ['eslint'],
    \ 'typescriptreact': ['eslint']
    \}

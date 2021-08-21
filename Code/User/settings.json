@@ -5,9 +5,7 @@
   "editor.minimap.enabled": false,
   "git.enableSmartCommit": true,
   "breadcrumbs.enabled": true,
-  "python.linting.pylintArgs": [
-    "--enable=W0614"
-  ],
+  "python.linting.pylintArgs": ["--enable=W0614"],
   "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
   "emmet.syntaxProfiles": {
     "javascript": "jsx"
@@ -77,7 +75,7 @@
   "[markdown]": {
     "editor.wordWrap": "on",
     "editor.quickSuggestions": false,
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "[html]": {
     "editor.formatOnSave": false
@@ -143,7 +141,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "extensions.ignoreRecommendations": true,
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter-notebook"
   },
   "editor.suggestSelection": "first",
   "rewrap.autoWrap.enabled": true,
@@ -183,5 +181,12 @@
     "[ ]",
     "[x]"
   ],
-  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)"
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "editor.selectionHighlight": false,
+  "window.zoomLevel": 1,
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "workbench.activityBar.visible": false
 }
