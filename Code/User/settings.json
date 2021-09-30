@@ -186,7 +186,6 @@
     "jupyter-notebook": "left"
   },
   "editor.selectionHighlight": false,
-  "window.zoomLevel": 1,
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "workbench.activityBar.visible": false
 }
