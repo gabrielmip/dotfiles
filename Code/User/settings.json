@@ -11,7 +11,8 @@
     "javascript": "jsx"
   },
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
+    "django-html": "html"
   },
   "liveshare.audio.joinCallBehavior": "accept",
   "python.linting.flake8Enabled": true,
@@ -75,7 +76,8 @@
   "[markdown]": {
     "editor.wordWrap": "on",
     "editor.quickSuggestions": false,
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "[html]": {
     "editor.formatOnSave": false
@@ -155,7 +157,6 @@
     "width": 120,
     "maxLength": 50
   },
-  "workbench.colorTheme": "Dracula",
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
@@ -172,21 +173,16 @@
   "vim.camelCaseMotion.enable": true,
   "editor.parameterHints.enabled": false,
   "window.menuBarVisibility": "toggle",
-  "todo-tree.general.tags": [
-    "BUG",
-    "HACK",
-    "FIXME",
-    "TODO",
-    "XXX",
-    "[ ]",
-    "[x]"
-  ],
+  "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO"],
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
   },
   "editor.selectionHighlight": false,
-  "window.zoomLevel": 1,
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
-  "workbench.activityBar.visible": false
+  "editor.fontSize": 15,
+  "coverage-gutters.coverageReportFileName": "src/coverage/**/index.html",
+  "workbench.activityBar.visible": false,
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Gatito Theme"
 }

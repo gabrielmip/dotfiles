@@ -20,10 +20,7 @@
 			"pref"
 		],
 		"body": [
-			"",
-			"$CURRENT_DATE/$CURRENT_MONTH/$CURRENT_YEAR - P$1 D$2",
-			"$0",
-			""
+			"$CURRENT_DATE/$CURRENT_MONTH/$CURRENT_YEAR - $0",
 		],
 		"description": "Daily journal day prefix"
 	}

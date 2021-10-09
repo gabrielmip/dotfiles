@@ -31,6 +31,7 @@ export PATH="${PATH}:/Library/TeX/Distributions/Programs/texbin"
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${HOME}/.yarn/bin"
 export PATH="${PATH}:/usr/local/apps/liquibase"
+export PATH="${PATH}:${HOME}/.poetry/bin"
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export ANDROID_HOME="${HOME}/Android/Sdk"
@@ -92,3 +93,5 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PATH="$HOME/.poetry/bin:$PATH"
