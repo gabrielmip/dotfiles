@@ -54,6 +54,15 @@ setupstream () {
   git branch --set-upstream-to=origin/$(git_current_branch) $(git_current_branch)
 }
 
+mergewith () {
+  CURRENT=$(git_current_branch)
+  git checkout "$1"
+  git pull
+  git checkout "$CURRENT"
+  git merge "$1"
+}
+
+
 # opens vim in my notes folder
 regs () {
   CURRENT=$PWD

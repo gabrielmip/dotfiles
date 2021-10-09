@@ -41,5 +41,9 @@
   {
     "key": "ctrl+shift+e",
     "command": "clojureVSCode.evalAndShowResult"
+  },
+  {
+    "key": "ctrl+k e",
+    "command": "workbench.explorer.fileView.focus"
   }
 ]
