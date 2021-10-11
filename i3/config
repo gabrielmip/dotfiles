@@ -60,7 +60,8 @@ bindsym $mod+Shift+q kill
 # exec_always --no-startup-id picom -bcC
 
 # wallpaper and colors
-exec --no-startup-id xsetroot -solid "#15434c"
+# exec --no-startup-id xsetroot -solid "#15434c"
+exec --no-startup-id feh --bg-fill /home/gabriel/Dotfiles/wallpaper.jpg
 
 # i3-gaps
 # gaps inner 8
