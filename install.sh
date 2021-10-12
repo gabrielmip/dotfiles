@@ -69,6 +69,10 @@ mkdir -p ~/.config/Code
 rmlink $PWD/Code/User ~/.config/Code/
 
 
+log "PICOM"
+rmlink $PWD/picom/picom.conf ~/.config/picom.conf
+
+
 log "I3"
 mkdir -p ~/.config/i3
 rmlink $PWD/i3/config ~/.config/i3/config

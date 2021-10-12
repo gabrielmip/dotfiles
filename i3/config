@@ -58,6 +58,7 @@ bindsym $mod+Shift+q kill
 
 # enabling compositor for window transparency
 # exec_always --no-startup-id picom -bcC
+exec_always --no-startup-id picom
 
 # wallpaper and colors
 # exec --no-startup-id xsetroot -solid "#15434c"

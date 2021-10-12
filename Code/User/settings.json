@@ -183,6 +183,5 @@
   "editor.fontSize": 15,
   "coverage-gutters.coverageReportFileName": "src/coverage/**/index.html",
   "workbench.activityBar.visible": false,
-  "window.zoomLevel": 1,
   "workbench.colorTheme": "Gatito Theme"
 }
