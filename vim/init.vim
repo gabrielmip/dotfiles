@@ -1,55 +1,82 @@
 syntax on
-set backspace=indent,eol,start
-set autoindent
-set ruler
-set nostartofline
-set laststatus=2
-set confirm
-set number
-set relativenumber
-set cursorline
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set nowrap
-set showmatch
-set smartcase
-set hlsearch
-set incsearch
-set inccommand=nosplit " live preview in replace results
-set history=1000
-set undolevels=1000
-set wildignore=*.swp,*.bak,*.pyc,*.class
-set title
-set visualbell
-set noerrorbells
+filetype indent on " enable file type specific indentation
+filetype plugin on
+
+" indentation
+set tabstop=4 " number of visual spaces per tab.
+set softtabstop=4 " number of spaces per tab while editing.
+set expandtab " expand to 4 spaces when you press tab.
+set autoindent " automatically indent lines while editing.
+
+" keeping the indentation (white spaces) when going to normal mode even if
+" have not written any word.
+inoremap <CR> <CR>x<BS>
+nnoremap o ox<BS>
+nnoremap O Ox<BS>
+
+" splits
 set splitbelow
 set splitright
-set hid
-set colorcolumn=81
-set mouse=a
-set signcolumn=yes:1
 
-set wildmenu
-set path+=**
+" search and replace
+set smartcase " ignore results' case if the search term is all lower case
+set incsearch " search and highlight result as you type
+set inccommand=nosplit " live preview in replace results
 
-" Omnicompletion
-" filetype plugin on
-set omnifunc=syntaxcomplete#Complete
+set number relativenumber
+set confirm " ask for confirmation in certain operations
+set showmatch " briefly show matching parenthesis, brackets, etc
+set history=1000 " press q: to see the history of commands and q/ for searches
+set wildignore=*.swp,*.bak,*.pyc,*.class,.git/*,node_modules/*,tags,vendor/*,tmp/*,bin/*
+set title " set the title of the terminal window to the name of the file I am editing
+set mouse=nvi " enables mouse in normal, visual and insert mode. Hold shift to disable temporarily
+set signcolumn=yes:1 " always show additional column for git signs, linter
+set wildmenu " menu which display options for autocomplete over the status line
+set path+=** " Allowing :find function to find in every subfolder recursively
+set conceallevel=0
 
-" Always turn on syntax highlighting for diffs
-" EITHER select by the file-suffix directly...
-augroup PatchDiffHighlight
-  autocmd!
-  autocmd BufEnter  *.patch,*.rej,*.diff   syntax enable
-augroup END
+" turn off swap files and backups
+set noswapfile
+set nobackup
+set nowritebackup
 
-" OR ELSE use the filetype mechanism to select automatically...
-filetype on
-augroup PatchDiffHighlight
-  autocmd!
-  autocmd FileType  diff   syntax enable
-augroup END
+" code folding
+set foldenable
+set foldlevelstart=1 " fold only long blocks of code.
+set foldnestmax=10 " folds can be nested, this ensures max 10 nested folds.
+set foldmethod=indent " my default: folding based on indentation.
+
+" now onto the overrides:
+autocmd FileType json set foldmethod=syntax
+autocmd FileType vim set foldmethod=marker foldlevelstart=0
+autocmd FileType clojure set foldmethod=marker
+
+" buffer navigation
+nnoremap ]b :bn<CR>
+nnoremap [b :bp<CR>
+
+" quickfix list navigation
+nnoremap ]c :cn<CR>
+nnoremap [c :cp<CR>
+
+" location list navigation
+nnoremap ]l :lnext<CR>
+nnoremap [l :lprev<CR>
+
+" go to latest opened buffer
+noremap <silent> <Space><Tab> :e #<CR>
+
+" when in normal mode, stop highlighting search results
+nnoremap <silent> <Esc> :nohlsearch<CR>
+
+let leader=" "
+let maplocalleader="," " this is for buffer-specific mappings (conjure uses this)
+
+" saving with control + s
+nnoremap <C-S> :w<CR>
+
+" Damian Conway's suggestion. Why not?
+nnoremap ; :
 
 " function used in SwapWords
 function! Mirror(dict)
@@ -91,28 +118,31 @@ endfunction
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
-autocmd BufWritePre * :call TrimWhiteSpace()
+" autocmd BufWritePre * :call TrimWhiteSpace()
 
 " Kills all buffers then reopens the current one
-function! KillBuffs()
+function! KillOtherBuffers()
   %bd|e#
 endfunction
 
-function! ListFiles()
-  if isdirectory(expand(getcwd() . '/.git'))
-    :GFiles
-  else
-    :Files
-  endif
-endfunction
-
-if !exists(':ListFiles')
-  command -nargs=0 ListFiles call ListFiles()
+if !exists(':KillOtherBuffers')
+  command -nargs=0 KillOtherBuffers call KillOtherBuffers()
 endif
 
-if !exists(':KillBuffs')
-  command -nargs=0 KillBuffs call KillBuffs()
-endif
+" function! ListFiles()
+"   if isdirectory(expand(getcwd() . '/.git'))
+"     :GFiles
+"   else
+"     :Files
+"   endif
+" endfunction
+"
+" if !exists(':ListFiles')
+"   command -nargs=0 ListFiles call ListFiles()
+" endif
+
+" source $HOME/.config/nvim/mappings.vim
+source $HOME/.config/nvim/plugins.vim
 
 function LocalWriteMode()
   setlocal wrap
@@ -121,21 +151,5 @@ function LocalWriteMode()
   setlocal textwidth=80
 endfunction
 
-source $HOME/.config/nvim/mappings.vim
-source $HOME/.config/nvim/plugins.vim
-
-" It looks like this setting is being overwritten by a plugin or something.
-let g:vim_json_syntax_conceal = 0
-autocmd FileType json set foldmethod=syntax
-autocmd FileType vim set foldmethod=marker
-autocmd FileType clojure set foldmethod=marker
-autocmd FileType markdown set conceallevel=0
-
-highlight! link TSFunctionMacro Red
-highlight! link TSFuncBuiltin Red
-highlight! link TSVariableBuiltin White
-highlight! link TSParameter Orange
-highlight! link TSFunction White
-
-" Automatically setting wrap on text and markdown files
+" automatically setting wrap on text and markdown files
 autocmd FileType markdown,textfile call LocalWriteMode()
