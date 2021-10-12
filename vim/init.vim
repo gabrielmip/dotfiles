@@ -2,6 +2,8 @@ syntax on
 filetype indent on " enable file type specific indentation
 filetype plugin on
 
+source $HOME/.config/nvim/plugins.vim
+
 " indentation
 set tabstop=4 " number of visual spaces per tab.
 set softtabstop=4 " number of spaces per tab while editing.
@@ -56,12 +58,16 @@ nnoremap ]b :bn<CR>
 nnoremap [b :bp<CR>
 
 " quickfix list navigation
-nnoremap ]c :cn<CR>
-nnoremap [c :cp<CR>
+nnoremap ]c :cnext<CR>
+nnoremap [c :cprev<CR>
 
 " location list navigation
 nnoremap ]l :lnext<CR>
 nnoremap [l :lprev<CR>
+
+" git change (hunk) navigation
+nnoremap ]h :GitGutterNextHunk<CR>
+nnoremap [h :GitGutterPrevHunk<CR>
 
 " go to latest opened buffer
 noremap <silent> <Space><Tab> :e #<CR>
@@ -142,7 +148,6 @@ endif
 " endif
 
 " source $HOME/.config/nvim/mappings.vim
-source $HOME/.config/nvim/plugins.vim
 
 function LocalWriteMode()
   setlocal wrap
