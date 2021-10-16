@@ -62,6 +62,9 @@ mergewith () {
   git merge "$1"
 }
 
+delete-branches () {
+  git branch | grep -v '^*' | xargs git branch -d
+}
 
 # opens vim in my notes folder
 regs () {
