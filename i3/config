@@ -76,9 +76,6 @@ new_float pixel 0
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
 for_window [title="Área de trabalho — Plasma"] kill; floating enable; border none
 
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable
 for_window [class="plasmashell"] floating enable;
@@ -94,6 +91,13 @@ for_window [class="(?i)*nextcloud*"] floating disable
 for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
 no_focus [class="plasmashell" window_type="notification"]
 
+for_window [window_role="pop-up"] floating enable; border none
+for_window [window_role="bubble"] floating enable ; border none
+for_window [window_role="task_dialog"] floating enable; border none
+for_window [window_role="Preferences"] floating enable; border none
+for_window [window_type="dialog"] floating enable ; border none
+for_window [window_type="menu"] floating enable; border none
+for_window [floating] resize set 1000 px 800 px; move position center
 
 # change focus
 bindsym $mod+j focus down
@@ -139,6 +143,7 @@ bindsym $mod+Shift+Tab workspace prev
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+# ; resize set 1000 px 800 px; move position center
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
