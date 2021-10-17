@@ -53,9 +53,20 @@ autocmd FileType json set foldmethod=syntax
 autocmd FileType vim set foldmethod=marker foldlevelstart=0
 autocmd FileType clojure set foldmethod=marker
 
-" buffer navigation
-nnoremap ]b :bn<CR>
-nnoremap [b :bp<CR>
+" quickfix and location list navigation
+function! QFHistory(goNewer)
+  " Get dictionary of properties of the current window
+  let wininfo = filter(getwininfo(), {i,v -> v.winnr == winnr()})[0]
+  let isloc = wininfo.loclist
+  " Build the command: one of colder/cnewer/lolder/lnewer
+  let cmd = (isloc ? 'l' : 'c') . (a:goNewer ? 'newer' : 'older')
+  try | execute cmd | catch | endtry
+endfunction
+
+" moving back and fourth in quickfix/location list history
+" when in the list's buffer
+autocmd FileType qf nnoremap <buffer> <Left> :call QFHistory(0)<CR>
+autocmd FileType qf nnoremap <buffer> <Right> :call QFHistory(1)<CR>
 
 " quickfix list navigation
 nnoremap ]c :cnext<CR>
@@ -65,9 +76,19 @@ nnoremap [c :cprev<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [l :lprev<CR>
 
+" buffer navigation
+nnoremap ]b :bn<CR>
+nnoremap [b :bp<CR>
+
 " git change (hunk) navigation
 nnoremap ]h :GitGutterNextHunk<CR>
 nnoremap [h :GitGutterPrevHunk<CR>
+
+" git revision history navigation
+" comes from autoload/fugitive_revision_history.vim
+nnoremap <silent> <Space>gh :call ToggleRevisionComparison()<CR>
+nnoremap <silent> ]r :call OlderRevision()<CR>
+nnoremap <silent> [r :call NewerRevision()<CR>
 
 " go to latest opened buffer
 noremap <silent> <Space><Tab> :e #<CR>
@@ -131,9 +152,7 @@ function! KillOtherBuffers()
   %bd|e#
 endfunction
 
-if !exists(':KillOtherBuffers')
-  command -nargs=0 KillOtherBuffers call KillOtherBuffers()
-endif
+command! -nargs=0 KillOtherBuffers call KillOtherBuffers()
 
 " function! ListFiles()
 "   if isdirectory(expand(getcwd() . '/.git'))
@@ -143,9 +162,7 @@ endif
 "   endif
 " endfunction
 "
-" if !exists(':ListFiles')
-"   command -nargs=0 ListFiles call ListFiles()
-" endif
+" command! -nargs=0 ListFiles call ListFiles()
 
 " source $HOME/.config/nvim/mappings.vim
 
@@ -155,6 +172,8 @@ function LocalWriteMode()
   setlocal nolist
   setlocal textwidth=80
 endfunction
+
+command! -nargs=0 LocalWriteMode call LocalWriteMode()
 
 " automatically setting wrap on text and markdown files
 autocmd FileType markdown,textfile call LocalWriteMode()
