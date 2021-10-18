@@ -254,9 +254,9 @@ let g:ale_linters = {
 "" }}}
 "
 "" }}}
-"
+
 " FZF {{{
-let g:fzf_layout = { 'down': '~40%' }
+" let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_tags_command = 'ctags -R --exclude={tags,assets,node_modules,vendor,tmp,bin,.transpiled,.git}'
 
 " An action can be a reference to a function that processes selected lines

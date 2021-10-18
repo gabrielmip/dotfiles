@@ -61,6 +61,7 @@ rmlink $PWD/vim/mappings.vim ~/.config/nvim/mappings.vim
 rmlink $PWD/vim/plugins.vim ~/.config/nvim/plugins.vim
 rmlink $PWD/vim/colors ~/.config/nvim/colors
 rmlink $PWD/vim/autoload ~/.config/nvim/autoload
+rmlink $PWD/vim/plugin ~/.config/nvim/plugin
 nvim +PlugInstall +qall
 
 
