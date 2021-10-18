@@ -26,6 +26,7 @@ set incsearch " search and highlight result as you type
 set inccommand=nosplit " live preview in replace results
 
 set number relativenumber
+set hidden " allows user to leave unsaved buffers
 set confirm " ask for confirmation in certain operations
 set showmatch " briefly show matching parenthesis, brackets, etc
 set history=1000 " press q: to see the history of commands and q/ for searches
