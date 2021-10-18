@@ -10,12 +10,6 @@ set softtabstop=4 " number of spaces per tab while editing.
 set expandtab " expand to 4 spaces when you press tab.
 set autoindent " automatically indent lines while editing.
 
-" keeping the indentation (white spaces) when going to normal mode even if
-" have not written any word.
-inoremap <CR> <CR>x<BS>
-nnoremap o ox<BS>
-nnoremap O Ox<BS>
-
 " splits
 set splitbelow
 set splitright
@@ -49,62 +43,14 @@ set foldlevelstart=1 " fold only long blocks of code.
 set foldnestmax=10 " folds can be nested, this ensures max 10 nested folds.
 set foldmethod=indent " my default: folding based on indentation.
 
+" setting ripgrep as the preferred grep tool
+set grepprg=rg\ --vimgrep\ --smart-case
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+
 " now onto the overrides:
 autocmd FileType json set foldmethod=syntax
 autocmd FileType vim set foldmethod=marker foldlevelstart=0
 autocmd FileType clojure set foldmethod=marker
-
-" quickfix and location list navigation
-function! QFHistory(goNewer)
-  " Get dictionary of properties of the current window
-  let wininfo = filter(getwininfo(), {i,v -> v.winnr == winnr()})[0]
-  let isloc = wininfo.loclist
-  " Build the command: one of colder/cnewer/lolder/lnewer
-  let cmd = (isloc ? 'l' : 'c') . (a:goNewer ? 'newer' : 'older')
-  try | execute cmd | catch | endtry
-endfunction
-
-" moving back and fourth in quickfix/location list history
-" when in the list's buffer
-autocmd FileType qf nnoremap <buffer> <Left> :call QFHistory(0)<CR>
-autocmd FileType qf nnoremap <buffer> <Right> :call QFHistory(1)<CR>
-
-" quickfix list navigation
-nnoremap ]c :cnext<CR>
-nnoremap [c :cprev<CR>
-
-" location list navigation
-nnoremap ]l :lnext<CR>
-nnoremap [l :lprev<CR>
-
-" buffer navigation
-nnoremap ]b :bn<CR>
-nnoremap [b :bp<CR>
-
-" git change (hunk) navigation
-nnoremap ]h :GitGutterNextHunk<CR>
-nnoremap [h :GitGutterPrevHunk<CR>
-
-" git revision history navigation
-" comes from autoload/fugitive_revision_history.vim
-nnoremap <silent> <Space>gh :call ToggleRevisionComparison()<CR>
-nnoremap <silent> ]r :call OlderRevision()<CR>
-nnoremap <silent> [r :call NewerRevision()<CR>
-
-" go to latest opened buffer
-noremap <silent> <Space><Tab> :e #<CR>
-
-" when in normal mode, stop highlighting search results
-nnoremap <silent> <Esc> :nohlsearch<CR>
-
-let leader=" "
-let maplocalleader="," " this is for buffer-specific mappings (conjure uses this)
-
-" saving with control + s
-nnoremap <C-S> :w<CR>
-
-" Damian Conway's suggestion. Why not?
-nnoremap ; :
 
 " function used in SwapWords
 function! Mirror(dict)
@@ -155,17 +101,15 @@ endfunction
 
 command! -nargs=0 KillOtherBuffers call KillOtherBuffers()
 
-" function! ListFiles()
-"   if isdirectory(expand(getcwd() . '/.git'))
-"     :GFiles
-"   else
-"     :Files
-"   endif
-" endfunction
-"
-" command! -nargs=0 ListFiles call ListFiles()
+ function! ListFiles()
+   if isdirectory(expand(getcwd() . '/.git'))
+     :GFiles
+   else
+     :Files
+   endif
+ endfunction
 
-" source $HOME/.config/nvim/mappings.vim
+ command! -nargs=0 ListFiles call ListFiles()
 
 function LocalWriteMode()
   setlocal wrap
@@ -178,3 +122,81 @@ command! -nargs=0 LocalWriteMode call LocalWriteMode()
 
 " automatically setting wrap on text and markdown files
 autocmd FileType markdown,textfile call LocalWriteMode()
+
+" source $HOME/.config/nvim/mappings.vim
+
+let leader=" "
+let maplocalleader="," " this is for buffer-specific mappings (conjure uses this)
+
+" keeping the indentation (white spaces) when going to normal mode even if
+" have not written any word.
+inoremap <CR> <CR>x<BS>
+nnoremap o ox<BS>
+nnoremap O Ox<BS>
+
+" quickfix and location list navigation
+function! QFHistory(goNewer)
+  " Get dictionary of properties of the current window
+  let wininfo = filter(getwininfo(), {i,v -> v.winnr == winnr()})[0]
+  let isloc = wininfo.loclist
+  " Build the command: one of colder/cnewer/lolder/lnewer
+  let cmd = (isloc ? 'l' : 'c') . (a:goNewer ? 'newer' : 'older')
+  try | execute cmd | catch | endtry
+endfunction
+
+" moving back and fourth in quickfix/location list history
+" when in the list's buffer
+autocmd FileType qf nnoremap <buffer> <Left> :call QFHistory(0)<CR>
+autocmd FileType qf nnoremap <buffer> <Right> :call QFHistory(1)<CR>
+
+" quickfix list navigation
+nnoremap ]c :cnext<CR>
+nnoremap [c :cprev<CR>
+
+" location list navigation
+nnoremap ]l :lnext<CR>
+nnoremap [l :lprev<CR>
+
+" buffer navigation
+nnoremap ]b :bn<CR>
+nnoremap [b :bp<CR>
+
+" git change (hunk) navigation
+nnoremap ]h :GitGutterNextHunk<CR>
+nnoremap [h :GitGutterPrevHunk<CR>
+
+" git revision history navigation
+" comes from plugin/fugitive_revision_history.vim
+nnoremap <silent> <Space>gh :call ToggleRevisionComparison()<CR>
+nnoremap <silent> ]r :call OlderRevision()<CR>
+nnoremap <silent> [r :call NewerRevision()<CR>
+
+" FZF mappings
+nnoremap <silent> <Space>ft :BTags<CR>
+nnoremap <silent> <Space>fh :History<CR>
+nnoremap <silent> <Space>ff :Files<CR>
+nnoremap <silent> <Space>pf :ListFiles<CR>
+nnoremap <silent> <Space>bb :Buffers<CR>
+nnoremap <silent> <Space>cc :Commands<CR>
+
+" search the word under the cursor in the project
+nnoremap <silent> <Space>fs :Rg <C-r><C-w><CR>
+" search the selection in the project
+xnoremap <Space>fs "sy:Rg <C-r>s<CR>
+
+" replace the word under the cursor in the current file
+nnoremap <Space>fr :%s/<C-r><C-w>//g<Left><Left>
+" replace the selection in the current file
+xnoremap <Space>fr "sy:%s/<C-r>s//g<Left><Left>
+
+" go to latest opened buffer
+noremap <silent> <Space><Tab> :e #<CR>
+
+" when in normal mode, stop highlighting search results
+nnoremap <silent> <Esc> :nohlsearch<CR>
+
+" saving with control + s
+nnoremap <C-S> :w<CR>
+
+" Damian Conway's suggestion. Why not?
+nnoremap ; :

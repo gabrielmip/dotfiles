@@ -1,12 +1,12 @@
 " FZF
-nnoremap <silent> <Space>t :BTags<CR>
-nnoremap <silent> <Space>f :ListFiles<CR>
-nnoremap <silent> <Space>F :Files<CR>
-nnoremap <silent> <Space>b :Buffers<CR>
-nnoremap <silent> <Space>h :History<CR>
-nnoremap <silent> <Space>c :Commands<CR>
-" nnoremap <Space>r :%s/\<<C-r><C-w>\>//g<Left><Left>
-nnoremap <silent> <Space>s :Rg <C-r><C-w><CR>
+" nnoremap <silent> <Space>ft :BTags<CR>
+" nnoremap <silent> <Space>fh :History<CR>
+" nnoremap <silent> <Space>ff :Files<CR>
+" nnoremap <silent> <Space>pf :ListFiles<CR>
+" nnoremap <silent> <Space>bb :Buffers<CR>
+" nnoremap <silent> <Space>cc :Commands<CR>
+"nnoremap <Space>r :%s/\<<C-r><C-w>\>//g<Left><Left>
+" nnoremap <silent> <Space>s :Rg <C-r><C-w><CR>
 
 " deoplete completion on tab
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
