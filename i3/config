@@ -97,7 +97,7 @@ for_window [window_role="task_dialog"] floating enable; border none
 for_window [window_role="Preferences"] floating enable; border none
 for_window [window_type="dialog"] floating enable ; border none
 for_window [window_type="menu"] floating enable; border none
-for_window [floating] resize set 1000 px 800 px; move position center
+"for_window [floating] resize set 1000 px 800 px; move position center
 
 # change focus
 bindsym $mod+j focus down
