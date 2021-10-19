@@ -32,6 +32,10 @@ set wildmenu " menu which display options for autocomplete over the status line
 set path+=** " Allowing :find function to find in every subfolder recursively
 set conceallevel=0
 
+" increase the time vim waits between keystrokes before it discard mappings and
+" proceed with the default behavior for the keys.
+set timeoutlen=10000 " 10 seconds
+
 " turn off swap files and backups
 set noswapfile
 set nobackup
@@ -134,6 +138,12 @@ inoremap <CR> <CR>x<BS>
 nnoremap o ox<BS>
 nnoremap O Ox<BS>
 
+" Ctrl-Backspace to delete a word in insert, command and terminal mode
+noremap! <C-BS> <C-w>
+noremap! <C-H> <C-w>
+tnoremap <C-BS> <C-w>
+tnoremap <C-H> <C-w>
+
 " quickfix and location list navigation
 function! QFHistory(goNewer)
   " Get dictionary of properties of the current window
@@ -180,9 +190,9 @@ nnoremap <silent> <Space>bb :Buffers<CR>
 nnoremap <silent> <Space>cc :Commands<CR>
 
 " search the word under the cursor in the project
-nnoremap <silent> <Space>fs :Rg <C-r><C-w><CR>
+nnoremap <silent> <Space>ps :Rg <C-r><C-w><CR>
 " search the selection in the project
-xnoremap <Space>fs "sy:Rg <C-r>s<CR>
+xnoremap <Space>ps "sy:Rg <C-r>s<CR>
 
 " replace the word under the cursor in the current file
 nnoremap <Space>fr :%s/<C-r><C-w>//g<Left><Left>
