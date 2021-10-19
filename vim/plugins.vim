@@ -2,7 +2,6 @@
 " disabling every command ran automatically per file type.
 " i only want the syntax highlighting.
 let g:polyglot_disabled = ['sensible', 'ftdetect', 'autoindent']
-autocmd BufEnter * set indentexpr=
 " }}}
 
 " Installed plugins {{{
