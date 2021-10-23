@@ -1,7 +1,7 @@
 " vim-polyglot {{{
-" disabling every command ran automatically per file type.
-" i only want the syntax highlighting.
-let g:polyglot_disabled = ['sensible', 'ftdetect', 'autoindent']
+" disabling most commands ran automatically per file type.
+" i only want the syntax highlighting and autoindent.
+let g:polyglot_disabled = ['sensible', 'ftdetect']
 " }}}
 
 " Installed plugins {{{
@@ -22,11 +22,15 @@ Plug 'tpope/vim-fugitive' " git helpers
 
 Plug 'ludovicchabant/vim-gutentags' " manages my tags
 Plug 'dense-analysis/ale'  " linters and fixers
-"Plug 'neovim/nvim-lspconfig' " auto configuration for lsp servers
-"Plug 'hrsh7th/nvim-compe' " completion engine
-"Plug 'FateXii/emmet-compe' " sourcing emmet to nvim compe
-"Plug 'hrsh7th/vim-vsnip' " snippet engine
-"Plug 'hrsh7th/vim-vsnip-integ' " integration between snippets and completions
+Plug 'neovim/nvim-lspconfig' " auto configuration for lsp servers
+Plug 'williamboman/nvim-lsp-installer' " auto install lsp servers
+
+" completion
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " third party snippets
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+
+Plug 'ms-jpq/chadtree'
 
 Plug 'Olical/conjure' " repl connection for lisps
 
@@ -38,7 +42,7 @@ Plug 'mattn/emmet-vim' " abbreviations for HTML insertion
 Plug 'tpope/vim-commentary' " bindings to comment blocks and motions
 Plug 'tpope/vim-surround' " bindings to edit surrounding brackets, parenthesis
 Plug 'arthurxavierx/vim-caser' " convert word cases with motions
-"Plug 'jiangmiao/auto-pairs' " adds closing parenthesis
+Plug 'jiangmiao/auto-pairs' " adds closing parenthesis
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim' " fuzzy search for navigation (tags, files, buffers)
@@ -113,120 +117,56 @@ let g:ale_linters = {
    \}
 "}}}
 
-"" Neovim LSP nvim-lspconfig {{{
-"lua << EOF
-"local nvim_lsp = require('lspconfig')
-"local on_attach = function(client, bufnr)
-"  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-"  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-"  local opts = { noremap=true, silent=true }
-"
-"  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-"  buf_set_keymap('n', 'gh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-"  buf_set_keymap('n', '<CS-Space>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-"  buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-"end
-"
-"local serversWithDefaultConfig = {
-"  'pyls',
-"  'svelte',
-"  'tsserver',
-"  'clojure_lsp',
-"  'vimls',
-"  'bashls',
-"  'jsonls',
-"  'html',
-"  'cssls'
-"}
-"
-"local capabilities = vim.lsp.protocol.make_client_capabilities()
-"capabilities.textDocument.completion.completionItem.snippetSupport = true
-"capabilities.textDocument.completion.completionItem.resolveSupport = {
-"  properties = {
-"    'documentation',
-"    'detail',
-"    'additionalTextEdits',
-"  }
-"}
-"
-"for _, lsp in ipairs(serversWithDefaultConfig) do
-"  nvim_lsp[lsp].setup {
-"    capabilities = capabilities,
-"    on_attach = on_attach,
-"  }
-"end
-"EOF
-"
-"" }}}
-"
-"" nvim-compe {{{
-"set completeopt=menuone,noselect,noinsert
-"let g:compe = {}
-"let g:compe.enabled = v:false
-"let g:compe.documentation = v:true
-"
-"let g:compe.source = {}
-"let g:compe.source.path = v:true
-"let g:compe.source.buffer = v:true
-"let g:compe.source.spell = v:true
-"let g:compe.source.tags = v:true
-"let g:compe.source.nvim_lsp = v:true
-"let g:compe.source.ultisnips = v:true
-"let g:compe.source.emmet = v:true
-"
-"inoremap <silent><expr> <C-Space> compe#complete()
-"inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-"inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-"highlight link CompeDocumentation NormalFloat
-"
-"" meant to add Tab and Shift-tab for navigation in the completion menu {{{
-"lua << EOF
-"local t = function(str)
-"  return vim.api.nvim_replace_termcodes(str, true, true, true)
-"end
-"
-"local check_back_space = function()
-"    local col = vim.fn.col('.') - 1
-"    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-"        return true
-"    else
-"        return false
-"    end
-"end
-"
-"-- Use (s-)tab to:
-"--- move to prev/next item in completion menuone
-"--- jump to prev/next snippet's placeholder
-"_G.tab_complete = function()
-"  if vim.fn.pumvisible() == 1 then
-"    return t "<C-n>"
-"  elseif vim.fn.call("vsnip#available", {1}) == 1 then
-"    return t "<Plug>(vsnip-expand-or-jump)"
-"  elseif check_back_space() then
-"    return t "<Tab>"
-"  else
-"    return vim.fn['compe#complete']()
-"  end
-"end
-"_G.s_tab_complete = function()
-"  if vim.fn.pumvisible() == 1 then
-"    return t "<C-p>"
-"  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-"    return t "<Plug>(vsnip-jump-prev)"
-"  else
-"    return t "<S-Tab>"
-"  end
-"end
-"
-"vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-"vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-"vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-"vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-"
-"EOF
-"" }}}
-"
-"" }}}
+" coq_nvim {{{
+let g:coq_settings = {
+  \ 'auto_start': v:true,
+  \ 'keymap.pre_select': v:true,
+  \ 'keymap.jump_to_mark': '<Tab>',
+  \ 'keymap.eval_snips': '<space>snip',
+  \ }
+" }}}
+
+" nvim-lspconfig {{{
+lua << EOF
+local nvim_lsp = require('lspconfig')
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  local opts = { noremap=true, silent=true }
+
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<CS-Space>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
+
+local util = require("lspconfig/util")
+local lsp_installer = require("nvim-lsp-installer")
+
+lsp_installer.on_server_ready(function(server)
+    local opts = {
+      capabilities = capabilities,
+      on_attach = on_attach
+    }
+
+    server:setup(opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+end)
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+EOF
+
+" }}}
 
 " FZF {{{
 " let g:fzf_layout = { 'down': '~40%' }
@@ -310,9 +250,9 @@ highlight MatchParen guifg=NONE guibg=#6c707a
 let g:indentLine_color_gui = '#545760'
 " }}}
 
-"" AutoPairs {{{
-"let g:AutoPairsShortcutToggle = ''
-"" }}}
+" AutoPairs {{{
+let g:AutoPairsShortcutToggle = ''
+" }}}
 
 "" GUIs {{{
 "let g:neovide_cursor_animation_length=0.03

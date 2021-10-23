@@ -5,8 +5,8 @@ filetype plugin on
 source $HOME/.config/nvim/plugins.vim
 
 " indentation
-set tabstop=4 " number of visual spaces per tab.
 set softtabstop=4 " number of spaces per tab while editing.
+set shiftwidth=4
 set expandtab " expand to 4 spaces when you press tab.
 set autoindent " automatically indent lines while editing.
 
@@ -42,10 +42,10 @@ set nobackup
 set nowritebackup
 
 " code folding
-set foldenable
-set foldlevelstart=1 " fold only long blocks of code.
-set foldnestmax=10 " folds can be nested, this ensures max 10 nested folds.
-set foldmethod=indent " my default: folding based on indentation.
+" set foldenable
+" set foldlevelstart=1 " fold only long blocks of code.
+" set foldnestmax=10 " folds can be nested, this ensures max 10 nested folds.
+" set foldmethod=indent " my default: folding based on indentation.
 
 " setting ripgrep as the preferred grep tool
 set grepprg=rg\ --vimgrep\ --smart-case
@@ -188,6 +188,7 @@ nnoremap <silent> <Space>ff :Files<CR>
 nnoremap <silent> <Space>pf :ListFiles<CR>
 nnoremap <silent> <Space>bb :Buffers<CR>
 nnoremap <silent> <Space>cc :Commands<CR>
+nnoremap <silent> <Space>tt <cmd>CHADopen<cr>
 
 " search the word under the cursor in the project
 nnoremap <silent> <Space>ps :Rg <C-r><C-w><CR>

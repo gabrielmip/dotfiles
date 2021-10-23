@@ -1,0 +1,32 @@
+snippet reactcomponent
+alias react
+    import React from 'react';
+    import Styles from './$0.module.less';
+
+    export type $0Props = {
+
+    }
+
+    export const $0 = (props: $0Props): JSX.Element => {
+        return (
+
+        );
+    };
+
+
+snippet reactstory
+alias story
+    import React from 'react';
+    import { Story, Meta } from '@storybook/react';
+
+    import { $0, $0Props } from './$0';
+
+    export default {
+        title: '$0',
+        component: $0,
+        args: { },
+    } as Meta;
+
+    const Template: Story<$0Props> = args => <$0 {...args } />;
+
+    export const Default = Template.bind({})

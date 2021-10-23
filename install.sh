@@ -40,21 +40,6 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
 
 
 log "VIM"
-# nvim autocomplete and language server things
-# I might have to install pip, but I am not sure
-pip install --user msgpack neovim pynvim 'python-language-server[all]' pyls-mypy
-yay -Sy --noconfirm yarn clojure-lsp-bin
-yarn global add \
-  typescript \
-  typescript-language-server \
-  vscode-css-languageserver-bin \
-  vscode-json-languageserver \
-  vscode-html-languageserver-bin \
-  svelte-language-server \
-  vim-language-server \
-  bash-language-server
-
-# configs and plugin install
 mkdir -p ~/.config/nvim
 rmlink $PWD/vim/init.vim ~/.config/nvim/init.vim
 rmlink $PWD/vim/mappings.vim ~/.config/nvim/mappings.vim
@@ -62,6 +47,7 @@ rmlink $PWD/vim/plugins.vim ~/.config/nvim/plugins.vim
 rmlink $PWD/vim/colors ~/.config/nvim/colors
 rmlink $PWD/vim/autoload ~/.config/nvim/autoload
 rmlink $PWD/vim/plugin ~/.config/nvim/plugin
+rmlink $PWD/vim/coq-user-snippets ~/.config/nvim/coq-user-snippets
 nvim +PlugInstall +qall
 
 
