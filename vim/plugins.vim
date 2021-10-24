@@ -15,7 +15,8 @@ Plug 'ajmwagar/vim-deus'
 Plug 'morhetz/gruvbox'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'sainnhe/sonokai'
-Plug 'jonathanfilip/vim-lucius'
+Plug 'colepeters/spacemacs-theme.vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
 
 Plug 'airblade/vim-gitgutter' " git edit signs on the left column
 Plug 'tpope/vim-fugitive' " git helpers
@@ -123,6 +124,7 @@ let g:coq_settings = {
   \ 'keymap.pre_select': v:true,
   \ 'keymap.jump_to_mark': '<Tab>',
   \ 'keymap.eval_snips': '<space>snip',
+  \ 'display.ghost_text.enabled': v:false,
   \ }
 " }}}
 
@@ -165,7 +167,6 @@ end)
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 EOF
-
 " }}}
 
 " FZF {{{
@@ -245,9 +246,9 @@ if (empty($TMUX))
 endif
 
 colorscheme deus
-highlight Visual     guifg=None guibg=#545760
-highlight MatchParen guifg=NONE guibg=#6c707a
-let g:indentLine_color_gui = '#545760'
+" highlight Visual     guifg=None guibg=#545760
+" highlight MatchParen guifg=NONE guibg=#6c707a
+" let g:indentLine_color_gui = '#545760'
 " }}}
 
 " AutoPairs {{{
@@ -272,10 +273,4 @@ let g:user_emmet_settings = {
   \ 'extends' : 'css'
   \}
 \}
-" }}}
-
-" vim-fugitive {{{
-nnoremap <Space>gs :G<CR>
-nnoremap <Space>gl :diffget //3<CR>
-nnoremap <Space>gh :diffget //2<CR>
 " }}}

@@ -175,6 +175,11 @@ nnoremap [b :bp<CR>
 nnoremap ]h :GitGutterNextHunk<CR>
 nnoremap [h :GitGutterPrevHunk<CR>
 
+" vim-fugitive
+nnoremap <Space>gs :G<CR>
+nnoremap <Space>gl :diffget //3<CR>
+nnoremap <Space>gh :diffget //2<CR>
+
 " git revision history navigation
 " comes from plugin/fugitive_revision_history.vim
 nnoremap <silent> <Space>gh :call ToggleRevisionComparison()<CR>
