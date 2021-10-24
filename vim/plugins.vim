@@ -35,6 +35,8 @@ Plug 'ms-jpq/chadtree'
 
 Plug 'Olical/conjure' " repl connection for lisps
 
+Plug 'voldikss/vim-floaterm' " terminal in a floating window
+
 Plug 'sheerun/vim-polyglot' " bundle for language syntax
 Plug 'Yggdroot/indentLine' " adds character to mark indentation
 Plug 'editorconfig/editorconfig-vim' " uses .editorconfig to override editor configs
@@ -273,4 +275,10 @@ let g:user_emmet_settings = {
   \ 'extends' : 'css'
   \}
 \}
+" }}}
+
+" vim-floaterm {{{
+let g:floaterm_width = 1.0
+let g:floaterm_height = 0.3
+let g:floaterm_position = 'bottom'
 " }}}

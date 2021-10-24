@@ -193,7 +193,21 @@ nnoremap <silent> <Space>ff :Files<CR>
 nnoremap <silent> <Space>pf :ListFiles<CR>
 nnoremap <silent> <Space>bb :Buffers<CR>
 nnoremap <silent> <Space>cc :Commands<CR>
-nnoremap <silent> <Space>tt <cmd>CHADopen<cr>
+
+" terminal (floaterm)
+nnoremap <silent> <Space>tn :FloatermNew<CR>
+tnoremap <silent> <Space>tn <C-\><C-n>:FloatermNew<CR>
+nnoremap <silent> <Space>tc :FloatermKill<CR>
+tnoremap <silent> <Space>tc <C-\><C-n>:FloatermKill<CR>
+nnoremap <silent> [t :FloatermPrev<CR>
+tnoremap <silent> [t <C-\><C-n>:FloatermPrev<CR>
+nnoremap <silent> ]t :FloatermNext<CR>
+tnoremap <silent> ]t <C-\><C-n>:FloatermNext<CR>
+nnoremap <silent> <Space>tt   :FloatermToggle<CR>
+tnoremap <silent> <Space>tt   <C-\><C-n>:FloatermToggle<CR>
+
+" project tree
+nnoremap <silent> <Space>pt <cmd>CHADopen<cr>
 
 " search the word under the cursor in the project
 nnoremap <silent> <Space>ps :Rg <C-r><C-w><CR>
