@@ -190,6 +190,7 @@ nnoremap <silent> [r :call NewerRevision()<CR>
 nnoremap <silent> <Space>ft :BTags<CR>
 nnoremap <silent> <Space>fh :History<CR>
 nnoremap <silent> <Space>ff :Files<CR>
+nnoremap <silent> <Space>pt :Tags<CR>
 nnoremap <silent> <Space>pf :ListFiles<CR>
 nnoremap <silent> <Space>bb :Buffers<CR>
 nnoremap <silent> <Space>cc :Commands<CR>
@@ -206,8 +207,8 @@ tnoremap <silent> ]t <C-\><C-n>:FloatermNext<CR>
 nnoremap <silent> <Space>tt   :FloatermToggle<CR>
 tnoremap <silent> <Space>tt   <C-\><C-n>:FloatermToggle<CR>
 
-" project tree
-nnoremap <silent> <Space>pt <cmd>CHADopen<cr>
+" project explorer
+nnoremap <silent> <Space>pe <cmd>CHADopen<cr>
 
 " search the word under the cursor in the project
 nnoremap <silent> <Space>ps :Rg <C-r><C-w><CR>
