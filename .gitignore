@@ -3,3 +3,4 @@ Code/User/globalStorage
 vim/plugins
 fonts/.uuid
 tags
+plug.vim.old

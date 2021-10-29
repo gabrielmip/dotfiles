@@ -182,7 +182,7 @@ nnoremap <Space>gh :diffget //2<CR>
 
 " git revision history navigation
 " comes from plugin/fugitive_revision_history.vim
-nnoremap <silent> <Space>gh :call ToggleRevisionComparison()<CR>
+nnoremap <silent> <Space>gr :call ToggleRevisionComparison()<CR>
 nnoremap <silent> ]r :call OlderRevision()<CR>
 nnoremap <silent> [r :call NewerRevision()<CR>
 
@@ -197,15 +197,15 @@ nnoremap <silent> <Space>cc :Commands<CR>
 
 " terminal (floaterm)
 nnoremap <silent> <Space>tn :FloatermNew<CR>
-tnoremap <silent> <Space>tn <C-\><C-n>:FloatermNew<CR>
+" tnoremap <silent> <Space>tn <C-\><C-n>:FloatermNew<CR>
 nnoremap <silent> <Space>tc :FloatermKill<CR>
-tnoremap <silent> <Space>tc <C-\><C-n>:FloatermKill<CR>
+" tnoremap <silent> <Space>tc <C-\><C-n>:FloatermKill<CR>
 nnoremap <silent> [t :FloatermPrev<CR>
-tnoremap <silent> [t <C-\><C-n>:FloatermPrev<CR>
+" tnoremap <silent> [t <C-\><C-n>:FloatermPrev<CR>
 nnoremap <silent> ]t :FloatermNext<CR>
-tnoremap <silent> ]t <C-\><C-n>:FloatermNext<CR>
+" tnoremap <silent> ]t <C-\><C-n>:FloatermNext<CR>
 nnoremap <silent> <Space>tt   :FloatermToggle<CR>
-tnoremap <silent> <Space>tt   <C-\><C-n>:FloatermToggle<CR>
+" tnoremap <silent> <C-'> <C-\><C-n>:FloatermToggle<CR>
 
 " project explorer
 nnoremap <silent> <Space>pe <cmd>CHADopen<cr>

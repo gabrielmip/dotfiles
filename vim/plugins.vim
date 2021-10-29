@@ -31,11 +31,11 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " third party snippets
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 
-Plug 'ms-jpq/chadtree'
+" Plug 'ms-jpq/chadtree'
 
 Plug 'Olical/conjure' " repl connection for lisps
 
-Plug 'voldikss/vim-floaterm' " terminal in a floating window
+" Plug 'voldikss/vim-floaterm' " terminal in a floating window
 
 Plug 'sheerun/vim-polyglot' " bundle for language syntax
 Plug 'Yggdroot/indentLine' " adds character to mark indentation
@@ -46,6 +46,7 @@ Plug 'tpope/vim-commentary' " bindings to comment blocks and motions
 Plug 'tpope/vim-surround' " bindings to edit surrounding brackets, parenthesis
 Plug 'arthurxavierx/vim-caser' " convert word cases with motions
 Plug 'jiangmiao/auto-pairs' " adds closing parenthesis
+Plug 'mboughaba/i3config.vim' " highlight for i3 config files
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim' " fuzzy search for navigation (tags, files, buffers)
@@ -54,7 +55,7 @@ call plug#end()
 " }}}
 
 " vim-airline {{{
-let g:airline_theme='deus'
+let g:airline_theme='gruvbox'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -118,15 +119,20 @@ let g:ale_linters = {
    \ 'typescript': ['eslint'],
    \ 'typescriptreact': ['eslint']
    \}
+
+let g:ale_root = {
+   \ 'pylint': './src',
+   \}
 "}}}
 
 " coq_nvim {{{
 let g:coq_settings = {
-  \ 'auto_start': v:true,
-  \ 'keymap.pre_select': v:true,
-  \ 'keymap.jump_to_mark': '<Tab>',
+  \ 'auto_start': v:false,
+  \ 'keymap.pre_select': v:false,
+  \ 'keymap.jump_to_mark': '<C-l>',
   \ 'keymap.eval_snips': '<space>snip',
   \ 'display.ghost_text.enabled': v:false,
+  \ 'display.pum.fast_close': v:false,
   \ }
 " }}}
 
@@ -138,10 +144,20 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   local opts = { noremap=true, silent=true }
 
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<CS-Space>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', 'gd', "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  buf_set_keymap('n', 'gh', "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>ld', "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  buf_set_keymap('n', '<space>lt', "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+  buf_set_keymap('n', '<space>lh', "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  buf_set_keymap('n', '<space>ln', "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  buf_set_keymap('n', '<F2>', "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  buf_set_keymap('n', '<space>le', "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  buf_set_keymap('n', '<space>lq', "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  buf_set_keymap('n', '<space>lf', "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap('n', '[e', "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+  buf_set_keymap('n', ']e', "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+  buf_set_keymap('n', '<space>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -163,11 +179,21 @@ lsp_installer.on_server_ready(function(server)
       on_attach = on_attach
     }
 
+    if server.name == "tsserver" then
+        opts.root_dir = function() return vim.loop.cwd() .. "/src" end
+    end
+
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        update_in_insert = false,
+        underline = false,
+    }
+)
+
 EOF
 " }}}
 
@@ -247,10 +273,10 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme deus
+colorscheme gruvbox
 " highlight Visual     guifg=None guibg=#545760
 " highlight MatchParen guifg=NONE guibg=#6c707a
-" let g:indentLine_color_gui = '#545760'
+let g:indentLine_color_gui = '#44474f'
 " }}}
 
 " AutoPairs {{{
@@ -281,4 +307,7 @@ let g:user_emmet_settings = {
 let g:floaterm_width = 1.0
 let g:floaterm_height = 0.3
 let g:floaterm_position = 'bottom'
+" }}}
+
+" chadtree {{{
 " }}}
