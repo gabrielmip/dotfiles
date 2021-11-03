@@ -80,7 +80,7 @@ endfunction
 
 " indentLine {{{
 let g:indentLine_char = '▏'
-autocmd Filetype json,clojure :IndentLinesDisable
+autocmd Filetype json,clojure,scheme,fennel,racket,lisp :IndentLinesDisable
 " }}}
 
 " ALE - Linter {{{
