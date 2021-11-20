@@ -15,6 +15,7 @@ set splitbelow
 set splitright
 
 " search and replace
+set ignorecase
 set smartcase " ignore results' case if the search term is all lower case
 set incsearch " search and highlight result as you type
 set inccommand=nosplit " live preview in replace results
@@ -31,6 +32,7 @@ set signcolumn=yes:1 " always show additional column for git signs, linter
 set wildmenu " menu which display options for autocomplete over the status line
 set path+=** " Allowing :find function to find in every subfolder recursively
 set conceallevel=0
+set nowrap " do not break lines when they are bigger than the screen
 
 " increase the time vim waits between keystrokes before it discard mappings and
 " proceed with the default behavior for the keys.
@@ -53,7 +55,7 @@ set grepformat=%f:%l:%c:%m,%f:%l:%m
 
 " now onto the overrides:
 autocmd FileType json set foldmethod=syntax
-autocmd FileType vim set foldmethod=marker foldlevelstart=0
+autocmd FileType vim set foldmethod=marker foldlevelstart=-1
 autocmd FileType clojure set foldmethod=marker
 
 " function used in SwapWords
@@ -170,6 +172,9 @@ nnoremap [l :lprev<CR>
 " buffer navigation
 nnoremap ]b :bn<CR>
 nnoremap [b :bp<CR>
+nnoremap <C-n> :bp<CR>
+nnoremap <C-m> :bn<CR>
+nnoremap <Space>bq :KillOtherBuffers<CR>
 
 " git change (hunk) navigation
 nnoremap ]h :GitGutterNextHunk<CR>
@@ -179,12 +184,13 @@ nnoremap [h :GitGutterPrevHunk<CR>
 nnoremap <Space>gs :G<CR>
 nnoremap <Space>gl :diffget //3<CR>
 nnoremap <Space>gh :diffget //2<CR>
+nnoremap <Space>gpoh :!git push origin HEAD<CR>
 
 " git revision history navigation
 " comes from plugin/fugitive_revision_history.vim
 nnoremap <silent> <Space>gr :call ToggleRevisionComparison()<CR>
-nnoremap <silent> ]r :call OlderRevision()<CR>
-nnoremap <silent> [r :call NewerRevision()<CR>
+nnoremap <silent> [r :call OlderRevision()<CR>
+nnoremap <silent> ]r :call NewerRevision()<CR>
 
 " FZF mappings
 nnoremap <silent> <Space>ft :BTags<CR>
@@ -209,6 +215,16 @@ nnoremap <silent> <Space>tt   :FloatermToggle<CR>
 
 " project explorer
 nnoremap <silent> <Space>pe <cmd>CHADopen<cr>
+
+" search results appear in the middle of the screen whenever possible
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+" there will be at least 7 lines below and above the cursor whenever possible
+set scrolloff=7
 
 " search the word under the cursor in the project
 nnoremap <silent> <Space>ps :Rg <C-r><C-w><CR>
