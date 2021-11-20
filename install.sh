@@ -18,6 +18,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   neovim-nightly-bin \ # nightly until 0.5 comes
   xclip \
   konsole \
+  ttf-twemoji \ # emojis in konsole. REMEMBER to read the post install instructions
   zsh \
   zsh-completions \
   ranger \ # terminal file browser with vim-like shortcuts
