@@ -31,7 +31,7 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " third party snippets
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 
-" Plug 'ms-jpq/chadtree'
+Plug 'ms-jpq/chadtree'
 
 Plug 'Olical/conjure' " repl connection for lisps
 
@@ -44,12 +44,14 @@ Plug 'ap/vim-css-color' " sets background to the html color token
 Plug 'mattn/emmet-vim' " abbreviations for HTML insertion
 Plug 'tpope/vim-commentary' " bindings to comment blocks and motions
 Plug 'tpope/vim-surround' " bindings to edit surrounding brackets, parenthesis
+Plug 'tpope/vim-repeat' " enables repeating plugin actions with the dot .
 Plug 'arthurxavierx/vim-caser' " convert word cases with motions
 Plug 'jiangmiao/auto-pairs' " adds closing parenthesis
 Plug 'mboughaba/i3config.vim' " highlight for i3 config files
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim' " fuzzy search for navigation (tags, files, buffers)
+Plug 'ojroques/nvim-lspfuzzy' " using fzf to show code actions, references, from lsp
 
 call plug#end()
 " }}}
@@ -127,7 +129,7 @@ let g:ale_root = {
 
 " coq_nvim {{{
 let g:coq_settings = {
-  \ 'auto_start': v:false,
+  \ 'auto_start': v:true,
   \ 'keymap.pre_select': v:false,
   \ 'keymap.jump_to_mark': '<C-l>',
   \ 'keymap.eval_snips': '<space>snip',
@@ -179,10 +181,6 @@ lsp_installer.on_server_ready(function(server)
       on_attach = on_attach
     }
 
-    if server.name == "tsserver" then
-        opts.root_dir = function() return vim.loop.cwd() .. "/src" end
-    end
-
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
@@ -198,7 +196,7 @@ EOF
 " }}}
 
 " FZF {{{
-" let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_tags_command = 'ctags -R --exclude={tags,assets,node_modules,vendor,tmp,bin,.transpiled,.git}'
 
 " An action can be a reference to a function that processes selected lines
@@ -218,6 +216,10 @@ let g:fzf_action = {
 \  'ctrl-x': 'split',
 \  'ctrl-v': 'vsplit',
 \  }
+
+"attaching results from lsp to FZF
+lua require('lspfuzzy').setup {}
+
 " }}}
 
 " Gutentags {{{
