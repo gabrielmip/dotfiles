@@ -232,9 +232,9 @@ nnoremap <silent> <Space>ps :Rg <C-r><C-w><CR>
 xnoremap <Space>ps "sy:Rg <C-r>s<CR>
 
 " replace the word under the cursor in the current file
-nnoremap <Space>fr :%s/<C-r><C-w>//g<Left><Left>
+nnoremap <Space>fr :%s/<C-r><C-w>/<C-r><C-w>/g<Left><Left>
 " replace the selection in the current file
-xnoremap <Space>fr "sy:%s/<C-r>s//g<Left><Left>
+xnoremap <Space>fr "sy:%s/<C-r>s/<C-r>s/g<Left><Left>
 
 " go to latest opened buffer
 noremap <silent> <Space><Tab> :e #<CR>
