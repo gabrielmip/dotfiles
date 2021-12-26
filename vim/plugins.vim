@@ -27,9 +27,15 @@ Plug 'neovim/nvim-lspconfig' " auto configuration for lsp servers
 Plug 'williamboman/nvim-lsp-installer' " auto install lsp servers
 
 " completion
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " third party snippets
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-nvim-lsp'
+
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets'
 
 Plug 'ms-jpq/chadtree'
 
@@ -127,15 +133,68 @@ let g:ale_root = {
    \}
 "}}}
 
-" coq_nvim {{{
-let g:coq_settings = {
-  \ 'auto_start': v:true,
-  \ 'keymap.pre_select': v:false,
-  \ 'keymap.jump_to_mark': '<C-l>',
-  \ 'keymap.eval_snips': '<space>snip',
-  \ 'display.ghost_text.enabled': v:false,
-  \ 'display.pum.fast_close': v:false,
-  \ }
+" nvim-cmp {{{
+set completeopt=menu,menuone,noselect
+set pumheight=15
+
+lua <<EOF
+local cmp = require'cmp'
+
+cmp.setup({
+
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+
+  mapping = {
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ['<CR>'] = cmp.mapping.confirm {
+        select = false,
+    },
+    ['<C-y>'] = cmp.mapping.confirm {
+        select = false,
+    },
+  },
+
+  sources = cmp.config.sources({
+    { name = 'vsnip' },
+    { name = 'nvim_lsp' },
+    { name = 'path' },
+    { name = 'buffer', keyword_length = 5 }
+  }),
+
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer', max_item_count = 10 }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path', max_item_count = 10 }
+  }, {
+    { name = 'cmdline', max_item_count = 10 }
+  })
+})
+EOF
+" }}}
+
+" vim-snip {{{
+
+let g:vsnip_snippet_dir = expand('~/.config/nvim/snippets')
+
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
 " }}}
 
 " nvim-lspconfig {{{
@@ -162,7 +221,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {

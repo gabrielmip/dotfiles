@@ -48,7 +48,7 @@ rmlink $PWD/vim/plugins.vim ~/.config/nvim/plugins.vim
 rmlink $PWD/vim/colors ~/.config/nvim/colors
 rmlink $PWD/vim/autoload ~/.config/nvim/autoload
 rmlink $PWD/vim/plugin ~/.config/nvim/plugin
-rmlink $PWD/vim/coq-user-snippets ~/.config/nvim/coq-user-snippets
+rmlink $PWD/vim/snippets ~/.config/nvim/snippets
 nvim +PlugInstall +qall
 
 
