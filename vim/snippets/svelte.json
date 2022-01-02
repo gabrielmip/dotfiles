@@ -1,0 +1,16 @@
+{
+  "Svelte component": {
+    "prefix": "svelte",
+    "body": [
+      "<script lang=\"ts\">",
+      "  $0",
+      "</script>",
+      "",
+      "<style>",
+      "",
+      "</style>",
+      ""
+    ],
+    "description": "Empty svelte component structure"
+  }
+}

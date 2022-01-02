@@ -1,0 +1,39 @@
+{
+  "React component": {
+    "prefix": "react",
+    "body": [
+      "import React from 'react';",
+      "import Styles from './$1.module.less';",
+      "",
+      "export type $1Props = {",
+      "",
+      "}",
+      "",
+      "export const $1 = (props: $1Props): JSX.Element => {",
+      "    return (",
+      "",
+      "    );",
+      "};",
+      ""
+    ]
+  },
+  "React story": {
+    "prefix": "story",
+    "body": [
+      "import React from 'react';",
+      "import { Story, Meta } from '@storybook/react';",
+      "",
+      "import { $1, $1Props } from './$1';",
+      "",
+      "export default {",
+      "    title: '$1',",
+      "    component: $1,",
+      "    args: { },",
+      "} as Meta;",
+      "",
+      "const Template: Story<$1Props> = args => <$1 {...args } />;",
+      "",
+      "export const Default = Template.bind({});"
+    ]
+  }
+}

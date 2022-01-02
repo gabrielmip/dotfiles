@@ -1,0 +1,28 @@
+{
+  "Mobx-state-tree model": {
+    "prefix": "model",
+    "body": [
+      "import {",
+      "    Instance,",
+      "    SnapshotOrInstance,",
+      "    SnapshotOut,",
+      "    types,",
+      "} from 'mobx-state-tree';",
+      "",
+      "const $1Model = types.model('$1', {",
+      "",
+      "});",
+      "",
+      "type $1Instance = Instance<typeof $1Model>;",
+      "type $1Snapshot = SnapshotOut<typeof $1Model>;",
+      "type $1 = SnapshotOrInstance<typeof $1Model>;",
+      "",
+      "export { $1Model };",
+      "export type {",
+      "    $1Instance,",
+      "    $1Snapshot,",
+      "    $1,",
+      "};"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "Insert metadata": {
+    "prefix": "mdmd",
+    "body": [
+      "---",
+      "title: $0",
+      "author: Gabriel Miranda Pedrosa",
+      "date: $CURRENT_DATE/$CURRENT_MONTH/$CURRENT_YEAR",
+      "---"
+    ],
+    "description": "Insert default metadata to article"
+  },
+  "Journal prefix": {
+    "prefix": ["pref"],
+    "body": ["$CURRENT_DATE/$CURRENT_MONTH/$CURRENT_YEAR - $0"],
+    "description": "Daily journal day prefix"
+  }
+}
