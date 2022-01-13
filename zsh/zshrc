@@ -75,6 +75,14 @@ regs () {
   unset CURRENT
 }
 
+dots () {
+  CURRENT=$PWD
+  cd ~/Dotfiles
+  vim
+  cd $CURRENT
+  unset CURRENT
+}
+
 suggest () {
   find * -type f -exec echo \'{}\' \; | shuf | head -n 1
 }
