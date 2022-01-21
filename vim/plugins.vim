@@ -32,6 +32,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-vsnip'
 
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
@@ -166,7 +167,8 @@ cmp.setup({
     { name = 'vsnip' },
     { name = 'nvim_lsp' },
     { name = 'path' },
-    { name = 'buffer', keyword_length = 5 }
+  }, {
+    { name = 'buffer', keyword_length = 3 },
   }),
 
 })
