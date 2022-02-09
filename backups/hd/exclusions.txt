@@ -1,0 +1,7 @@
+Docker
+Jogos
+Máquinas virtuais
+ROMs
+ISOs
+.Trash-1000
+lost+found

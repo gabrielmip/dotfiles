@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily backup for hard drive files
+Wants=hd-backup.timer
+
+[Service]
+ExecStart=/home/gabriel/Dotfiles/backups/hd/hd-backup.sh
+EnvironmentFile=/home/gabriel/Dotfiles/backups/hd/env
+
+[Install]
+WantedBy=basic.target
