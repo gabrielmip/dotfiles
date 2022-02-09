@@ -11,7 +11,7 @@
     "description": "Insert default metadata to article"
   },
   "Journal prefix": {
-    "prefix": ["pref", "today", "day", "hoje", "data"],
+    "prefix": ["pref", "today", "day", "hoje", "data", "journal"],
     "body": ["$CURRENT_DATE/$CURRENT_MONTH/$CURRENT_YEAR - $0"],
     "description": "Daily journal day prefix"
   }

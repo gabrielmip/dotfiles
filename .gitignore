@@ -4,3 +4,5 @@ vim/plugins
 fonts/.uuid
 tags
 plug.vim.old
+env
+restic_password
