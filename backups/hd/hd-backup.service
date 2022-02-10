@@ -3,7 +3,7 @@ Description=Daily backup for hard drive files
 Wants=hd-backup.timer
 
 [Service]
-ExecStart=/home/gabriel/Dotfiles/backups/hd/hd-backup.sh
+ExecStart=restic --verbose --exclude-file=/home/gabriel/Dotfiles/backups/hd/exclusions.txt backup /run/media/gabriel/Geral
 EnvironmentFile=/home/gabriel/Dotfiles/backups/hd/env
 
 [Install]
