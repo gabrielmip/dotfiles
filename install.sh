@@ -21,6 +21,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   ttf-twemoji \ # emojis in konsole. REMEMBER to read the post install instructions
   zsh \
   zsh-completions \
+  zsh-theme-powerlevel10k-git \
   ranger \ # terminal file browser with vim-like shortcuts
   bat \ # alternative to cat
   fzf \
