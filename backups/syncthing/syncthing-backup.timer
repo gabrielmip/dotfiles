@@ -1,0 +1,8 @@
+[Unit]
+Description=Daily backup for syncthing files
+
+[Timer]
+OnCalendar=*-*-* 18:00:00
+
+[Install]
+WantedBy=basic.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily backup for syncthing files
+Wants=syncthing-backup.timer
+
+[Service]
+ExecStart=restic --verbose --exclude-file=/home/gabriel/Dotfiles/backups/syncthing/exclusions.txt backup /home/gabriel/Sync
+EnvironmentFile=/home/gabriel/Dotfiles/backups/syncthing/env
+
+[Install]
+WantedBy=basic.target
