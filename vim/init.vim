@@ -122,6 +122,7 @@ function LocalWriteMode()
   setlocal linebreak
   setlocal nolist
   setlocal textwidth=80
+  setlocal foldlevel=99
 endfunction
 
 command! -nargs=0 LocalWriteMode call LocalWriteMode()

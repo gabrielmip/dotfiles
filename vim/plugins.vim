@@ -2,6 +2,7 @@
 " disabling most commands ran automatically per file type.
 " i only want the syntax highlighting and autoindent.
 let g:polyglot_disabled = ['sensible', 'ftdetect']
+let g:markdown_folding = 1
 " }}}
 
 " Installed plugins {{{
