@@ -23,6 +23,7 @@ alias ap="ansible-playbook"
 alias gpoh="git push origin HEAD"
 alias open="xdg-open"
 alias vim="nvim"
+alias pvim="poetry run nvim"
 alias containers='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
 alias compose="docker-compose"
 
