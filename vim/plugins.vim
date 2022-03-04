@@ -138,11 +138,16 @@ let g:ale_root = {
 " nvim-cmp {{{
 set completeopt=menu,menuone,noselect
 set pumheight=15
+let g:cmp_is_enabled = v:true
 
 lua <<EOF
 local cmp = require'cmp'
 
 cmp.setup({
+
+  enabled = function()
+    return vim.g.cmp_is_enabled
+  end,
 
   snippet = {
     expand = function(args)
