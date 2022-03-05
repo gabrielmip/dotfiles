@@ -48,6 +48,7 @@ set nowritebackup
 " set foldlevelstart=1 " fold only long blocks of code.
 " set foldnestmax=10 " folds can be nested, this ensures max 10 nested folds.
 " set foldmethod=indent " my default: folding based on indentation.
+nnoremap <Tab> za
 
 " setting ripgrep as the preferred grep tool
 set grepprg=rg\ --vimgrep\ --smart-case
