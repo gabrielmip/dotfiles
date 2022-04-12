@@ -15,7 +15,7 @@ ZSH_PLUGINS="${HOME}/.config/zsh_plugins"
 sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay
 
 yay -Sy --needed --noconfirm --quiet --noprogressbar \
-  neovim-nightly-bin \ # nightly until 0.5 comes
+  neovim \
   xclip \
   konsole \
   ttf-twemoji \ # emojis in konsole. REMEMBER to read the post install instructions

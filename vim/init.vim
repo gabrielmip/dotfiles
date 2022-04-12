@@ -34,6 +34,9 @@ set path+=** " Allowing :find function to find in every subfolder recursively
 set conceallevel=0
 set nowrap " do not break lines when they are bigger than the screen
 
+set colorcolumn=80 " highlight 80th column
+                   " change color like :hi ColorColumn ctermbg=NONE ctermfg=red
+
 " increase the time vim waits between keystrokes before it discard mappings and
 " proceed with the default behavior for the keys.
 set timeoutlen=10000 " 10 seconds
@@ -48,7 +51,6 @@ set nowritebackup
 " set foldlevelstart=1 " fold only long blocks of code.
 " set foldnestmax=10 " folds can be nested, this ensures max 10 nested folds.
 " set foldmethod=indent " my default: folding based on indentation.
-nnoremap <Tab> za
 
 " setting ripgrep as the preferred grep tool
 set grepprg=rg\ --vimgrep\ --smart-case
