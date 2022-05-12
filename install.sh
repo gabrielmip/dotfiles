@@ -50,6 +50,7 @@ rmlink $PWD/vim/colors ~/.config/nvim/colors
 rmlink $PWD/vim/autoload ~/.config/nvim/autoload
 rmlink $PWD/vim/plugin ~/.config/nvim/plugin
 rmlink $PWD/vim/snippets ~/.config/nvim/snippets
+yay -S --noconfirm --quiet --noprogressbar pgformatter
 nvim +PlugInstall +qall
 
 

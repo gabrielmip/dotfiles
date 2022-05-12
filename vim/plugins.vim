@@ -110,6 +110,7 @@ endfunction
 execute ale#fix#registry#Add('joker-format', 'JokerFormatter', ['clojure'], 'joker fixer for clojure')
 
 let g:ale_javascript_prettier_options = '--prose-wrap always'
+let g:ale_sql_pgformatter_options = '--wrap-limit 68'
 let g:ale_fixers = {
   \ 'javascript': ['prettier'],
   \ 'javascriptreact': ['prettier'],
@@ -119,6 +120,7 @@ let g:ale_fixers = {
   \ 'css': ['prettier'],
   \ 'typescript': ['prettier'],
   \ 'typescriptreact': ['prettier'],
+  \ 'sql': ['pgformatter'],
   \ 'clojure': ['joker-format'],
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
