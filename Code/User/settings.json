@@ -33,7 +33,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     },
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
     "editor.codeActionsOnSave": {
@@ -182,6 +182,7 @@
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "editor.fontSize": 15,
   "coverage-gutters.coverageReportFileName": "src/coverage/**/index.html",
-  "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Gatito Theme"
+  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "python.formatting.provider": "black",
+  "workbench.activityBar.visible": false
 }
