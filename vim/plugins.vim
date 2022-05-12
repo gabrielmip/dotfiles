@@ -44,6 +44,8 @@ Plug 'ms-jpq/chadtree'
 
 Plug 'Olical/conjure' " repl connection for lisps
 
+Plug 'nathangrigg/vim-beancount'
+
 " Plug 'voldikss/vim-floaterm' " terminal in a floating window
 
 Plug 'sheerun/vim-polyglot' " bundle for language syntax
@@ -156,19 +158,10 @@ cmp.setup({
     end,
   },
 
-  mapping = {
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ['<CR>'] = cmp.mapping.confirm {
-        select = false,
-    },
-    ['<C-y>'] = cmp.mapping.confirm {
-        select = false,
-    },
-  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+  }),
 
   sources = cmp.config.sources({
     { name = 'vsnip' },
@@ -181,12 +174,14 @@ cmp.setup({
 })
 
 cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer', max_item_count = 10 }
   }
 })
 
 cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'path', max_item_count = 10 }
   }, {
