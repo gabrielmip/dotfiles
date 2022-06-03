@@ -201,8 +201,8 @@ workspace $ws5 output primary
 workspace $ws6 output primary
 workspace $ws7 output primary
 workspace $ws8 output down
-workspace $ws9 output down
-workspace $ws10 output down
+workspace $ws9 output primary
+workspace $ws10 output primary
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
