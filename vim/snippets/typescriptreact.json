@@ -35,5 +35,9 @@
       "",
       "export const Default = Template.bind({});"
     ]
+  },
+  "Div with class": {
+    "prefix": "divc",
+    "body": ["<div className='$0'></div>"]
   }
 }
