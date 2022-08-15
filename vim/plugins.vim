@@ -40,7 +40,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
 
-Plug 'ms-jpq/chadtree'
+Plug 'preservim/nerdtree'
 
 Plug 'Olical/conjure' " repl connection for lisps
 
@@ -373,5 +373,5 @@ let g:floaterm_height = 0.3
 let g:floaterm_position = 'bottom'
 " }}}
 
-" chadtree {{{
+" NERDtree {{{
 " }}}

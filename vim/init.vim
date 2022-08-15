@@ -145,6 +145,7 @@ nnoremap o ox<BS>
 nnoremap O Ox<BS>
 
 " Ctrl-Backspace to delete a word in insert, command and terminal mode
+" Does not work with nvim-cmp
 noremap! <C-BS> <C-w>
 noremap! <C-H> <C-w>
 tnoremap <C-BS> <C-w>
@@ -202,23 +203,26 @@ nnoremap <silent> <Space>fh :History<CR>
 nnoremap <silent> <Space>ff :Files<CR>
 nnoremap <silent> <Space>pt :Tags<CR>
 nnoremap <silent> <Space>pf :ListFiles<CR>
-nnoremap <silent> <Space>bb :Buffers<CR>
+nnoremap <Space>bb :buffers<CR>:buffer<Space>
 nnoremap <silent> <Space>cc :Commands<CR>
 
+" Reload vim config (rc = reload config)
+noremap <Space>rc :source $HOME/.config/nvim/init.vim
+
 " terminal (floaterm)
-nnoremap <silent> <Space>tn :FloatermNew<CR>
+" nnoremap <silent> <Space>tn :FloatermNew<CR>
 " tnoremap <silent> <Space>tn <C-\><C-n>:FloatermNew<CR>
-nnoremap <silent> <Space>tc :FloatermKill<CR>
+" nnoremap <silent> <Space>tc :FloatermKill<CR>
 " tnoremap <silent> <Space>tc <C-\><C-n>:FloatermKill<CR>
-nnoremap <silent> [t :FloatermPrev<CR>
+" nnoremap <silent> [t :FloatermPrev<CR>
 " tnoremap <silent> [t <C-\><C-n>:FloatermPrev<CR>
-nnoremap <silent> ]t :FloatermNext<CR>
+" nnoremap <silent> ]t :FloatermNext<CR>
 " tnoremap <silent> ]t <C-\><C-n>:FloatermNext<CR>
-nnoremap <silent> <Space>tt   :FloatermToggle<CR>
+" nnoremap <silent> <C-'> :FloatermToggle<CR>
 " tnoremap <silent> <C-'> <C-\><C-n>:FloatermToggle<CR>
 
 " project explorer
-nnoremap <silent> <Space>pe <cmd>CHADopen<cr>
+nnoremap <silent> <Space>pe :NERDTreeToggle<cr>
 
 " search results appear in the middle of the screen whenever possible
 nnoremap n nzz
@@ -227,6 +231,7 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+
 " there will be at least 7 lines below and above the cursor whenever possible
 set scrolloff=7
 
@@ -234,6 +239,8 @@ set scrolloff=7
 nnoremap <silent> <Space>ps :Rg <C-r><C-w><CR>
 " search the selection in the project
 xnoremap <Space>ps "sy:Rg <C-r>s<CR>
+" search the selection in the file
+xnoremap <Space>fs "sy/<C-r>s<CR>
 
 " replace the word under the cursor in the current file
 nnoremap <Space>fr :%s/<C-r><C-w>/<C-r><C-w>/g<Left><Left>
