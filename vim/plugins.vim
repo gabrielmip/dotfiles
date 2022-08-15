@@ -375,4 +375,5 @@ let g:floaterm_position = 'bottom'
 " }}}
 
 " NERDtree {{{
+let NERDTreeShowHidden=1
 " }}}
