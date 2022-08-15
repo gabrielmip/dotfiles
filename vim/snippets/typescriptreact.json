@@ -1,6 +1,6 @@
 {
   "React component": {
-    "prefix": "react",
+    "prefix": "component",
     "body": [
       "import React from 'react';",
       "import Styles from './$1.module.less';",

@@ -129,6 +129,9 @@
   "workbench.colorCustomizations": {
     "[Gatito Theme]": {
       "editorLineNumber.foreground": "#7F7F7F"
+    },
+    "[Gruvbox Dark Hard]": {
+      "editorLineNumber.foreground": "#7F7F7F"
     }
   },
   "python.languageServer": "Pylance",
@@ -181,7 +184,8 @@
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "editor.fontSize": 15.5,
   "coverage-gutters.coverageReportFileName": "src/coverage/**/index.html",
-  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
   "python.formatting.provider": "black",
-  "workbench.activityBar.visible": false
+  "workbench.activityBar.visible": false,
+  "window.zoomLevel": -1
 }
