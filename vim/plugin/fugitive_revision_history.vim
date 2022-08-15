@@ -34,12 +34,12 @@ function! s:showRevision()
   let idx = get(attrs, 'idx', 0)
   let qflist = getqflist()
 
-  if idx + 1 >= len(qflist)
+  if idx >= len(qflist)
     echo 'You reached the end of the revision list'
     return
   endif
 
-  let olderRevision = split(qflist[idx + 1]['module'], ':')[0]
+  let olderRevision = split(qflist[idx]['module'], ':')[0]
   execute "cc" | execute "Gvdiffsplit " . olderRevision
 endfunction
 

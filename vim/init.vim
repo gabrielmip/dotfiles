@@ -110,15 +110,15 @@ endfunction
 
 command! -nargs=0 KillOtherBuffers call KillOtherBuffers()
 
- function! ListFiles()
-   if isdirectory(expand(getcwd() . '/.git'))
-     :GFiles
-   else
-     :Files
-   endif
- endfunction
+function! ListFiles()
+  if isdirectory(expand(getcwd() . '/.git'))
+    :GFiles
+  else
+    :Files
+  endif
+endfunction
 
- command! -nargs=0 ListFiles call ListFiles()
+command! -nargs=0 ListFiles call ListFiles()
 
 function LocalWriteMode()
   setlocal wrap
@@ -194,8 +194,8 @@ nnoremap <Space>gpoh :!git push origin HEAD<CR>
 " git revision history navigation
 " comes from plugin/fugitive_revision_history.vim
 nnoremap <silent> <Space>gr :call ToggleRevisionComparison()<CR>
-nnoremap <silent> [r :call OlderRevision()<CR>
-nnoremap <silent> ]r :call NewerRevision()<CR>
+nnoremap <silent> ]r :call OlderRevision()<CR>
+nnoremap <silent> [r :call NewerRevision()<CR>
 
 " FZF mappings
 nnoremap <silent> <Space>ft :BTags<CR>
