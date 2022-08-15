@@ -206,8 +206,8 @@ nnoremap <silent> <Space>pf :ListFiles<CR>
 nnoremap <Space>bb :buffers<CR>:buffer<Space>
 nnoremap <silent> <Space>cc :Commands<CR>
 
-" Reload vim config (rc = reload config)
-noremap <Space>rc :source $HOME/.config/nvim/init.vim
+" Reload vim config (cr = config reload)
+noremap <Space>cr :source $HOME/.config/nvim/init.vim
 
 " terminal (floaterm)
 " nnoremap <silent> <Space>tn :FloatermNew<CR>
