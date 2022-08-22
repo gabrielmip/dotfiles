@@ -59,12 +59,6 @@ mkdir -p ~/.config/Code
 rmlink $PWD/Code/User ~/.config/Code/
 
 
-log "KONSOLE"
-mkdir -p ~/.local/share/konsole
-rmlink $PWD/konsole/Gabriel.profile ~/.local/share/konsole/Gabriel.profile
-rmlink $PWD/konsole/konsolerc ~/.config/konsolerc
-
-
 log "PICOM"
 rmlink $PWD/picom/picom.conf ~/.config/picom.conf
 
