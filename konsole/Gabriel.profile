@@ -15,7 +15,7 @@ Parent=FALLBACK/
 AutoCopySelectedText=true
 
 [Scrolling]
-HistoryMode=2
+HistoryMode=1
 HistorySize=5000
 
 [Terminal Features]
