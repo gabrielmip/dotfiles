@@ -1,28 +1,22 @@
 [Appearance]
 AntiAliasFonts=true
-BoldIntense=true
-ColorScheme=One Dark
-Font=Ubuntu Mono,12,-1,5,50,0,0,0,0,0,Regular
+BoldIntense=false
+ColorScheme=Gruvbox
+Font=Fira Code,12,-1,5,50,0,0,0,0,0
 LineSpacing=1
 UseFontLineChararacters=false
 
-[Cursor Options]
-CursorShape=0
-CustomCursorColor=186,186,186
-UseCustomCursorColor=true
-
 [General]
-LocalTabTitleFormat=%d : %n
+Command=/bin/zsh
 Name=Gabriel
 Parent=FALLBACK/
-TerminalColumns=100
-TerminalRows=50
 
 [Interaction Options]
 AutoCopySelectedText=true
-MiddleClickPasteMode=1
-TrimTrailingSpacesInSelectedText=false
+
+[Scrolling]
+HistoryMode=2
+HistorySize=5000
 
 [Terminal Features]
-BlinkingCursorEnabled=false
-UrlHintsModifiers=67108864
+BellMode=3

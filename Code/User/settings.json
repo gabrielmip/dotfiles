@@ -75,7 +75,11 @@
   },
   "[markdown]": {
     "editor.wordWrap": "on",
-    "editor.quickSuggestions": false,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
     // "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
@@ -141,7 +145,8 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[clojure]": {
-    "editor.renderIndentGuides": false
+    "editor.renderIndentGuides": false,
+    "editor.guides.indentation": false
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "extensions.ignoreRecommendations": true,
@@ -186,6 +191,5 @@
   "coverage-gutters.coverageReportFileName": "src/coverage/**/index.html",
   "workbench.colorTheme": "Gruvbox Dark Hard",
   "python.formatting.provider": "black",
-  "workbench.activityBar.visible": false,
-  "window.zoomLevel": -1
+  "workbench.activityBar.visible": false
 }
