@@ -222,7 +222,15 @@ noremap <Space>cr :source $HOME/.config/nvim/init.vim
 " tnoremap <silent> <C-'> <C-\><C-n>:FloatermToggle<CR>
 
 " project explorer
-nnoremap <silent> <Space>pe :NERDTreeToggle<cr>
+function NERDToggleFind()
+    if &filetype == 'nerdtree' || exists("g:NERDTree") && g:NERDTree.IsOpen()
+        :NERDTreeToggle
+    else
+        :NERDTreeFind
+    endif
+endfunction
+
+nnoremap <silent> <Space>pe :call NERDToggleFind()<cr>
 
 " search results appear in the middle of the screen whenever possible
 nnoremap n nzz
