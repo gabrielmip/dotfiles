@@ -241,7 +241,7 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 
 " there will be at least 7 lines below and above the cursor whenever possible
-set scrolloff=7
+" set scrolloff=7
 
 " search the word under the cursor in the project
 nnoremap <silent> <Space>ps :Rg <C-r><C-w><CR>
