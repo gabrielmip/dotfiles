@@ -2,7 +2,7 @@
 AntiAliasFonts=true
 BoldIntense=false
 ColorScheme=Gruvbox
-Font=Fira Code,12,-1,5,50,0,0,0,0,0
+Font=Fira Code,11,-1,5,50,0,0,0,0,0
 LineSpacing=1
 UseFontLineChararacters=false
 
@@ -10,6 +10,8 @@ UseFontLineChararacters=false
 Command=/bin/zsh
 Name=Gabriel
 Parent=FALLBACK/
+ShowTerminalSizeHint=false
+TerminalCenter=false
 
 [Interaction Options]
 AutoCopySelectedText=true
