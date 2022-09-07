@@ -216,10 +216,10 @@ noremap <Space>cr :source $HOME/.config/nvim/init.vim
 
 " project explorer
 function NERDToggleFind()
-    if &filetype == 'nerdtree' || exists("g:NERDTree") && g:NERDTree.IsOpen()
-        :NERDTreeToggle
-    else
+    if expand('%:p')[0:len(getcwd())] =~ getcwd() && !g:NERDTree.IsOpen()
         :NERDTreeFind
+    else
+        :NERDTreeToggle
     endif
 endfunction
 
