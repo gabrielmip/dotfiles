@@ -340,6 +340,9 @@ if exists('python_highlight_space_errors')
     unlet python_highlight_space_errors
 endif
 
+
+let g:gruvbox_invert_selection = 0
+
 let g:gruvbox_material_background = 'medium'
 let g:gruvbox_material_enable_bold = 1
 let g:gruvbox_material_palette = 'mixed'
