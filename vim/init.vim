@@ -47,19 +47,14 @@ set nobackup
 set nowritebackup
 
 " code folding
-" set foldenable
-" set foldlevelstart=1 " fold only long blocks of code.
-" set foldnestmax=10 " folds can be nested, this ensures max 10 nested folds.
-" set foldmethod=indent " my default: folding based on indentation.
+set foldenable
+set foldlevelstart=0 " defaults to open
+set foldnestmax=10 " folds can be nested, this ensures max 10 nested folds.
+set foldmethod=marker " my default: folding based on the marker.
 
 " setting ripgrep as the preferred grep tool
 set grepprg=rg\ --vimgrep\ --smart-case
 set grepformat=%f:%l:%c:%m,%f:%l:%m
-
-" now onto the overrides:
-autocmd FileType json set foldmethod=syntax
-autocmd FileType vim set foldmethod=marker foldlevelstart=-1
-autocmd FileType clojure set foldmethod=marker
 
 " function used in SwapWords
 function! Mirror(dict)
@@ -177,8 +172,6 @@ nnoremap [l :lprev<CR>
 " buffer navigation
 nnoremap ]b :bn<CR>
 nnoremap [b :bp<CR>
-nnoremap <C-n> :bp<CR>
-nnoremap <C-m> :bn<CR>
 nnoremap <Space>bq :KillOtherBuffers<CR>
 
 " git change (hunk) navigation
