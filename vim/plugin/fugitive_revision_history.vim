@@ -2,28 +2,17 @@ function! s:enterComparison()
   if expand('%:p') =~ '^fugitive:[\\/][\\/]'
     echoerr "Go to a versioned file first"
   else
-    let g:revisionComparisonTriggerBuffer = bufnr('%')
+    let g:revisionHistoryBuffer = bufnr('%')
+    let g:revisionHistoryState = 'working_diff'
     execute "0Gclog"
     execute "cfirst"
+    call s:showRevision()
   endif
-  call s:showRevision()
 endfunction
 
 function! s:assertComparisonRequisites()
-  if !exists('g:revisionComparisonTriggerBuffer')
-    call StartComparison()
-  endif
-
-  let attrs = getqflist({'title': 0})
-
-  let title = get(attrs, 'title', '')
-  if title !~ '.*Gclog'
-    echoerr 'Remember to call StartComparison() first'
-    return
-  endif
-
   if expand('%:p') =~ '^fugitive:[\\/][\\/]'
-    execute "b" . g:revisionComparisonTriggerBuffer
+    execute "b" . g:revisionHistoryBuffer
     try | silent execute "only" | catch | endtry
   endif
 endfunction
@@ -33,38 +22,58 @@ function! s:showRevision()
   let attrs = getqflist({'idx': 0})
   let idx = get(attrs, 'idx', 0)
   let qflist = getqflist()
-
-  if idx >= len(qflist)
-    echo 'You reached the end of the revision list'
+  let g:revisionHistoryLen = len(qflist)
+  let g:revisionHistoryIdx = idx
+  
+  if g:revisionHistoryState =~ 'working_diff'
+    echo "Working index diff"
+    execute "silent Gvdiffsplit"
     return
   endif
 
-  let olderRevision = split(qflist[idx]['module'], ':')[0]
-  execute "cc" | execute "Gvdiffsplit " . olderRevision
+  echo "(" . (idx - 1) . " out of " . len(qflist). "): " . qflist[idx - 2]['text']
+  let olderRevision = split(qflist[idx - 2]['module'], ':')[0]
+  execute "silent cc" | execute "silent Gvdiffsplit " . olderRevision
 endfunction
 
 function! s:moveInHistory(next)
-  call s:assertComparisonRequisites()
   if a:next
-    silent execute "cn"
+    if g:revisionHistoryState =~ 'history' && g:revisionHistoryIdx >= g:revisionHistoryLen
+      echo 'You reached the end of the revision list'
+    else
+      let g:revisionHistoryState = 'history'
+      execute "silent cn"
+      call s:showRevision()
+    endif
   else
-    silent execute "cp"
+    if g:revisionHistoryState =~ 'working_diff'
+      echo 'You reached the beginning of the revision list'
+      return
+    else
+      if g:revisionHistoryIdx <= 2
+        let g:revisionHistoryState = 'working_diff'
+      endif
+      execute "silent cp"
+      call s:showRevision()
+    endif
   endif
-  call s:showRevision()
 endfunction
 
 function! s:quitComparison()
-  if exists('g:revisionComparisonTriggerBuffer')
-    execute "b" . g:revisionComparisonTriggerBuffer
+  if exists('g:revisionHistoryBuffer')
+    execute "b" . g:revisionHistoryBuffer
     try | execute "only" | catch | endtry
-    execute "unlet g:revisionComparisonTriggerBuffer"
+    execute "unlet g:revisionHistoryBuffer"
+    execute "unlet g:revisionHistoryIdx"
+    execute "unlet g:revisionHistoryLen"
+    execute "unlet g:revisionHistoryState"
   else
     echo "You have not run a comparison revision yet"
   endif
 endfunction
 
 function! ToggleRevisionComparison()
-  if exists('g:revisionComparisonTriggerBuffer')
+  if exists('g:revisionHistoryBuffer')
     call s:quitComparison()
   else
     call s:enterComparison()
@@ -77,8 +86,4 @@ endfunction
 
 function! OlderRevision()
   call s:moveInHistory(1)
-endfunction
-
-function! ShowRevision()
-  call s:showRevision()
 endfunction
