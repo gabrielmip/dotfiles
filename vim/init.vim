@@ -48,7 +48,7 @@ set nowritebackup
 
 " code folding
 set foldenable
-set foldlevelstart=0 " defaults to open
+set foldlevelstart=0 " defaults to close
 set foldnestmax=10 " folds can be nested, this ensures max 10 nested folds.
 set foldmethod=marker " my default: folding based on the marker.
 
