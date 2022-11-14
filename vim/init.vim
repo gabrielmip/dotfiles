@@ -174,6 +174,10 @@ nnoremap ]b :bn<CR>
 nnoremap [b :bp<CR>
 nnoremap <Space>bq :KillOtherBuffers<CR>
 
+" tab navigation
+nnoremap ]t :tabNext<CR>
+nnoremap [t :tabprevious<CR>
+
 " git change (hunk) navigation
 nnoremap ]h :GitGutterNextHunk<CR>
 nnoremap [h :GitGutterPrevHunk<CR>
@@ -201,18 +205,6 @@ nnoremap <silent> <Space>cc :Commands<CR>
 
 " Reload vim config (cr = config reload)
 noremap <Space>cr :source $HOME/.config/nvim/init.vim
-
-" terminal (floaterm)
-" nnoremap <silent> <Space>tn :FloatermNew<CR>
-" tnoremap <silent> <Space>tn <C-\><C-n>:FloatermNew<CR>
-" nnoremap <silent> <Space>tc :FloatermKill<CR>
-" tnoremap <silent> <Space>tc <C-\><C-n>:FloatermKill<CR>
-" nnoremap <silent> [t :FloatermPrev<CR>
-" tnoremap <silent> [t <C-\><C-n>:FloatermPrev<CR>
-" nnoremap <silent> ]t :FloatermNext<CR>
-" tnoremap <silent> ]t <C-\><C-n>:FloatermNext<CR>
-" nnoremap <silent> <C-'> :FloatermToggle<CR>
-" tnoremap <silent> <C-'> <C-\><C-n>:FloatermToggle<CR>
 
 " project explorer
 function NERDToggleFind()
