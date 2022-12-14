@@ -229,7 +229,7 @@ nnoremap g# g#zz
 " set scrolloff=7
 
 " search the word under the cursor in the project
-nnoremap <silent> <Space>ps :Rg <C-r><C-w><CR>
+nnoremap <Space>ps :Rg <C-r><C-w><CR>
 " search the selection in the project
 xnoremap <Space>ps "sy:Rg <C-r>s<CR>
 " search the selection in the file
