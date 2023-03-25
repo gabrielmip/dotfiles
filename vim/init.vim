@@ -96,7 +96,6 @@ endfunction
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
-" autocmd BufWritePre * :call TrimWhiteSpace()
 
 " Kills all buffers then reopens the current one
 function! KillOtherBuffers()

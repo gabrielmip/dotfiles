@@ -1,6 +1,6 @@
 [Appearance]
 AntiAliasFonts=true
-BoldIntense=false
+BoldIntense=true
 ColorScheme=Gruvbox
 Font=Fira Code,11,-1,5,50,0,0,0,0,0
 LineSpacing=1
