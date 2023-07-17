@@ -14,5 +14,29 @@
     "prefix": ["pref", "today", "day", "hoje", "data", "journal"],
     "body": ["$CURRENT_DATE/$CURRENT_MONTH/$CURRENT_YEAR - $0"],
     "description": "Daily journal day prefix"
+  },
+  "Liquibase type doc": {
+    "prefix": ["liquibase type doc"],
+    "body": ["# `` type", "", "- ``: .", "", "## SQL", "", "```sql", "", "```"]
+  },
+  "Liquibase table doc": {
+    "prefix": ["liquibase table doc"],
+    "body": [
+      "# `$0` table",
+      "",
+      "## Fields",
+      "",
+      "- ****: ``.",
+      "",
+      "## Constraints",
+      "",
+      "- ``: ",
+      "",
+      "## SQL",
+      "",
+      "```sql",
+      "",
+      "```"
+    ]
   }
 }
