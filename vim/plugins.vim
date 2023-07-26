@@ -104,6 +104,7 @@ let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 0
+let g:ale_set_highlights = 0
 nnoremap <Space>fo :ALEFix<CR>
 
 function! JokerFormatter(buffer) abort
@@ -223,9 +224,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>lt', "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   buf_set_keymap('n', '<space>lh', "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap('n', '<space>ln', "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap('n', '<space>le', "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-  buf_set_keymap('n', '<space>lq', "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-  buf_set_keymap('n', '<space>lf', "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap('n', '<space>le', "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   buf_set_keymap('n', '[e', "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
   buf_set_keymap('n', ']e', "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
   buf_set_keymap('n', '<space>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -258,6 +257,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
         update_in_insert = false,
         underline = false,
+        signs = true,
+        virtual_text = false,
+        float = {
+            scope = "line"
+        }
     }
 )
 
