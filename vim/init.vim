@@ -28,7 +28,7 @@ set history=1000 " press q: to see the history of commands and q/ for searches
 set wildignore=*.swp,*.bak,*.pyc,*.class,.git/*,node_modules/*,tags,vendor/*,tmp/*,bin/*
 set title " set the title of the terminal window to the name of the file I am editing
 set mouse=nvi " enables mouse in normal, visual and insert mode. Hold shift to disable temporarily
-set signcolumn=yes:1 " always show additional column for git signs, linter
+set signcolumn=yes:2 " always show 2 additional columns for git signs and linter
 set wildmenu " menu which display options for autocomplete over the status line
 set path+=** " Allowing :find function to find in every subfolder recursively
 set conceallevel=0
