@@ -75,8 +75,8 @@ new_window pixel 2
 new_float pixel 0
 
 # Plasma compatibility improvements
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
-for_window [title="Área de trabalho — Plasma"] kill; floating enable; border none
+for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
+for_window [title="Área de trabalho @ QRect.*"] kill; floating enable; border none
 
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable
