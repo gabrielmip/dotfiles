@@ -12,6 +12,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -49,6 +50,7 @@ bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym $alt+F4 kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
@@ -73,6 +75,14 @@ exec --no-startup-id feh --bg-fill /home/gabriel/Dotfiles/wallpaper.jpg
 smart_borders on
 new_window pixel 2
 new_float pixel 0
+
+# Zoom compatibility
+# Set Zoom notification window to floating with no focus
+for_window [title="^zoom\s?$"] floating enable
+no_focus [title="^zoom\s?$"]
+# For meetings that you have joined via a link
+for_window [title="^join\?action=join.*$"] floating enable
+no_focus [title="^join\?action=join.*$"]
 
 # Plasma compatibility improvements
 for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
