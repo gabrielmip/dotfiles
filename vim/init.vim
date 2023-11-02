@@ -127,8 +127,6 @@ command! -nargs=0 LocalWriteMode call LocalWriteMode()
 " automatically setting wrap on text and markdown files
 autocmd FileType markdown,textfile call LocalWriteMode()
 
-" source $HOME/.config/nvim/mappings.vim
-
 let leader=" "
 let maplocalleader="," " this is for buffer-specific mappings (conjure uses this)
 

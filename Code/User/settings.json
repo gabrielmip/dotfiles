@@ -191,5 +191,12 @@
   "coverage-gutters.coverageReportFileName": "src/coverage/**/index.html",
   "workbench.colorTheme": "Gruvbox Dark Hard",
   "python.formatting.provider": "black",
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "window.zoomLevel": 1,
   "workbench.activityBar.visible": false
 }

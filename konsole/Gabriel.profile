@@ -2,7 +2,7 @@
 AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=Gruvbox
-Font=Fira Code,11,-1,5,50,0,0,0,0,0
+Font=Fira Code,13,-1,5,50,0,0,0,0,0
 LineSpacing=2
 UseFontLineChararacters=false
 
