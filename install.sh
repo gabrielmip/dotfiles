@@ -25,6 +25,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   zsh-theme-powerlevel10k-git \
   ranger \
   bat \
+  tldr \
   fzf \
   fzf-extras \
   ripgrep \
@@ -41,6 +42,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   i3-gaps \
   picom \
   xss-lock \
+  i3lock \
   nm-applet \
   feh \
   pasystray \
