@@ -15,30 +15,37 @@ ZSH_PLUGINS="${HOME}/.config/zsh_plugins"
 sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay
 
 yay -Sy --needed --noconfirm --quiet --noprogressbar \
+  base-devel \
   neovim \
   xclip \
   konsole \
-  ttf-twemoji \ # emojis in konsole. REMEMBER to read the post install instructions
+  ttf-twemoji \
   zsh \
   zsh-completions \
   zsh-theme-powerlevel10k-git \
-  ranger \ # terminal file browser with vim-like shortcuts
-  bat \ # alternative to cat
+  ranger \
+  bat \
   fzf \
   fzf-extras \
   ripgrep \
-  ctags \ # for vim tags
+  ctags \
   screen \
   docker \
-  meld \ # difftool
+  meld \
   gimp \
   inkscape \
-  gwenview \ # simpler image edition/preview
-  foliate \ # ebook reader
+  gwenview \
+  foliate \
   visual-studio-code-bin \
   ttf-firacode \
-  i3-gaps \ # window manager
-  feh # set background images
+  i3-gaps \
+  picom \
+  xss-lock \
+  nm-applet \
+  feh \
+  pasystray \
+  pavucontrol \
+  dunst
 
 
 log "VIM"
