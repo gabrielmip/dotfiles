@@ -48,6 +48,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   pavucontrol \
   dunst
 
+pip install --user pipx
 
 log "VIM"
 mkdir -p ~/.config/nvim
@@ -57,8 +58,14 @@ rmlink $PWD/vim/colors ~/.config/nvim/colors
 rmlink $PWD/vim/autoload ~/.config/nvim/autoload
 rmlink $PWD/vim/plugin ~/.config/nvim/plugin
 rmlink $PWD/vim/snippets ~/.config/nvim/snippets
-yay -S --noconfirm --quiet --noprogressbar pgformatter
 nvim +PlugInstall +qall
+
+
+log "VIM LINTERS AND FORMATTERS"
+pipx install black pylint
+npm install --global eslint
+npm install --global prettier
+yay -Sy --needed --noconfirm --quiet --noprogressbar clj-kondo-bin joker-bin
 
 
 log "VS CODE"

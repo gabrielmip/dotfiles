@@ -14,11 +14,6 @@ Plug 'vim-airline/vim-airline-themes' " statusline colorscheme
 " colorschemes
 Plug 'ajmwagar/vim-deus'
 Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
-Plug 'christianchiarulli/nvcode-color-schemes.vim'
-Plug 'sainnhe/sonokai'
-Plug 'colepeters/spacemacs-theme.vim'
-Plug 'tyrannicaltoucan/vim-deep-space'
 
 Plug 'airblade/vim-gitgutter' " git edit signs on the left column
 Plug 'tpope/vim-fugitive' " git helpers
@@ -26,9 +21,10 @@ Plug 'tpope/vim-fugitive' " git helpers
 Plug 'ludovicchabant/vim-gutentags' " manages my tags
 Plug 'dense-analysis/ale'  " linters and fixers
 Plug 'neovim/nvim-lspconfig' " auto configuration for lsp servers
-Plug 'williamboman/nvim-lsp-installer' " auto install lsp servers
+Plug 'williamboman/mason.nvim' " auto install lsp servers
+Plug 'williamboman/mason-lspconfig.nvim' 
 
-Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify' " home screen
 
 " completion
 Plug 'hrsh7th/nvim-cmp'
@@ -38,17 +34,19 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-vsnip'
 
+" snippets
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
 
-Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim' " fuzzy search for navigation (tags, files, buffers)
+Plug 'ojroques/nvim-lspfuzzy' " using fzf to show code actions, references, from lsp
+Plug 'preservim/nerdtree' " file tree explorer
 
 Plug 'Olical/conjure' " repl connection for lisps
-
-Plug 'nathangrigg/vim-beancount'
-
-" Plug 'voldikss/vim-floaterm' " terminal in a floating window
+Plug 'mboughaba/i3config.vim' " highlight for i3 config files
+Plug 'nathangrigg/vim-beancount' " highlight and others for beancount files
 
 Plug 'sheerun/vim-polyglot' " bundle for language syntax
 Plug 'Yggdroot/indentLine' " adds character to mark indentation
@@ -60,11 +58,6 @@ Plug 'tpope/vim-surround' " bindings to edit surrounding brackets, parenthesis
 Plug 'tpope/vim-repeat' " enables repeating plugin actions with the dot .
 Plug 'arthurxavierx/vim-caser' " convert word cases with motions
 Plug 'jiangmiao/auto-pairs' " adds closing parenthesis
-Plug 'mboughaba/i3config.vim' " highlight for i3 config files
-
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim' " fuzzy search for navigation (tags, files, buffers)
-Plug 'ojroques/nvim-lspfuzzy' " using fzf to show code actions, references, from lsp
 
 call plug#end()
 " }}}
@@ -113,7 +106,12 @@ function! JokerFormatter(buffer) abort
     \}
 endfunction
 
-execute ale#fix#registry#Add('joker-format', 'JokerFormatter', ['clojure'], 'joker fixer for clojure')
+execute ale#fix#registry#Add(
+  \ 'joker-format',
+  \ 'JokerFormatter',
+  \ ['clojure'],
+  \ 'joker fixer for clojure'
+\)
 
 let g:ale_python_black_options = '-l 79'
 let g:ale_javascript_prettier_options = '--prose-wrap always'
@@ -127,7 +125,6 @@ let g:ale_fixers = {
   \ 'css': ['prettier'],
   \ 'typescript': ['prettier'],
   \ 'typescriptreact': ['prettier'],
-  \ 'sql': ['pgformatter'],
   \ 'python': ['black'],
   \ 'clojure': ['joker-format'],
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -209,28 +206,28 @@ smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l
 
 " }}}
 
-" nvim-lspconfig {{{
+" lsp configs and cmp-nvim-lsp {{{
 lua << EOF
-local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+local on_attach = function(client, _)
+  -- disable treesitter highlighting since it does not work well with
+  -- my colorscheme
+  client.server_capabilities.semanticTokensProvider = nil
+
   local opts = { noremap=true, silent=true }
 
-  buf_set_keymap('n', 'gd', "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap('n', 'gh', "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>ld', "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap('n', '<space>lt', "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_set_keymap('n', '<space>lh', "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  buf_set_keymap('n', '<space>ln', "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap('n', '<space>le', "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  buf_set_keymap('n', '[e', "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  buf_set_keymap('n', ']e', "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap('n', '<space>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('n', '<space>lh', vim.lsp.buf.signature_help, opts)
+  vim.keymap.set('n', '<space>ln', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<space>le', vim.diagnostic.open_float, opts)
+  vim.keymap.set('n', '[e', vim.lsp.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', ']e', vim.lsp.diagnostic.goto_next, opts)
+  vim.keymap.set('n', '<space>lca', vim.lsp.buf.code_action, opts)
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
@@ -240,18 +237,33 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
-local util = require("lspconfig/util")
-local lsp_installer = require("nvim-lsp-installer")
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = {
+    "vimls",
+    "tsserver",
+    "cssls",
+    "clojure_lsp",
+    "eslint",
+    "html",
+    "pyright",
+    "svelte",
+    "yamlls",
+    "beancount",
+    "bashls"
+  },
+  
+  capabilities = capabilities,
 
-lsp_installer.on_server_ready(function(server)
-    local opts = {
-      capabilities = capabilities,
-      on_attach = on_attach
-    }
-
-    server:setup(opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
-end)
+  handlers = {
+    -- default handler
+    function (server_name)
+        require("lspconfig")[server_name].setup {
+            on_attach = on_attach,
+        }
+    end,
+  },
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -387,12 +399,6 @@ let g:user_emmet_settings = {
   \ 'extends' : 'css'
   \}
 \}
-" }}}
-
-" vim-floaterm {{{
-let g:floaterm_width = 1.0
-let g:floaterm_height = 0.3
-let g:floaterm_position = 'bottom'
 " }}}
 
 " NERDtree {{{
