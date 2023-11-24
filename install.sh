@@ -91,8 +91,9 @@ rmlink $PWD/picom/picom.conf ~/.config/picom.conf
 
 log "I3"
 mkdir -p ~/.config/i3
+mkdir -p ~/.config/i3status
 rmlink $PWD/i3/config ~/.config/i3/config
-sudo cp $PWD/xsessions/plasma-i3.desktop /usr/share/xsessions/plasma-i3.desktop
+rmlink $PWD/i3status/config ~/.config/i3status/config
 
 
 log "ZSH"
