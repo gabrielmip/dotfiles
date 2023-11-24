@@ -204,15 +204,8 @@ nnoremap <silent> <Space>cc :Commands<CR>
 noremap <Space>cr :source $HOME/.config/nvim/init.vim
 
 " project explorer
-function NERDToggleFind()
-    if expand('%:p')[0:len(getcwd())] =~ getcwd() && !g:NERDTree.IsOpen()
-        :NERDTreeFind
-    else
-        :NERDTreeToggle
-    endif
-endfunction
-
-nnoremap <silent> <Space>pe :call NERDToggleFind()<cr>
+nnoremap <silent> <Space>pe :NERDTreeFind<cr>
+nnoremap <silent> <Space>pq :NERDTreeClose<cr>
 
 " search results appear in the middle of the screen whenever possible
 nnoremap n nzz
