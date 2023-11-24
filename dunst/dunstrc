@@ -1,0 +1,4 @@
+[global]
+    idle_threshold = 10s
+    font = Noto Sans 12
+

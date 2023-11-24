@@ -96,6 +96,16 @@ rmlink $PWD/i3/config ~/.config/i3/config
 rmlink $PWD/i3status/config ~/.config/i3status/config
 
 
+log "BAT"
+mkdir -p ~/.config/bat
+rmlink $PWD/bat/config ~/.config/bat/config
+
+
+log "DUNST"
+mkdir -p ~/.config/dunst
+rmlink $PWD/dunst/dunstrc ~/.config/dunst/dunstrc
+
+
 log "ZSH"
 if [ ! -d ~/.oh-my-zsh ]; then
   sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
