@@ -12,10 +12,9 @@ function log {
 CONFIGS_FOLDER="${PWD}"
 ZSH_PLUGINS="${HOME}/.config/zsh_plugins"
 
-sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay
+sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay base-devel
 
 yay -Sy --needed --noconfirm --quiet --noprogressbar \
-  base-devel \
   neovim \
   xclip \
   konsole \
@@ -53,7 +52,6 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
 log "VIM"
 mkdir -p ~/.config/nvim
 rmlink $PWD/vim/init.vim ~/.config/nvim/init.vim
-rmlink $PWD/vim/mappings.vim ~/.config/nvim/mappings.vim
 rmlink $PWD/vim/plugins.vim ~/.config/nvim/plugins.vim
 rmlink $PWD/vim/colors ~/.config/nvim/colors
 rmlink $PWD/vim/autoload ~/.config/nvim/autoload
