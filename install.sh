@@ -17,6 +17,8 @@ sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay base-devel
 yay -Sy --needed --noconfirm --quiet --noprogressbar \
   neovim \
   xclip \
+  jq \
+  unzip \
   konsole \
   ttf-twemoji \
   zsh \
@@ -36,19 +38,29 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   inkscape \
   gwenview \
   foliate \
+  postman-bin \
+  spotify \
+  zoom \
+  chromium \
+  git-standup-git \
+  dbeaver \
+  nvm \
   visual-studio-code-bin \
   ttf-firacode \
+  python-pipx \
   i3-gaps \
+  i3status \
   picom \
+  arandr \
   xss-lock \
   i3lock \
+  brightnessctl \
   nm-applet \
   feh \
   pasystray \
   pavucontrol \
   dunst
 
-pip install --user pipx
 
 log "VIM"
 mkdir -p ~/.config/nvim
