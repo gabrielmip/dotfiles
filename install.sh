@@ -38,6 +38,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   inkscape \
   gwenview \
   foliate \
+  spectacle \
   postman-bin \
   spotify \
   zoom \

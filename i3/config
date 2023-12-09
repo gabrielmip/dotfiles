@@ -61,6 +61,10 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec konsole
 
+# Run printscreen app
+bindsym Print exec spectacle -f -b
+bindsym Shift+Print exec spectacle -r -b
+
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym $alt+F4 kill
