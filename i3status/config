@@ -8,10 +8,12 @@ order += "memory"
 order += "tztime belohorizonte"
 
 battery 0 {
-    format = "%status %percentage"
-    format_down = "No battery"
-    status_chr = "⚡CHR"
-    status_full = "☻ FULL"
+    format = "%status BAT: %percentage"
+    format_down = ""
+    format_percentage = "%.00f%s"
+    status_chr = "⚡"
+    status_bat = "🔋"
+    status_full = ""
     path = "/sys/class/power_supply/BAT%d/uevent"
     low_threshold = 10
 }
