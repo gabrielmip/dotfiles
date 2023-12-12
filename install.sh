@@ -38,6 +38,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   inkscape \
   gwenview \
   foliate \
+  spectacle \
   postman-bin \
   spotify \
   zoom \
@@ -93,6 +94,7 @@ log "I3"
 mkdir -p ~/.config/i3
 mkdir -p ~/.config/i3status
 rmlink $PWD/i3/config ~/.config/i3/config
+rmlink $PWD/i3/exit.sh ~/.config/i3/exit.sh
 rmlink $PWD/i3status/config ~/.config/i3status/config
 
 
