@@ -36,6 +36,19 @@ exec --no-startup-id nm-applet
 
 # notifications
 exec --no-startup-id dunst
+
+set $mode_notification Notification (p) pause, (u) unpause, (c) close all, (x) clear history
+mode "$mode_notification" {
+    bindsym p exec dunstctl set-paused true, mode "default"
+    bindsym u exec dunstctl set-paused false, mode "default"
+    bindsym c exec dunstctl close-all, mode "default"
+    bindsym x exec dunstctl close-all && dunstctl history-clear, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+n mode "$mode_notification"
 bindsym $mod+n exec dunstctl history-pop
 
 # Use pactl to adjust volume in PulseAudio.
