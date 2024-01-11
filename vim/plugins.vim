@@ -404,3 +404,16 @@ let g:user_emmet_settings = {
 " NERDtree {{{
 let NERDTreeShowHidden=1
 " }}}
+
+" Startify {{{
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 1
+let g:ascii = [
+    \ '        __',
+    \ '.--.--.|__|.--------.',
+    \ '|  |  ||  ||        |',
+    \ ' \___/ |__||__|__|__|',
+    \ ''
+    \]
+let g:startify_custom_header = startify#pad(g:ascii)
+" }}}
