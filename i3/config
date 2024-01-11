@@ -34,6 +34,12 @@ bindsym $mod+Shift+e mode "$mode_system"
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# clipboard management and applet
+exec --no-startup-id klipper 
+
+# bluetooth management and applet
+exec --no-startup-id blueman-applet
+
 # notifications
 exec --no-startup-id dunst
 

@@ -26,6 +26,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   zsh-theme-powerlevel10k-git \
   ranger \
   bat \
+  glow \
   tldr \
   fzf \
   fzf-extras \
@@ -49,6 +50,8 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   visual-studio-code-bin \
   ttf-firacode \
   python-pipx \
+  klipper \
+  blueman \
   i3-gaps \
   i3status \
   picom \
@@ -101,6 +104,11 @@ rmlink $PWD/i3status/config ~/.config/i3status/config
 log "BAT"
 mkdir -p ~/.config/bat
 rmlink $PWD/bat/config ~/.config/bat/config
+
+
+log "GLOW"
+mkdir -p ~/.config/glow
+rmlink $PWD/glow/glow.yml ~/.config/glow/glow.yml
 
 
 log "DUNST"
