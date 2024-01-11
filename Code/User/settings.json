@@ -198,5 +198,5 @@
     "editor.formatOnType": true
   },
   "window.zoomLevel": 1,
-  "workbench.activityBar.visible": false
+  "workbench.activityBar.location": "hidden"
 }
