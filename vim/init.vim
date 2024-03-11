@@ -204,7 +204,15 @@ nnoremap <silent> <Space>cc :Commands<CR>
 noremap <Space>cr :source $HOME/.config/nvim/init.vim
 
 " project explorer
-nnoremap <silent> <Space>pe :NERDTreeFind<cr>
+function! OpenExplorer()
+  if &filetype ==# 'startify'
+    NERDTree
+  else
+    NERDTreeFind
+  endif
+endfunction
+
+nnoremap <silent> <Space>pe :call OpenExplorer()<cr>
 nnoremap <silent> <Space>pq :NERDTreeClose<cr>
 
 " search results appear in the middle of the screen whenever possible
