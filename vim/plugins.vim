@@ -117,6 +117,8 @@ execute ale#fix#registry#Add(
 let g:ale_python_black_options = '-l 79'
 let g:ale_javascript_prettier_options = '--prose-wrap always'
 let g:ale_sql_pgformatter_options = '--wrap-limit 68'
+let g:ale_python_pylint_options = '--disable=missing-function-docstring,missing-class-docstring,too-few-public-methods,missing-module-docstring,broad-exception-raised'
+let g:ale_python_pylint_auto_poetry = 1
 let g:ale_fixers = {
   \ 'javascript': ['prettier'],
   \ 'javascriptreact': ['prettier'],
