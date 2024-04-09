@@ -82,9 +82,12 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec konsole
 
+# default file explorer
+bindsym $mod+e exec --no-startup-id nemo
+
 # Run printscreen app
-bindsym Print exec spectacle -f -b
-bindsym Shift+Print exec spectacle -r -b
+bindsym F10 exec spectacle -f -b
+bindsym Shift+F10 exec spectacle -r -b
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -124,6 +127,8 @@ no_focus [title="^zoom\s?$"]
 # For meetings that you have joined via a link
 for_window [title="^join\?action=join.*$"] floating enable
 no_focus [title="^join\?action=join.*$"]
+
+for_window [class="Nemo"] floating enable
 
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable

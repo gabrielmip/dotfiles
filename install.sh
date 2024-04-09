@@ -50,6 +50,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   visual-studio-code-bin \
   ttf-firacode \
   python-pipx \
+  nemo \
   klipper \
   blueman \
   i3-gaps \
