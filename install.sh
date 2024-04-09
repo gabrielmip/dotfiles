@@ -93,12 +93,21 @@ log "PICOM"
 rmlink $PWD/picom/picom.conf ~/.config/picom.conf
 
 
+log "GNOME POMODORO"
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/gnome-shell-pomodoro.tar.gz
+tar -xvf gnome-shell-pomodoro.tar.gz && cd gnome-shell-pomodoro
+makepkg -s
+makepkg -i
+
+
+log "I3 GNOME POMODORO"
+pipx install i3-gnome-pomodoro
+
+
 log "I3"
 mkdir -p ~/.config/i3
-mkdir -p ~/.config/i3status
 rmlink $PWD/i3/config ~/.config/i3/config
 rmlink $PWD/i3/exit.sh ~/.config/i3/exit.sh
-rmlink $PWD/i3status/config ~/.config/i3status/config
 
 
 log "BAT"
