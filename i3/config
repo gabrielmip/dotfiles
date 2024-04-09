@@ -70,8 +70,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Setup pulseaudio applet
 exec --no-startup-id pasystray
 
-# Setup keyboard layout applet
-exec --no-startup-id gxbd
+exec --no-startup-id redshift-gtk
 
 # Screen brightness with keyboard
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
