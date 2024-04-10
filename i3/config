@@ -129,6 +129,7 @@ for_window [title="^join\?action=join.*$"] floating enable
 no_focus [title="^join\?action=join.*$"]
 
 for_window [class="Nemo"] floating enable
+for_window [class="ark"] floating enable
 
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable
