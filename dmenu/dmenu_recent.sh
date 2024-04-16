@@ -8,7 +8,7 @@
 # Customized by Gabriel Pedrosa.
 
 terminal="konsole -e"
-dmenu_cmd="dmenu $DMENU_OPTIONS"
+dmenu_cmd="dmenu -i -b -fn 'NotoSans-12' -p apps: $DMENU_OPTIONS"
 max_recent=199 # Number of recent commands to track
 
 cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu-recent"
@@ -27,7 +27,7 @@ if [[ ! -e "$rest_cache" ]] || stest -dqr -n "$rest_cache" $PATH 2>/dev/null; th
 fi
 
 IFS=" "
-cmd=$(cat "$recent_cache" "$rest_cache" | $dmenu_cmd -p Execute: "$@") || exit
+cmd=$(cat "$recent_cache" "$rest_cache" | $dmenu_cmd "$@") || exit
 
 if ! grep -qx "$cmd" "$recent_cache" &> /dev/null; then
     grep -vx "$cmd" "$rest_cache" > "$rest_cache.$$"
