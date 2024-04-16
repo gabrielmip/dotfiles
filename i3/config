@@ -35,7 +35,7 @@ bindsym $mod+Shift+e mode "$mode_system"
 exec --no-startup-id nm-applet
 
 # clipboard management and applet
-exec --no-startup-id klipper 
+exec --no-startup-id klipper
 
 # bluetooth management and applet
 exec --no-startup-id blueman-applet
@@ -130,6 +130,8 @@ no_focus [title="^join\?action=join.*$"]
 
 for_window [class="Nemo"] floating enable
 for_window [class="ark"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable
@@ -140,10 +142,10 @@ for_window [class="Klipper"] floating enable
 for_window [class="(?i)*nextcloud*"] floating disable
 
 for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable 
+for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
-for_window [window_type="dialog"] floating enable 
+for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
 # change focus
@@ -273,7 +275,7 @@ mode "$mode_pomodoro" {
     bindsym t exec "i3-gnome-pomodoro toggle", mode "default"
     bindsym k exec "i3-gnome-pomodoro skip", mode "default"
     bindsym q exec "i3-gnome-pomodoro stop", mode "default"
-    
+
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -285,13 +287,13 @@ bar {
         status_command ~/Dotfiles/i3status/i3-gnome-pomodoro.sh
 	colors {
 		# Whole color settings
-		background #3c3836
-		statusline #ebdbb2
+		background #333333
+		statusline #cccccc
 		separator  #666666
 
-		focused_workspace  #458588 #458588 #ebdbb2
-		active_workspace   #83a598 #83a598 #ebdbb2
-		inactive_workspace #504945 #504945 #ebdbb2
-		urgent_workspace   #cc241d #cc241d #ebdbb2
+		# focused_workspace  #458588 #458588 #ebdbb2
+		# active_workspace   #83a598 #83a598 #ebdbb2
+		inactive_workspace #444444 #444444 #cccccc
+		urgent_workspace   #aa2d29 #aa2d29 #cccccc
 	}
 }
