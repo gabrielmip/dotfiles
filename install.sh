@@ -64,6 +64,7 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   feh \
   pasystray \
   pavucontrol \
+  playerctl \
   dunst
 
 

@@ -111,7 +111,7 @@ exec_always --no-startup-id picom
 exec --no-startup-id feh --bg-fill /home/gabriel/Dotfiles/wallpaper.jpg
 
 # i3-gaps
-gaps inner 35
+gaps inner 22
 gaps outer 0
 # smart_gaps off
 new_window pixel 2
