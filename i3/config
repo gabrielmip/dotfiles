@@ -111,9 +111,9 @@ exec_always --no-startup-id picom
 exec --no-startup-id feh --bg-fill /home/gabriel/Dotfiles/wallpaper.jpg
 
 # i3-gaps
-# gaps inner 8
-# gaps outer 2
-# smart_gaps on
+gaps inner 35
+gaps outer 0
+# smart_gaps off
 new_window pixel 2
 new_float pixel 0
 
@@ -284,7 +284,7 @@ bindsym $mod+Shift+p mode "$mode_pomodoro"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command ~/Dotfiles/i3status/i3-gnome-pomodoro.sh
+        status_command i3status -c ~/Dotfiles/i3status/config | ~/Dotfiles/i3status/custom_sections.py
 	colors {
 		# Whole color settings
 		background #333333
