@@ -51,6 +51,10 @@ setupstream () {
   git branch --set-upstream-to=origin/$(git_current_branch) $(git_current_branch)
 }
 
+uncommit () {
+  git reset --soft HEAD~1
+}
+
 mergewith () {
   CURRENT=$(git_current_branch)
   git checkout "$1"
@@ -106,6 +110,13 @@ source /usr/share/fzf/key-bindings.zsh
 if [[ -e $HOME/.alude-aliases ]]
 then
   source $HOME/.alude-aliases
+fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+if [[ -d $PYENV_ROOT/bin ]]
+then
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

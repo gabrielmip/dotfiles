@@ -1,4 +1,11 @@
 {
+  "Liquibase master include": {
+    "prefix": "liquibase master",
+    "body": [
+      "<include file=\"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$0.xml\" />"
+    ],
+    "description": "Liquibase master file include line"
+  },
   "Liquibase file": {
     "prefix": "liquibase file",
     "body": [
