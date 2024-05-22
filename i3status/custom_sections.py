@@ -20,7 +20,10 @@ def get_current_music_title():
     if "No players found" in title:
         return ""
     artist = subprocess.getoutput("playerctl -i firefox metadata artist")
-    return f"{artist} - {title}"
+    if artist == "No player could handle this command" or not artist:
+        artist = None
+
+    return " - ".join([i for i in [artist, title] if i])
 
 
 def is_playing():
