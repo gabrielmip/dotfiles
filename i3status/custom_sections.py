@@ -90,6 +90,7 @@ if __name__ == "__main__":
                     "full_text": dunsct_status,
                     "name": "dunst",
                     "separator_block_width": 25,
+                    "color": "#e07282",
                 },
             )
 
