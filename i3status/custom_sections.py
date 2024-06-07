@@ -15,6 +15,11 @@ def get_pomodoro_status():
     return status if exitcode == 0 and status else None
 
 
+def get_dunst_status():
+    is_paused = subprocess.getoutput("dunstctl is-paused") == "true"
+    return " Dunst" if is_paused else None
+
+
 def get_current_music_title():
     title = subprocess.getoutput("playerctl -i firefox metadata title")
     if "No players found" in title:
@@ -71,8 +76,19 @@ if __name__ == "__main__":
             j.insert(
                 0,
                 {
-                    "full_text": "♪ %s" % music_title,
+                    "full_text": f"♪ {music_title}",
                     "name": "music_title",
+                    "separator_block_width": 25,
+                },
+            )
+
+        dunsct_status = get_dunst_status()
+        if dunsct_status:
+            j.insert(
+                0,
+                {
+                    "full_text": dunsct_status,
+                    "name": "dunst",
                     "separator_block_width": 25,
                 },
             )
@@ -82,7 +98,7 @@ if __name__ == "__main__":
             j.insert(
                 0,
                 {
-                    "full_text": "%s" % pomodoro_status,
+                    "full_text": pomodoro_status,
                     "name": "pomodoro",
                     "separator_block_width": 25,
                 },
