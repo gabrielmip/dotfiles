@@ -247,20 +247,13 @@ bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
-    bindsym h resize shrink width 5 px or 5 ppt
-    bindsym j resize grow height 5 px or 5 ppt
-    bindsym k resize shrink height 5 px or 5 ppt
-    bindsym l resize grow width 5 px or 5 ppt
-
-    # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 5 px or 5 ppt
-    bindsym Down resize grow height 5 px or 5 ppt
-    bindsym Up resize shrink height 5 px or 5 ppt
-    bindsym Right resize grow width 5 px or 5 ppt
+    # memorization:
+    # j is grow, k is shrink
+    # to do it vertically, prepend with shift
+    bindsym j resize grow width 5 px or 5 ppt
+    bindsym k resize shrink width 5 px or 5 ppt
+    bindsym Shift+j resize grow height 5 px or 5 ppt
+    bindsym Shift+k resize shrink height 5 px or 5 ppt
 
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
