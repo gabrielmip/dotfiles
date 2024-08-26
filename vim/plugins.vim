@@ -17,6 +17,7 @@ Plug 'morhetz/gruvbox'
 
 Plug 'airblade/vim-gitgutter' " git edit signs on the left column
 Plug 'tpope/vim-fugitive' " git helpers
+Plug 'rhysd/git-messenger.vim' " git commit messages in hover window
 
 Plug 'ludovicchabant/vim-gutentags' " manages my tags
 Plug 'dense-analysis/ale'  " linters and fixers

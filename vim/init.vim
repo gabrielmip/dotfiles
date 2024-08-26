@@ -185,6 +185,9 @@ nnoremap <Space>gl :diffget //3<CR>
 nnoremap <Space>gh :diffget //2<CR>
 nnoremap <Space>gpoh :!git push origin HEAD<CR>
 
+" git-messenger
+nmap <Space>gm <Plug>(git-messenger)
+
 " git revision history navigation
 " comes from plugin/fugitive_revision_history.vim
 nnoremap <silent> <Space>gr :call ToggleRevisionComparison()<CR>
