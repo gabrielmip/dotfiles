@@ -180,10 +180,18 @@ nnoremap [t :tabprevious<CR>
 nnoremap ]h :GitGutterNextHunk<CR>
 nnoremap [h :GitGutterPrevHunk<CR>
 
+function! RemoveConflictMarkers()
+  norm j
+  let firstline = search('<<<<<<<', 'b')
+  let lastline = search('>>>>>>>')
+  execute firstline.','.lastline . ' g/^<\{7}\|^|\{7}\|^=\{7}\|^>\{7}/d'
+endfunction
+
 " vim-fugitive
 nnoremap <Space>gs :G<CR>
 nnoremap <Space>gl :diffget //3<CR>
 nnoremap <Space>gh :diffget //2<CR>
+nnoremap <Space>gg :call RemoveConflictMarkers()<CR>
 nnoremap <Space>gpoh :!git push origin HEAD<CR>
 
 " git-messenger
