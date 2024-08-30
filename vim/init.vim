@@ -144,6 +144,37 @@ noremap! <C-H> <C-w>
 tnoremap <C-BS> <C-w>
 tnoremap <C-H> <C-w>
 
+" Remove items from the quickfix list using `dd`.
+" Source: https://stackoverflow.com/a/74675717
+function! RemoveQFItem(mode) range abort
+  let l:qf_list = getqflist()
+
+  " distinguish mode for getting delete index and delete count
+  if a:mode == 'v'
+    let l:del_qf_idx = getpos("'<")[1] - 1
+    let l:del_ct = getpos("'>")[1] - l:del_qf_idx
+  else
+    let l:del_qf_idx = line('.') - 1
+    let l:del_ct = v:count > 1 ? v:count : 1
+  endif
+
+  " delete lines and update quickfix
+  for item in range(l:del_ct)
+    call remove(l:qf_list, l:del_qf_idx)
+  endfor
+  call setqflist(l:qf_list, 'r')
+
+  if len(l:qf_list) > 0
+    execute l:del_qf_idx + 1 . 'cfirst'
+    copen
+  else
+    cclose
+  endif
+endfunction
+
+autocmd FileType qf nmap <buffer> dd :call RemoveQFItem('n')<cr>
+autocmd FileType qf vmap <buffer> dd :call RemoveQFItem('v')<cr>
+
 " quickfix and location list navigation
 function! QFHistory(goNewer)
   " Get dictionary of properties of the current window
@@ -158,6 +189,12 @@ endfunction
 " when in the list's buffer
 autocmd FileType qf nnoremap <buffer> <Left> :call QFHistory(0)<CR>
 autocmd FileType qf nnoremap <buffer> <Right> :call QFHistory(1)<CR>
+
+" always open the quickfix window in the bottom using full width
+autocmd FileType qf wincmd J
+
+" load package to filter quickfix items
+packadd cfilter
 
 " quickfix list navigation
 nnoremap ]c :cnext<CR>
