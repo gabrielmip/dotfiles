@@ -129,6 +129,7 @@ autocmd FileType markdown,textfile call LocalWriteMode()
 
 let leader=" "
 let maplocalleader="," " this is for buffer-specific mappings (conjure uses this)
+nnoremap <SPACE> <Nop>
 
 " keeping the indentation (white spaces) when going to normal mode even if
 " have not written any word.
