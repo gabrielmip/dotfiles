@@ -22,18 +22,35 @@ def get_dunst_status():
 
 def get_current_music_title():
     title = subprocess.getoutput("playerctl -i firefox metadata title")
-    if "No players found" in title:
-        return ""
+    return None if "No players found" in title else title
+
+
+def get_current_music_artist():
     artist = subprocess.getoutput("playerctl -i firefox metadata artist")
     if artist == "No player could handle this command" or not artist:
-        artist = None
+        return None
+    return artist
 
-    return " - ".join([i for i in [artist, title] if i])
 
-
-def is_playing():
+def get_music_icon():
     status = subprocess.getoutput("playerctl -i firefox status")
-    return status == "Playing"
+    if status == "Playing":
+        return "♪"
+    if status == "Paused":
+        return ""
+    return None
+
+
+def get_music_status():
+    icon = get_music_icon()
+    title = get_current_music_title()
+    artist = get_current_music_artist()
+
+    return (
+        f"{icon} {artist} - {title}"
+        if icon and title and artist
+        else None
+    )
 
 
 def print_line(message):
@@ -71,12 +88,12 @@ if __name__ == "__main__":
             line, prefix = line[1:], ","
         j = json.loads(line)
 
-        if is_playing():
-            music_title = get_current_music_title()
+        music_status = get_music_status()
+        if music_status:
             j.insert(
                 0,
                 {
-                    "full_text": f"♪ {music_title}",
+                    "full_text": music_status,
                     "name": "music_title",
                     "separator_block_width": 25,
                 },
