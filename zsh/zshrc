@@ -93,6 +93,10 @@ open-suggest () {
   suggest | xargs xdg-open
 }
 
+delete-container () {
+    docker stop "$1" && docker rm "$1";
+}
+
 fzfdiff () {
   preview="git diff $@ --color=always -- {-1}"
   git diff $@ --name-only | fzf -m --ansi --preview "$preview"
