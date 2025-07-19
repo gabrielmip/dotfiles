@@ -1,0 +1,3 @@
+#!/bin/bash
+
+konsole -e 'ipython -c "import math" -i'

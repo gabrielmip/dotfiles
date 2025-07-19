@@ -111,6 +111,7 @@ log "I3"
 mkdir -p ~/.config/i3
 rmlink $PWD/i3/config ~/.config/i3/config
 rmlink $PWD/i3/exit.sh ~/.config/i3/exit.sh
+rmlink $PWD/dmenu/open_ipython ~/.local/bin/open_ipython
 
 
 log "BAT"

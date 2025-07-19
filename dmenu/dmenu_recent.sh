@@ -8,7 +8,7 @@
 # Customized by Gabriel Pedrosa.
 
 terminal="konsole -e"
-dmenu_cmd="dmenu -i -b -fn 'NotoSans-12' -p apps: $DMENU_OPTIONS"
+dmenu_cmd="dmenu -i -b -nf #BBBBBB -nb #282828 -sb #316E5A -sf #EEEFEA -fn 'NotoSans-15' -p apps: "
 max_recent=199 # Number of recent commands to track
 
 cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu-recent"
