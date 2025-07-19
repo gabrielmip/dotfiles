@@ -104,6 +104,10 @@ endfunction
 
 command! -nargs=0 KillOtherBuffers call KillOtherBuffers()
 
+" Copy the file path for the current buffer
+command! CopyBuffer let @+ = expand('%')
+command! CopyBufferAbsolutePath let @+ = expand('%:p')
+
 function! ListFiles()
   if isdirectory(expand(getcwd() . '/.git'))
     :GFiles
