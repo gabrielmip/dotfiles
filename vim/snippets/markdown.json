@@ -15,12 +15,12 @@
     "body": ["$CURRENT_DATE/$CURRENT_MONTH/$CURRENT_YEAR - $0"],
     "description": "Daily journal day prefix"
   },
-  "Liquibase type doc": {
-    "prefix": ["liquibase type doc"],
-    "body": ["# `` type", "", "- ``: .", "", "## SQL", "", "```sql", "", "```"]
+  "Type doc": {
+    "prefix": ["doctype"],
+    "body": ["# `$0` type", "", "## Values", "", "- ``: .", "", "## SQL", "", "```sql", "", "```"]
   },
-  "Liquibase table doc": {
-    "prefix": ["liquibase table doc"],
+  "Table doc": {
+    "prefix": ["doctable"],
     "body": [
       "# `$0` table",
       "",
@@ -31,6 +31,26 @@
       "## Constraints",
       "",
       "- ``: ",
+      "",
+      "## SQL",
+      "",
+      "```sql",
+      "",
+      "```"
+    ]
+  },
+  "Function doc": {
+    "prefix": ["docfunction"],
+    "body": [
+      "# `$0` function",
+      "",
+      "## Inputs",
+      "",
+      "- ****: ``.",
+      "",
+      "## Output",
+      "",
+      "- ****: ``.",
       "",
       "## SQL",
       "",
