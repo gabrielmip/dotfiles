@@ -1,4 +1,20 @@
 [global]
     idle_threshold = 10s
     font = Noto Sans 11
+    origin = bottom-right
+    gap_size = 5
 
+[urgency_low]
+    background = "#282923"
+    foreground = "#e9efd8"
+    frame_color = "#838776"
+
+[urgency_normal]
+    background = "#443426"
+    foreground = "#e9efd8"
+    frame_color = "#e18436"
+
+[urgency_critical]
+    background = "#7a4242"
+    foreground = "#e9efd8"
+    frame_color = "#cc5c5c"
