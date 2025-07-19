@@ -3,6 +3,7 @@
 " i only want the syntax highlighting and autoindent.
 let g:polyglot_disabled = ['sensible', 'ftdetect', 'sql.plugin', 'xml.plugin']
 let g:markdown_folding = 1
+autocmd BufEnter sql set indentexpr=
 " }}}
 
 " Installed plugins {{{
@@ -23,7 +24,7 @@ Plug 'ludovicchabant/vim-gutentags' " manages my tags
 Plug 'dense-analysis/ale'  " linters and fixers
 Plug 'neovim/nvim-lspconfig' " auto configuration for lsp servers
 Plug 'williamboman/mason.nvim' " auto install lsp servers
-Plug 'williamboman/mason-lspconfig.nvim' 
+Plug 'williamboman/mason-lspconfig.nvim'
 
 Plug 'mhinz/vim-startify' " home screen
 
@@ -213,39 +214,52 @@ smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l
 " lsp configs and cmp-nvim-lsp {{{
 lua << EOF
 
-local on_attach = function(client, _)
-  -- disable treesitter highlighting since it does not work well with
-  -- my colorscheme
-  client.server_capabilities.semanticTokensProvider = nil
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>le', vim.diagnostic.open_float, opts)
+-- not working. I believe this has to do with the noremap in the opts. anyways
+-- ]d and [d are already set (default) and working.
+-- vim.keymap.set('n', '[e', vim.diagnostic.get_prev, opts)
+-- vim.keymap.set('n', ']e', vim.diagnostic.get_next, opts)
 
-  local opts = { noremap=true, silent=true }
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('my.lsp', {}),
+  callback = function(args)
+    local opts = { noremap=true, silent=true }
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-  vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-  vim.keymap.set('n', '<space>lh', vim.lsp.buf.signature_help, opts)
-  vim.keymap.set('n', '<space>ln', vim.lsp.buf.rename, opts)
-  vim.keymap.set('n', '<space>le', vim.diagnostic.open_float, opts)
-  vim.keymap.set('n', '[e', vim.lsp.diagnostic.goto_prev, opts)
-  vim.keymap.set('n', ']e', vim.lsp.diagnostic.goto_next, opts)
-  vim.keymap.set('n', '<space>lca', vim.lsp.buf.code_action, opts)
-end
+    -- disable treesitter highlighting since it does not work well with
+    -- my colorscheme
+    client.server_capabilities.semanticTokensProvider = false
+    
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>ln', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<space>lca', vim.lsp.buf.code_action, opts)
+  end,
+})
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'documentation',
-    'detail',
-    'additionalTextEdits',
-  }
-}
+vim.lsp.config('*', {
+    capabilities = capabilities,
+})
+
+vim.diagnostic.config({
+    update_in_insert = false,
+    underline = false,
+    signs = true,
+    virtual_text = false,
+    float = {
+        scope = "line"
+    }
+})
 
 require("mason").setup()
 require("mason-lspconfig").setup {
   ensure_installed = {
     "vimls",
-    "tsserver",
+    "ts_ls",
     "cssls",
     "clojure_lsp",
     "eslint",
@@ -256,30 +270,7 @@ require("mason-lspconfig").setup {
     "beancount",
     "bashls"
   },
-  
-  capabilities = capabilities,
-
-  handlers = {
-    -- default handler
-    function (server_name)
-        require("lspconfig")[server_name].setup {
-            on_attach = on_attach,
-        }
-    end,
-  },
 }
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        update_in_insert = false,
-        underline = false,
-        signs = true,
-        virtual_text = false,
-        float = {
-            scope = "line"
-        }
-    }
-)
 
 EOF
 " }}}
