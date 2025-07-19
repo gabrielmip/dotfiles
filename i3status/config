@@ -5,7 +5,7 @@ general {
 
 # order += "battery 0"
 # order += "memory"
-order += "tztime belohorizonte"
+order += "tztime local"
 
 battery 0 {
     format = "%status BAT: %percentage"
@@ -18,7 +18,7 @@ battery 0 {
     low_threshold = 10
 }
 
-tztime belohorizonte {
+tztime local {
     format = "%d/%m às %H:%M"
     timezone = "America/Fortaleza"
 }

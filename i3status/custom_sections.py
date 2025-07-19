@@ -17,23 +17,23 @@ def get_pomodoro_status():
 
 def get_dunst_status():
     is_paused = subprocess.getoutput("dunstctl is-paused") == "true"
-    return " Dunst" if is_paused else None
+    return "   Dunst" if is_paused else None
 
 
 def get_current_music_title():
-    title = subprocess.getoutput("playerctl -i firefox metadata title")
+    title = subprocess.getoutput("playerctl -i firefox,chromium metadata title")
     return None if "No players found" in title else title
 
 
 def get_current_music_artist():
-    artist = subprocess.getoutput("playerctl -i firefox metadata artist")
+    artist = subprocess.getoutput("playerctl -i firefox,chromium metadata artist")
     if artist == "No player could handle this command" or not artist:
         return None
     return artist
 
 
 def get_music_icon():
-    status = subprocess.getoutput("playerctl -i firefox status")
+    status = subprocess.getoutput("playerctl -i firefox,chromium status")
     if status == "Playing":
         return "♪"
     if status == "Paused":
