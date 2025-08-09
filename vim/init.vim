@@ -33,6 +33,7 @@ set wildmenu " menu which display options for autocomplete over the status line
 set path+=** " Allowing :find function to find in every subfolder recursively
 set conceallevel=0
 set nowrap " do not break lines when they are bigger than the screen
+set cursorline " highlight current line and its number
 
 set colorcolumn=80 " highlight 80th column
                    " change color like :hi ColorColumn ctermbg=NONE ctermfg=red

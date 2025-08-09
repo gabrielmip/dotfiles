@@ -5,7 +5,7 @@ set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Noto Sans 14
+font pango:Noto Sans 12
 
 focus_follows_mouse no
 
@@ -129,8 +129,8 @@ exec_always --no-startup-id picom
 exec --no-startup-id feh --bg-scale /home/gabriel/Dotfiles/wallpaper.jpg
 
 # i3-gaps
-# gaps inner 22
-# gaps outer 0
+gaps inner 22
+gaps outer 0
 # smart_gaps off
 new_window pixel 2
 new_float pixel 0
@@ -295,30 +295,56 @@ mode "$mode_pomodoro" {
 }
 bindsym $mod+Shift+p mode "$mode_pomodoro"
 
-# Theme edited at https://thomashunter.name/i3-configurator/
+# https://github.com/catppuccin/i3 (frappé)
+set $rosewater #f4dbd6
+set $flamingo #f0c6c6
+set $pink #f5bde6
+set $mauve #c6a0f6
+set $red #ed8796
+set $maroon #ee99a0
+set $peach #f5a97f
+set $yellow #eed49f
+set $green #a6da95
+set $teal #8bd5ca
+set $sky #91d7e3
+set $sapphire #7dc4e4
+set $blue #8aadf4
+set $lavender #b7bdf8
+set $text #cad3f5
+set $subtext1 #b8c0e0
+set $subtext0 #a5adcb
+set $overlay2 #939ab7
+set $overlay1 #8087a2
+set $overlay0 #6e738d
+set $surface2 #5b6078
+set $surface1 #494d64
+set $surface0 #363a4f
+set $base #24273a
+set $mantle #1e2030
+set $crust #181926
 
-# class                 border  bground text    indicator child_border
-client.focused          #3d8970 #316E5A #EEEFEA #3d8970   #5BCEA8
-client.focused_inactive #282923 #838776 #EEEFEA #484E50   #5F676A
-client.unfocused        #282923 #3F4239 #838776 #292D2E   #282828
-client.urgent           #333333 #E18436 #EEEFEA #A25C75   #A25C75
-client.placeholder      #333333 #3F4239 #EEEFEA #282828   #282828
-
-client.background       #EEEFEA
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     status_command i3status -c ~/Dotfiles/i3status/config | ~/Dotfiles/i3status/custom_sections.py
     colors {
-        background #282828
-        statusline #cccccc
-        separator  #666666
+        background         $base
+        statusline         $text
+        focused_statusline $text
+        focused_separator  $surface2
 
-        focused_workspace  #3d8970 #316E5A #EEEFEA
-        active_workspace   #333333 #282828 #EEEFEA
-        inactive_workspace #333333 #282828 #797D6E
-        urgent_workspace   #333333 #E18436 #EEEFEA
-        binding_mode       #333333 #a04949 #EEEFEA
+        # target           border bg        text
+        focused_workspace  $base  $mauve    $crust
+        active_workspace   $base  $surface2 $text
+        inactive_workspace $base  $base     $text
+        urgent_workspace   $base  $red      $crust
     }
 }

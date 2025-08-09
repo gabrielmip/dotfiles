@@ -4,7 +4,7 @@ general {
 }
 
 # order += "battery 0"
-# order += "memory"
+order += "memory"
 order += "tztime local"
 
 battery 0 {
@@ -19,12 +19,12 @@ battery 0 {
 }
 
 tztime local {
-    format = "%d/%m às %H:%M"
+    format = "  %d/%m às %H:%M"
     timezone = "America/Fortaleza"
 }
 
 memory {
-    format = "MEM: %used"
+    format = "MEM: %used  "
     threshold_degraded = "10%"
     format_degraded = "MEMORY: %free"
 }

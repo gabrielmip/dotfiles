@@ -1,7 +1,7 @@
 [Appearance]
 AntiAliasFonts=true
-BoldIntense=false
-ColorScheme=Gruvbox
+BoldIntense=true
+ColorScheme=DarkPastels
 Font=Fira Code,13,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 LineSpacing=2
 UseFontLineChararacters=false

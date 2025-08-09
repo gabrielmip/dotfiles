@@ -15,6 +15,10 @@ Plug 'vim-airline/vim-airline-themes' " statusline colorscheme
 " colorschemes
 Plug 'ajmwagar/vim-deus'
 Plug 'morhetz/gruvbox'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'datsfilipe/min-theme.nvim'
+Plug 'sainnhe/sonokai'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'airblade/vim-gitgutter' " git edit signs on the left column
 Plug 'tpope/vim-fugitive' " git helpers
@@ -65,7 +69,7 @@ call plug#end()
 " }}}
 
 " vim-airline {{{
-let g:airline_theme='gruvbox'
+let g:airline_theme='sonokai'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -227,10 +231,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { noremap=true, silent=true }
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-    -- disable treesitter highlighting since it does not work well with
-    -- my colorscheme
-    client.server_capabilities.semanticTokensProvider = false
-    
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
@@ -353,8 +353,31 @@ endif
 let g:gruvbox_italic=1
 let g:gruvbox_invert_selection = 0
 
-colorscheme gruvbox
+let g:sonokai_style = 'shusia'
+colorscheme sonokai
 let g:indentLine_color_gui = '#44474f'
+
+" lua << EOF
+" require("catppuccin").setup {
+"     no_bold = false,
+"     flavour = "mocha", -- latte, frappe, macchiato, mocha
+" }
+
+" require('min-theme').setup({
+"     -- (note: if your configuration sets vim.o.background the following option will do nothing!)
+"     theme = 'dark', -- String: 'dark' or 'light', determines the colorscheme used
+"     transparent = false, -- Boolean: Sets the background to transparent
+"     italics = {
+"         comments = true, -- Boolean: Italicizes comments
+"     },
+"     overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
+" })
+
+" -- vim.cmd.colorscheme('min-theme')
+" EOF
+
+" colorscheme catppuccin
+
 " }}}
 
 " AutoPairs {{{
@@ -408,3 +431,40 @@ let g:ascii = [
     \]
 let g:startify_custom_header = startify#pad(g:ascii)
 " }}}
+
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+      "lua",
+      "vim",
+      "vimdoc",
+      "query",
+      "markdown",
+      "markdown_inline",
+      "comment",
+      "dockerfile",
+      "gitcommit",
+      "git_rebase",
+      "html",
+      "htmldjango",
+      "json5",
+      "css",
+      "csv",
+      "clojure",
+      "python",
+      "typescript",
+      "tsx"
+  },
+  sync_install = false,
+  auto_install = true,
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF

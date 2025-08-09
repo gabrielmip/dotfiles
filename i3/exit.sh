@@ -1,7 +1,7 @@
 #!/bin/sh
 
 lock() {
-    i3lock -c 458588 -p default -t
+    i3lock --color 363a4f --pointer default --tiling --ignore-empty-password
 }
 
 case "$1" in
