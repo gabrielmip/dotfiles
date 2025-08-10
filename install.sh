@@ -12,24 +12,21 @@ function log {
 CONFIGS_FOLDER="${PWD}"
 ZSH_PLUGINS="${HOME}/.config/zsh_plugins"
 
-sudo pacman -Sy --needed --noconfirm --quiet --noprogressbar yay base-devel
+sudo pacman -Syu --needed --noconfirm --quiet --noprogressbar yay base-devel
 
-yay -Sy --needed --noconfirm --quiet --noprogressbar \
+sudo pacman -S \
   neovim \
   xclip \
   jq \
   unzip \
   konsole \
-  ttf-twemoji \
   zsh \
   zsh-completions \
-  zsh-theme-powerlevel10k-git \
   ranger \
   bat \
   glow \
   tldr \
   fzf \
-  fzf-extras \
   ripgrep \
   ctags \
   screen \
@@ -40,17 +37,10 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   gwenview \
   foliate \
   spectacle \
-  postman-bin \
-  spotify \
-  zoom \
   chromium \
-  git-standup-git \
-  dbeaver \
   nvm \
-  visual-studio-code-bin \
-  ttf-firacode \
+  dbeaver \
   python-pipx \
-  nemo \
   klipper \
   blueman \
   i3-gaps \
@@ -60,14 +50,24 @@ yay -Sy --needed --noconfirm --quiet --noprogressbar \
   xss-lock \
   i3lock \
   brightnessctl \
-  nm-applet \
   feh \
   pasystray \
   pavucontrol \
-  mictray \
   playerctl \
-  dunst
+  dunst \
+  noto-fonts-emoji \
+  networkmanager \
+  network-manager-applet \
+  ttf-fira-code
 
+yay -Syu --needed --noconfirm --quiet --noprogressbar \
+  zsh-theme-powerlevel10k-git
+
+# ver se dá para forkar para poder instalar na mão com segurança
+# git-standup-git
+# mictray
+# spotify
+# gnome-shell-pomodoro / i3-gnome-pomodoro
 
 log "VIM"
 mkdir -p ~/.config/nvim
@@ -94,17 +94,6 @@ rmlink $PWD/Code/User ~/.config/Code/
 
 log "PICOM"
 rmlink $PWD/picom/picom.conf ~/.config/picom.conf
-
-
-log "GNOME POMODORO"
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/gnome-shell-pomodoro.tar.gz
-tar -xvf gnome-shell-pomodoro.tar.gz && cd gnome-shell-pomodoro
-makepkg -s
-makepkg -i
-
-
-log "I3 GNOME POMODORO"
-pipx install i3-gnome-pomodoro
 
 
 log "I3"
