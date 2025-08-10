@@ -80,13 +80,6 @@ rmlink $PWD/vim/snippets ~/.config/nvim/snippets
 nvim +PlugInstall +qall
 
 
-log "VIM LINTERS AND FORMATTERS"
-pipx install black pylint
-npm install --global eslint
-npm install --global prettier
-yay -Sy --needed --noconfirm --quiet --noprogressbar clj-kondo-bin joker-bin
-
-
 log "VS CODE"
 mkdir -p ~/.config/Code
 rmlink $PWD/Code/User ~/.config/Code/
@@ -123,6 +116,7 @@ if [ ! -d ~/.oh-my-zsh ]; then
   sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 fi
 rmlink $PWD/zsh/zshrc ~/.zshrc
+mkdir -p $ZSH_PLUGINS
 sudo chsh -s $(which zsh)
 if [ ! -d $ZSH_PLUGINS/zsh-syntax-highlighting ]; then
   mkdir -p $ZSH_PLUGINS/zsh-syntax-highlighting
