@@ -48,9 +48,6 @@ bindsym $mod+Shift+m mode "$mode_displays"
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# clipboard management and applet
-exec --no-startup-id klipper
-
 # bluetooth management and applet
 exec --no-startup-id blueman-applet
 
@@ -85,7 +82,6 @@ bindsym --release F9 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@
 
 # Setup pulseaudio applet
 exec --no-startup-id pasystray
-exec --no-startup-id mictray
 
 exec --no-startup-id redshift-gtk
 
@@ -100,7 +96,7 @@ floating_modifier $mod
 bindsym $mod+Return exec konsole
 
 # default file explorer
-bindsym $mod+e exec --no-startup-id nemo
+bindsym $mod+e exec --no-startup-id dolphin
 
 # Run printscreen app
 bindsym F10 exec spectacle -f -b
@@ -159,7 +155,6 @@ for_window [class="systemsettings"] floating enable
 for_window [class="krunner"] floating enable
 for_window [class="dolphin"] floating enable
 for_window [class="Kmix"] floating enable
-for_window [class="Klipper"] floating enable
 for_window [class="(?i)*nextcloud*"] floating disable
 
 for_window [window_role="pop-up"] floating enable
